@@ -1,0 +1,24 @@
+@Scripts.Render("~/bundles/jquery")
+
+
+    <div id="container" align="center">
+<div class="fadein">
+    <img src="~/Content/img/image3.jpg" alt="Photos" />
+    <img src="~/Content/img/image4.jpg" alt="Photos" />
+    <img src="~/Content/img/image5.jpg" alt="Photos" />
+    <img src="~/Content/img/image6.jpg" alt="Photos" />
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $('.fadein img:gt(0)').hide();
+        setInterval(function () {
+            $('.fadein :first-child').fadeOut()
+               .next('img').fadeIn()
+               .end().appendTo('.fadein');
+        },
+          3000);
+    });
+</script>
