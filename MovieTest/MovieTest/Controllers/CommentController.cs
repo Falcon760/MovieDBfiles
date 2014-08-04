@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MovieTest;
+using Microsoft.AspNet.Identity;
 
 namespace MovieTest.Controllers
 {
