@@ -65,6 +65,12 @@
         <dd>
             @Html.DisplayFor(model => model.MessageBoard.MessageBoardName)
         </dd>
+        @foreach (var item in Model.MessageBoard.Comments)
+        {
+            <li>
+                @Html.DisplayFor(model => item.CommentContents)
+            </li>
+        }
 
     </dl>
 </div>
