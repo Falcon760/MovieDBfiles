@@ -14,6 +14,26 @@ namespace TestComments.Controllers
     {
         private MovieLoversDBEntities db = new MovieLoversDBEntities();
 
+        public ActionResult Search(string SearchBox)
+        {
+            var movies = (from r in db.Movies
+                           where
+                               r.Title.Contains(SearchBox)
+                               //|| r.Rating.Value.ToString().Contains(SearchBox)
+                               || r.Director.DirectorName.Contains(SearchBox)
+                               || r.Genre.GenreType.Contains(SearchBox)
+                           select r).ToList();
+            return View("Index", movies);
+        }
+
+
+
+
+
+
+
+
+
         // GET: /Movie/
         public ActionResult Index()
         {
