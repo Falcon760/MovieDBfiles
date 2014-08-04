@@ -18,7 +18,6 @@ namespace MovieTest
         {
             this.Comments = new HashSet<Comment>();
             this.Reviews = new HashSet<Review>();
-            this.Users = new HashSet<User>();
         }
     
         public int MessageBoardId { get; set; }
@@ -27,6 +26,5 @@ namespace MovieTest
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual Movie Movie { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
-        public virtual ICollection<User> Users { get; set; }
     }
 }

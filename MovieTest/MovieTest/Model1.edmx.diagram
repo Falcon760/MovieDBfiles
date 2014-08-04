@@ -12,14 +12,12 @@
         <EntityTypeShape EntityType="MovieLoversDBModel.MessageBoard" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MovieLoversDBModel.Movie" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MovieLoversDBModel.Review" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MovieLoversDBModel.User" Width="1.5" PointX="7.5" PointY="6.625" IsExpanded="true" />
         <AssociationConnector Association="MovieLoversDBModel.FK_Comment_MessageBoard" ManuallyRouted="false" />
         <AssociationConnector Association="MovieLoversDBModel.FK_Movie_Director" ManuallyRouted="false" />
         <AssociationConnector Association="MovieLoversDBModel.FK_Movie_Genre" ManuallyRouted="false" />
         <AssociationConnector Association="MovieLoversDBModel.FK_MessageBoard_Movie" ManuallyRouted="false" />
         <AssociationConnector Association="MovieLoversDBModel.FK_Review_MessageBoard" ManuallyRouted="false" />
         <AssociationConnector Association="MovieLoversDBModel.MovieActor" ManuallyRouted="false" />
-        <AssociationConnector Association="MovieLoversDBModel.UserMessage" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
