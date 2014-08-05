@@ -33,6 +33,7 @@ namespace MovieMasterProject.Controllers
             {
                 return HttpNotFound();
             }
+            ViewData["Comments"] = movie.MessageBoard.Comments;
             return View(movie);
         }
 
