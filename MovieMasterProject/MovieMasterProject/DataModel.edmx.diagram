@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7102a38e21574c3fb9862ee7e3a7f344" Name="Diagram1">
+        <EntityTypeShape EntityType="MovieLoversDBModel.Actor" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.Comment" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.Director" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.Genre" Width="1.5" PointX="3.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.MessageBoard" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.Movie" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.MovieRating" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.Rating" Width="1.5" PointX="6" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.Review" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_MessageBoard_Actor" ManuallyRouted="false" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_Comment_MessageBoard" ManuallyRouted="false" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_MessageBoard_Director" ManuallyRouted="false" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_Movie_Director" ManuallyRouted="false" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_Movie_Genre" ManuallyRouted="false" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_MessageBoard_Movie" ManuallyRouted="false" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_Review_MessageBoard" ManuallyRouted="false" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_MovieRating_Movie" ManuallyRouted="false" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_MovieRating_Rating" ManuallyRouted="false" />
+        <AssociationConnector Association="MovieLoversDBModel.MovieActor" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
