@@ -6814,3 +6814,56 @@ td.visible-print {
     display: none !important;
   }
 }
+
+.roundedBox {
+            color:black;
+            border-radius:20px;
+            background-color:aliceblue;
+            text-align:left;
+            margin: 0 auto;
+            padding: 8px;
+            display: inline-block; 
+            overflow: hidden;
+
+        }
+
+.roundedSquare {
+            color:white;
+            border-radius:20px;
+            background-color: #428bca;
+            height:100%;
+            width:80%;
+            text-align:left;
+            margin: 0 auto;
+            padding:15px;
+
+  
+        }
+
+
+.containerrow {
+  padding-right: 15px;
+  padding-left: 15px;
+  background:black;
+  color:yellow;
+  text-align:center;
+  font-family: 'Lucida Sans';
+  font-size:30px;
+  border:outset;
+  margin:10px;
+  font-family:'Times New Roman';
+}
+.buttonrow{
+    text-align:center;
+   
+     
+}
+.trailerbox{
+  background-color:black;
+  width: 200px;
+  height: 200px;
+  text-align: left;
+  float:left;
+  margin:7px;
+
+}
