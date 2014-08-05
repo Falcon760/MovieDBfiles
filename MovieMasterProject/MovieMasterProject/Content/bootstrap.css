@@ -6817,14 +6817,15 @@ td.visible-print {
 }
 
 .roundedBox {
+    border:2px black;
             color:black;
-            border-radius:20px;
+            border-radius:5px;
             background-color:aliceblue;
+            /*height: 100px;*/
             text-align:left;
             margin: 6px;
-            padding: 8px;
-             
-            overflow: hidden;
+            padding: 10px;
+            /*overflow-y: auto;*/
 
         }
 
@@ -6869,3 +6870,6 @@ td.visible-print {
   margin:7px;
 
 }
+
+div.toggler { cursor:pointer; }
+div.toggler div { display:none; }

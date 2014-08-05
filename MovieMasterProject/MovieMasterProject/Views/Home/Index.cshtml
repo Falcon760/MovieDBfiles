@@ -28,52 +28,69 @@
                     <h4>Total Rating</h4>
                 </td>
             </tr>
-            </table>
+        </table>
 
         <br />
         <br />
 
 
- 
+
 
         @*Old javascript*@
-@*<div id="container" align="center">
-    <div class="fadein">
-        <img src="~/Content/img/image1.jpg" alt="Photos" />
-        <img src="~/Content/img/image2.jpg" alt="Photos" />
-        <img src="~/Content/img/image3.jpg" alt="Photos" />
-        <img src="~/Content/img/image4.jpg" alt="Photos" />
-    </div>
-</div>*@
-@*<script>
-    $(function () {
-        $('.fadein img:gt(0)').hide();
-        setInterval(function () {
-            $('.fadein :first-child').fadeOut()
-               .next('img').fadeIn()
-               .end().appendTo('.fadein');
-        },
-          3000);
-    });
-</script>*@
+        @*<div id="container" align="center">
+                <div class="fadein">
+                    <img src="~/Content/img/image1.jpg" alt="Photos" />
+                    <img src="~/Content/img/image2.jpg" alt="Photos" />
+                    <img src="~/Content/img/image3.jpg" alt="Photos" />
+                    <img src="~/Content/img/image4.jpg" alt="Photos" />
+                </div>
+            </div>*@
+        @*<script>
+                $(function () {
+                    $('.fadein img:gt(0)').hide();
+                    setInterval(function () {
+                        $('.fadein :first-child').fadeOut()
+                           .next('img').fadeIn()
+                           .end().appendTo('.fadein');
+                    },
+                      3000);
+                });
+            </script>*@
 
-        <div class="roundedBox">
-            <h4>Summary </h4>
-            @Html.Truncate("This is truncated.  This is truncated. This is truncated.  This is truncated.This is truncated.  This is truncated.",55)
-        </div>
-        <div class="roundedBox">
-            <h4>Reviews</h4>
-            Review 1 - @Html.Truncate("Review Review Review Review Review Review Review Review Review",55)<br />
-            Review 2 - @Html.Truncate("Review Review Review Review Review Review Review",55)
-        </div>
-        <div class="roundedBox">
-            <h4>Comments</h4>
-            Comment 1 - @Html.Truncate("Comment Comment Comment Comment Comment",55)<br /> 
-            Comment 2 - @Html.Truncate("Comment Comment Comment Comment Comment",55) 
-        </div>
+        <script>
+            $(function () {
+                $('.toggler').click(function () {
+                    $(this).find('div').slideToggle();
+                });
+            });
+        </script>
+       
+        <div class="roundedBox toggler">
+            <h4>Summary </h4><div>
+            This is truncated.  This is truncated. This is truncated.
+            This is truncated.This is truncated.  This is truncated.This is truncated.  This is truncated. This is truncated.
+            This is truncated.This is truncated.  This is truncated.This is truncated.  This is truncated. This is truncated.
+            This is truncated.This is truncated.  This is truncated.This is truncated.  This is truncated. This is truncated.
+            This is truncated.This is truncated.  This is truncated.
+        </div></div>
+        <div class="roundedBox toggler">
+            <h4>Reviews</h4><div>
+            Review 1 - @Html.Truncate("Review Review Review Review Review Review Review Review Review", 55)<br />
+            Review 2 - @Html.Truncate("Review Review Review Review Review Review Review", 55)
+        </div></div>
+        <div class="roundedBox toggler">
+            <h4>Comments</h4><div>
+            Comment 1 - Comment Comment Comment Comment Comment
+            Comment 2 - Comment Comment Comment Comment Comment
+            Comment 3
+            Comment 4
+            Comment 5
+            Comment 6
+            Comment 7
+        </div></div>
         <div class="buttonrow">
             <input type="button" value="Movie Details" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Movie")' " />
-          
+
         </div>
     </div>
 
