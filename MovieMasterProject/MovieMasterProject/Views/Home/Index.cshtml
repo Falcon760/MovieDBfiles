@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 @using MovieMasterProject.Models;
-
+@Scripts.Render("~/bundles/jquery")
 
 
 <div class="col-lg-12">
@@ -36,20 +36,28 @@
 
 
 
-        <div class="trailerbox">
-            Picture box, picture box, picture boxPicture box, picture boxPicture box, picture boxPicture box, picture boxPicture box, picture box
-        </div>
-        <div class="trailerbox">
-            Link here please Link here pleaseLink here pleaseLink here pleaseLink here pleaseLink here pleaseLink here pleaseLink here please
-        </div>
-        <div class="trailerbox">
-            What is this
-        </div>
-        <div class="trailerbox">
-            Picture box, picture box
-        </div>
+
+<div id="container" align="center">
+    <div class="fadein">
+        <img src="~/Content/img/image3.jpg" alt="Photos" />
+        <img src="~/Content/img/image4.jpg" alt="Photos" />
+        <img src="~/Content/img/image5.jpg" alt="Photos" />
+        <img src="~/Content/img/image6.jpg" alt="Photos" />
+    </div>
+</div>
 
 
+<script>
+    $(function () {
+        $('.fadein img:gt(0)').hide();
+        setInterval(function () {
+            $('.fadein :first-child').fadeOut()
+               .next('img').fadeIn()
+               .end().appendTo('.fadein');
+        },
+          3000);
+    });
+</script>
 
         <div class="roundedBox">
             <h4>Summary </h4>
