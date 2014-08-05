@@ -77,12 +77,16 @@ namespace TestComments.Controllers
             {
                 db.Movies.Add(movie);
                 db.SaveChanges();
+                var msgboard = new MessageBoard{MessageBoardId = movie.MovieId, MessageBoardName = (movie.Title + " Comments")};
+                db.MessageBoards.Add(msgboard);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.DirectorId = new SelectList(db.Directors, "DirectorId", "DirectorName", movie.DirectorId);
             ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "GenreType", movie.GenreId);
             ViewBag.MovieId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName", movie.MovieId);
+            
             return View(movie);
         }
 

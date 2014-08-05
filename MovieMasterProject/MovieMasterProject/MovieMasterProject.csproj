@@ -198,6 +198,12 @@
     <Compile Include="MessageBoard.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="MessageBoardA.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MessageBoardD.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\HtmlHelpers.cs" />
     <Compile Include="Models\IdentityModels.cs" />

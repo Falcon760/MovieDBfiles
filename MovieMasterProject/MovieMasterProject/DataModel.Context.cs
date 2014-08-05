@@ -34,5 +34,7 @@ namespace MovieMasterProject
         public virtual DbSet<MovieRating> MovieRatings { get; set; }
         public virtual DbSet<Rating> Ratings { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<MessageBoardA> MessageBoardAs { get; set; }
+        public virtual DbSet<MessageBoardD> MessageBoardDs { get; set; }
     }
 }

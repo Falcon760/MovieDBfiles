@@ -56,6 +56,9 @@ namespace MovieMasterProject.Controllers
             {
                 db.Movies.Add(movie);
                 db.SaveChanges();
+                var msgboard = new MessageBoard { MessageBoardId = movie.MovieId, MessageBoardName = (movie.Title + " Comments") };
+                db.MessageBoards.Add(msgboard);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 

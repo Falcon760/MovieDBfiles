@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MovieLoversDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MovieLoversDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Actor">
           <Key>
             <PropertyRef Name="ActorId" />
@@ -45,7 +45,21 @@
             <PropertyRef Name="MessageBoardId" />
           </Key>
           <Property Name="MessageBoardId" Type="int" Nullable="false" />
-          <Property Name="MessageBoardName" Type="varchar" MaxLength="50" />
+          <Property Name="MessageBoardName" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="MessageBoardA">
+          <Key>
+            <PropertyRef Name="MessageBoardId" />
+          </Key>
+          <Property Name="MessageBoardId" Type="int" Nullable="false" />
+          <Property Name="MessageBoardName" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="MessageBoardD">
+          <Key>
+            <PropertyRef Name="MessageBoardId" />
+          </Key>
+          <Property Name="MessageBoardId" Type="int" Nullable="false" />
+          <Property Name="MessageBoardName" Type="varchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="Movie">
           <Key>
@@ -106,26 +120,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MessageBoard_Actor">
-          <End Role="Actor" Type="Self.Actor" Multiplicity="1" />
-          <End Role="MessageBoard" Type="Self.MessageBoard" Multiplicity="0..1" />
+        <Association Name="FK_Comment_MessageBoardA">
+          <End Role="MessageBoardA" Type="Self.MessageBoardA" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Actor">
-              <PropertyRef Name="ActorId" />
+            <Principal Role="MessageBoardA">
+              <PropertyRef Name="MessageBoardId" />
             </Principal>
-            <Dependent Role="MessageBoard">
+            <Dependent Role="Comment">
               <PropertyRef Name="MessageBoardId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MessageBoard_Director">
-          <End Role="Director" Type="Self.Director" Multiplicity="1" />
-          <End Role="MessageBoard" Type="Self.MessageBoard" Multiplicity="0..1" />
+        <Association Name="FK_Comment_MessageBoardD">
+          <End Role="MessageBoardD" Type="Self.MessageBoardD" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Director">
-              <PropertyRef Name="DirectorId" />
+            <Principal Role="MessageBoardD">
+              <PropertyRef Name="MessageBoardId" />
             </Principal>
-            <Dependent Role="MessageBoard">
+            <Dependent Role="Comment">
               <PropertyRef Name="MessageBoardId" />
             </Dependent>
           </ReferentialConstraint>
@@ -138,6 +152,30 @@
               <PropertyRef Name="MovieId" />
             </Principal>
             <Dependent Role="MessageBoard">
+              <PropertyRef Name="MessageBoardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageBoardA_Actor">
+          <End Role="Actor" Type="Self.Actor" Multiplicity="1" />
+          <End Role="MessageBoardA" Type="Self.MessageBoardA" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Actor">
+              <PropertyRef Name="ActorId" />
+            </Principal>
+            <Dependent Role="MessageBoardA">
+              <PropertyRef Name="MessageBoardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageBoardD_Director">
+          <End Role="Director" Type="Self.Director" Multiplicity="1" />
+          <End Role="MessageBoardD" Type="Self.MessageBoardD" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Director">
+              <PropertyRef Name="DirectorId" />
+            </Principal>
+            <Dependent Role="MessageBoardD">
               <PropertyRef Name="MessageBoardId" />
             </Dependent>
           </ReferentialConstraint>
@@ -232,6 +270,8 @@
           <EntitySet Name="Director" EntityType="Self.Director" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MessageBoard" EntityType="Self.MessageBoard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessageBoardA" EntityType="Self.MessageBoardA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessageBoardD" EntityType="Self.MessageBoardD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Movie" EntityType="Self.Movie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MovieActor" EntityType="Self.MovieActor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MovieRating" EntityType="Self.MovieRating" Schema="dbo" store:Type="Tables" />
@@ -241,17 +281,25 @@
             <End Role="MessageBoard" EntitySet="MessageBoard" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
-          <AssociationSet Name="FK_MessageBoard_Actor" Association="Self.FK_MessageBoard_Actor">
-            <End Role="Actor" EntitySet="Actor" />
-            <End Role="MessageBoard" EntitySet="MessageBoard" />
+          <AssociationSet Name="FK_Comment_MessageBoardA" Association="Self.FK_Comment_MessageBoardA">
+            <End Role="MessageBoardA" EntitySet="MessageBoardA" />
+            <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
-          <AssociationSet Name="FK_MessageBoard_Director" Association="Self.FK_MessageBoard_Director">
-            <End Role="Director" EntitySet="Director" />
-            <End Role="MessageBoard" EntitySet="MessageBoard" />
+          <AssociationSet Name="FK_Comment_MessageBoardD" Association="Self.FK_Comment_MessageBoardD">
+            <End Role="MessageBoardD" EntitySet="MessageBoardD" />
+            <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
           <AssociationSet Name="FK_MessageBoard_Movie" Association="Self.FK_MessageBoard_Movie">
             <End Role="Movie" EntitySet="Movie" />
             <End Role="MessageBoard" EntitySet="MessageBoard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageBoardA_Actor" Association="Self.FK_MessageBoardA_Actor">
+            <End Role="Actor" EntitySet="Actor" />
+            <End Role="MessageBoardA" EntitySet="MessageBoardA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageBoardD_Director" Association="Self.FK_MessageBoardD_Director">
+            <End Role="Director" EntitySet="Director" />
+            <End Role="MessageBoardD" EntitySet="MessageBoardD" />
           </AssociationSet>
           <AssociationSet Name="FK_Movie_Director" Association="Self.FK_Movie_Director">
             <End Role="Director" EntitySet="Director" />
@@ -282,8 +330,7 @@
             <End Role="Review" EntitySet="Review" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MovieLoversDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -298,6 +345,7 @@
           <Property Name="Bio" Type="String" MaxLength="950" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MessageBoard" Relationship="Self.FK_MessageBoard_Actor" FromRole="Actor" ToRole="MessageBoard" />
           <NavigationProperty Name="Movies" Relationship="Self.MovieActor" FromRole="Actor" ToRole="Movie" />
+          <NavigationProperty Name="MessageBoardA" Relationship="MovieLoversDBModel.FK_MessageBoardA_Actor" FromRole="Actor" ToRole="MessageBoardA" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -308,6 +356,8 @@
           <Property Name="CommentContents" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="MessageBoardId" Type="Int32" />
           <NavigationProperty Name="MessageBoard" Relationship="Self.FK_Comment_MessageBoard" FromRole="Comment" ToRole="MessageBoard" />
+          <NavigationProperty Name="MessageBoardA" Relationship="MovieLoversDBModel.FK_Comment_MessageBoardA" FromRole="Comment" ToRole="MessageBoardA" />
+          <NavigationProperty Name="MessageBoardD" Relationship="MovieLoversDBModel.FK_Comment_MessageBoardD" FromRole="Comment" ToRole="MessageBoardD" />
         </EntityType>
         <EntityType Name="Director">
           <Key>
@@ -319,6 +369,7 @@
           <Property Name="Bio" Type="String" MaxLength="950" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MessageBoard" Relationship="Self.FK_MessageBoard_Director" FromRole="Director" ToRole="MessageBoard" />
           <NavigationProperty Name="Movies" Relationship="Self.FK_Movie_Director" FromRole="Director" ToRole="Movie" />
+          <NavigationProperty Name="MessageBoardD" Relationship="MovieLoversDBModel.FK_MessageBoardD_Director" FromRole="Director" ToRole="MessageBoardD" />
         </EntityType>
         <EntityType Name="Genre">
           <Key>
@@ -333,7 +384,7 @@
             <PropertyRef Name="MessageBoardId" />
           </Key>
           <Property Name="MessageBoardId" Type="Int32" Nullable="false" />
-          <Property Name="MessageBoardName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MessageBoardName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Actor" Relationship="Self.FK_MessageBoard_Actor" FromRole="MessageBoard" ToRole="Actor" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_MessageBoard" FromRole="MessageBoard" ToRole="Comment" />
           <NavigationProperty Name="Director" Relationship="Self.FK_MessageBoard_Director" FromRole="MessageBoard" ToRole="Director" />
@@ -550,7 +601,91 @@
             <End Role="Actor" EntitySet="Actors" />
             <End Role="Movie" EntitySet="Movies" />
           </AssociationSet>
+          <EntitySet Name="MessageBoardAs" EntityType="MovieLoversDBModel.MessageBoardA" />
+          <EntitySet Name="MessageBoardDs" EntityType="MovieLoversDBModel.MessageBoardD" />
+          <AssociationSet Name="FK_MessageBoardA_Actor" Association="MovieLoversDBModel.FK_MessageBoardA_Actor">
+            <End Role="Actor" EntitySet="Actors" />
+            <End Role="MessageBoardA" EntitySet="MessageBoardAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_MessageBoardA" Association="MovieLoversDBModel.FK_Comment_MessageBoardA">
+            <End Role="MessageBoardA" EntitySet="MessageBoardAs" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_MessageBoardD" Association="MovieLoversDBModel.FK_Comment_MessageBoardD">
+            <End Role="MessageBoardD" EntitySet="MessageBoardDs" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageBoardD_Director" Association="MovieLoversDBModel.FK_MessageBoardD_Director">
+            <End Role="Director" EntitySet="Directors" />
+            <End Role="MessageBoardD" EntitySet="MessageBoardDs" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="MessageBoardA">
+          <Key>
+            <PropertyRef Name="MessageBoardId" />
+          </Key>
+          <Property Name="MessageBoardId" Type="Int32" Nullable="false" />
+          <Property Name="MessageBoardName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Actor" Relationship="MovieLoversDBModel.FK_MessageBoardA_Actor" FromRole="MessageBoardA" ToRole="Actor" />
+          <NavigationProperty Name="Comments" Relationship="MovieLoversDBModel.FK_Comment_MessageBoardA" FromRole="MessageBoardA" ToRole="Comment" />
+        </EntityType>
+        <EntityType Name="MessageBoardD">
+          <Key>
+            <PropertyRef Name="MessageBoardId" />
+          </Key>
+          <Property Name="MessageBoardId" Type="Int32" Nullable="false" />
+          <Property Name="MessageBoardName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Comments" Relationship="MovieLoversDBModel.FK_Comment_MessageBoardD" FromRole="MessageBoardD" ToRole="Comment" />
+          <NavigationProperty Name="Director" Relationship="MovieLoversDBModel.FK_MessageBoardD_Director" FromRole="MessageBoardD" ToRole="Director" />
+        </EntityType>
+        <Association Name="FK_MessageBoardA_Actor">
+          <End Type="MovieLoversDBModel.Actor" Role="Actor" Multiplicity="1" />
+          <End Type="MovieLoversDBModel.MessageBoardA" Role="MessageBoardA" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Actor">
+              <PropertyRef Name="ActorId" />
+            </Principal>
+            <Dependent Role="MessageBoardA">
+              <PropertyRef Name="MessageBoardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_MessageBoardA">
+          <End Type="MovieLoversDBModel.MessageBoardA" Role="MessageBoardA" Multiplicity="0..1" />
+          <End Type="MovieLoversDBModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MessageBoardA">
+              <PropertyRef Name="MessageBoardId" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="MessageBoardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_MessageBoardD">
+          <End Type="MovieLoversDBModel.MessageBoardD" Role="MessageBoardD" Multiplicity="0..1" />
+          <End Type="MovieLoversDBModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MessageBoardD">
+              <PropertyRef Name="MessageBoardId" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="MessageBoardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageBoardD_Director">
+          <End Type="MovieLoversDBModel.Director" Role="Director" Multiplicity="1" />
+          <End Type="MovieLoversDBModel.MessageBoardD" Role="MessageBoardD" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Director">
+              <PropertyRef Name="DirectorId" />
+            </Principal>
+            <Dependent Role="MessageBoardD">
+              <PropertyRef Name="MessageBoardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -654,6 +789,22 @@
               <ScalarProperty Name="MovieId" ColumnName="MovieId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="MessageBoardAs">
+            <EntityTypeMapping TypeName="MovieLoversDBModel.MessageBoardA">
+              <MappingFragment StoreEntitySet="MessageBoardA">
+                <ScalarProperty Name="MessageBoardName" ColumnName="MessageBoardName" />
+                <ScalarProperty Name="MessageBoardId" ColumnName="MessageBoardId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageBoardDs">
+            <EntityTypeMapping TypeName="MovieLoversDBModel.MessageBoardD">
+              <MappingFragment StoreEntitySet="MessageBoardD">
+                <ScalarProperty Name="MessageBoardName" ColumnName="MessageBoardName" />
+                <ScalarProperty Name="MessageBoardId" ColumnName="MessageBoardId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

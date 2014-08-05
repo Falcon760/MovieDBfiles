@@ -20,5 +20,7 @@ namespace MovieMasterProject
         public Nullable<int> MessageBoardId { get; set; }
     
         public virtual MessageBoard MessageBoard { get; set; }
+        public virtual MessageBoardA MessageBoardA { get; set; }
+        public virtual MessageBoardD MessageBoardD { get; set; }
     }
 }

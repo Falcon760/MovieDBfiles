@@ -26,5 +26,6 @@ namespace MovieMasterProject
     
         public virtual MessageBoard MessageBoard { get; set; }
         public virtual ICollection<Movie> Movies { get; set; }
+        public virtual MessageBoardD MessageBoardD { get; set; }
     }
 }
