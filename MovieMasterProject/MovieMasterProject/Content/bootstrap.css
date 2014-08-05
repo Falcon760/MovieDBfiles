@@ -59,6 +59,7 @@ html {
 
 body {
   margin: 0;
+
 }
 
 a:focus {
@@ -314,8 +315,8 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #333333;
-  background-color: #ffffff;
+  color: #FFFFFF;
+  background-color: #000000;
 }
 
 input,
@@ -6813,4 +6814,58 @@ td.visible-print {
   td.hidden-print {
     display: none !important;
   }
+}
+
+.roundedBox {
+            color:black;
+            border-radius:20px;
+            background-color:aliceblue;
+            text-align:left;
+            margin: 6px;
+            padding: 8px;
+             
+            overflow: hidden;
+
+        }
+
+.roundedSquare {
+            color:white;
+            border-radius:20px;
+            background-color: #428bca;
+            height:100%;
+            width:80%;
+            text-align:left;
+            margin: 0 auto;
+            padding:15px;
+
+  
+        }
+
+
+.containerrow {
+  padding-right: 15px;
+  padding-left: 15px;
+  background:black;
+  color:yellow;
+  text-align:center;
+  font-family: 'Lucida Sans';
+  font-size:30px;
+  border:outset;
+  margin:10px;
+
+}
+.buttonrow{
+    text-align:center;
+    margin:5px;
+   
+     
+}
+.trailerbox{
+  background-color:black;
+  width: 200px;
+  height: 200px;
+  text-align: left;
+  float:left;
+  margin:7px;
+
 }

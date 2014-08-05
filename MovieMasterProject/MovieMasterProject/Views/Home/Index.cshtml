@@ -1,31 +1,76 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@using MovieMasterProject.Models;
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+
+<div class="col-lg-12">
+
+
+    <div class="roundedSquare">
+        <div class="containerrow">
+            Movie Title in Yellow
+        </div>
+
+        <table align="center" cellpadding="20" style="text-align:center">
+            <tr>
+                <td>
+                    <h4>Release Date</h4>
+                </td>
+                <td>
+                    <h4>Genre</h4>
+                </td>
+                <td>
+                    <h4>Running Time</h4>
+                </td>
+                <td>
+                    <h4>Total Rating</h4>
+                </td>
+            </tr>
+            </table>
+
+        <br />
+        This is some more information.  More info here.
+        <br />
+
+
+
+        <div class="trailerbox">
+            Picture box, picture box, picture boxPicture box, picture boxPicture box, picture boxPicture box, picture boxPicture box, picture box
+        </div>
+        <div class="trailerbox">
+            Link here please Link here pleaseLink here pleaseLink here pleaseLink here pleaseLink here pleaseLink here pleaseLink here please
+        </div>
+        <div class="trailerbox">
+            What is this
+        </div>
+        <div class="trailerbox">
+            Picture box, picture box
+        </div>
+
+
+
+        <div class="roundedBox">
+            <h4>Summary </h4>
+            @Html.Truncate("This is truncated.  This is truncated. This is truncated.  This is truncated.This is truncated.  This is truncated.",55)
+        </div>
+        <div class="roundedBox">
+            <h4>Reviews</h4>
+            Review 1 - @Html.Truncate("Review Review Review Review Review Review Review Review Review",55)<br />
+            Review 2 - @Html.Truncate("Review Review Review Review Review Review Review",55)
+        </div>
+        <div class="roundedBox">
+            <h4>Comments</h4>
+            Comment 1 - @Html.Truncate("Comment Comment Comment Comment Comment",55)<br /> 
+            Comment 2 - @Html.Truncate("Comment Comment Comment Comment Comment",55) 
+        </div>
+        <div class="buttonrow">
+            <input type="button" value="Button1" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Movie")' " />
+            <input type="button" value="Button2" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Home")' " />
+            <input type="button" value="Button3" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Home")' " />
+            <input type="button" value="Button4" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Home")' " />
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+
 </div>
