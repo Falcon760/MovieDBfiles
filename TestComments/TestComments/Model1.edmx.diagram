@@ -7,7 +7,7 @@
       <Diagram DiagramId="8514261ed5a9445fb1e48393ca20ace1" Name="Diagram1">
         <EntityTypeShape EntityType="MovieLoversDBModel.Actor" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MovieLoversDBModel.Comment" Width="1.5" PointX="7.5" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MovieLoversDBModel.Director" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.Director" Width="1.5" PointX="1" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MovieLoversDBModel.Genre" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MovieLoversDBModel.MessageBoard" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MovieLoversDBModel.Movie" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
