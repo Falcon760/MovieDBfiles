@@ -62,6 +62,7 @@ namespace TestComments.Controllers
             ViewBag.DirectorId = new SelectList(db.Directors, "DirectorId", "DirectorName");
             ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "GenreType");
             ViewBag.MovieId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName");
+
             return View();
         }
 
