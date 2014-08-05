@@ -6,14 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MovieTest;
+using TestComments;
 using Microsoft.AspNet.Identity;
 
-namespace MovieTest.Controllers
+namespace TestComments.Controllers
 {
     public class CommentController : Controller
     {
-        private MovieLoversDBEntities1 db = new MovieLoversDBEntities1();
+        private MovieLoversDBEntities db = new MovieLoversDBEntities();
 
         // GET: /Comment/
         public ActionResult Index()
@@ -40,8 +40,11 @@ namespace MovieTest.Controllers
         // GET: /Comment/Create
         public ActionResult Create()
         {
+            Comment comment = new Comment();
+            comment.UserName = User.Identity.GetUserName();
+
             ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName");
-            return View();
+            return View(comment);
         }
 
         // POST: /Comment/Create
@@ -49,7 +52,7 @@ namespace MovieTest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="CommentId,CommentContents,MessageBoardId")] Comment comment)
+        public ActionResult Create([Bind(Include="CommentId,UserName,CommentContents,MessageBoardId")] Comment comment)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +86,7 @@ namespace MovieTest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="CommentId,CommentContents,MessageBoardId")] Comment comment)
+        public ActionResult Edit([Bind(Include="CommentId,UserName,CommentContents,MessageBoardId")] Comment comment)
         {
             if (ModelState.IsValid)
             {

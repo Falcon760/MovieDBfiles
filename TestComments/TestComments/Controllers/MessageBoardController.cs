@@ -6,117 +6,116 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using MovieTest;
-using Microsoft.AspNet.Identity;
+using TestComments;
 
-namespace MovieTest.Controllers
+namespace TestComments.Controllers
 {
-    public class CommentController : Controller
+    public class MessageBoardController : Controller
     {
-        private MovieLoversDBEntities1 db = new MovieLoversDBEntities1();
+        private MovieLoversDBEntities db = new MovieLoversDBEntities();
 
-        // GET: /Comment/
+        // GET: /MessageBoard/
         public ActionResult Index()
         {
-            var comments = db.Comments.Include(c => c.MessageBoard);
-            return View(comments.ToList());
+            var messageboards = db.MessageBoards.Include(m => m.Movie);
+            return View(messageboards.ToList());
         }
 
-        // GET: /Comment/Details/5
+        // GET: /MessageBoard/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comment comment = db.Comments.Find(id);
-            if (comment == null)
+            MessageBoard messageboard = db.MessageBoards.Find(id);
+            if (messageboard == null)
             {
                 return HttpNotFound();
             }
-            return View(comment);
+            return View(messageboard);
         }
 
-        // GET: /Comment/Create
+        // GET: /MessageBoard/Create
         public ActionResult Create()
         {
-            ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName");
+            ViewBag.MessageBoardId = new SelectList(db.Movies, "MovieId", "Title");
             return View();
         }
 
-        // POST: /Comment/Create
+        // POST: /MessageBoard/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="CommentId,CommentContents,MessageBoardId")] Comment comment)
+        public ActionResult Create([Bind(Include="MessageBoardId,MessageBoardName")] MessageBoard messageboard)
         {
             if (ModelState.IsValid)
             {
-                db.Comments.Add(comment);
+                db.MessageBoards.Add(messageboard);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName", comment.MessageBoardId);
-            return View(comment);
+            ViewBag.MessageBoardId = new SelectList(db.Movies, "MovieId", "Title", messageboard.MessageBoardId);
+            return View(messageboard);
         }
 
-        // GET: /Comment/Edit/5
+        // GET: /MessageBoard/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comment comment = db.Comments.Find(id);
-            if (comment == null)
+            MessageBoard messageboard = db.MessageBoards.Find(id);
+            if (messageboard == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName", comment.MessageBoardId);
-            return View(comment);
+            ViewBag.MessageBoardId = new SelectList(db.Movies, "MovieId", "Title", messageboard.MessageBoardId);
+            return View(messageboard);
         }
 
-        // POST: /Comment/Edit/5
+        // POST: /MessageBoard/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="CommentId,CommentContents,MessageBoardId")] Comment comment)
+        public ActionResult Edit([Bind(Include="MessageBoardId,MessageBoardName")] MessageBoard messageboard)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(comment).State = EntityState.Modified;
+                db.Entry(messageboard).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName", comment.MessageBoardId);
-            return View(comment);
+            ViewBag.MessageBoardId = new SelectList(db.Movies, "MovieId", "Title", messageboard.MessageBoardId);
+            return View(messageboard);
         }
 
-        // GET: /Comment/Delete/5
+        // GET: /MessageBoard/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comment comment = db.Comments.Find(id);
-            if (comment == null)
+            MessageBoard messageboard = db.MessageBoards.Find(id);
+            if (messageboard == null)
             {
                 return HttpNotFound();
             }
-            return View(comment);
+            return View(messageboard);
         }
 
-        // POST: /Comment/Delete/5
+        // POST: /MessageBoard/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Comment comment = db.Comments.Find(id);
-            db.Comments.Remove(comment);
+            MessageBoard messageboard = db.MessageBoards.Find(id);
+            db.MessageBoards.Remove(messageboard);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
