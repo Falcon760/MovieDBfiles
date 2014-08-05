@@ -1,4 +1,4 @@
 MovieDBfiles
 ============
-Movie Tracker is for individual users to track movie details, link to pictures, link to trailers, add reviews,
-add comments, and invite their friends to add their own comments and reviews.  Functionality will include add movie, delete movie, edit movie, add comment to movie, add review to movie, add picture/upload picture. Javascript will scroll and display all individual movie pictures in the details view.  1 Trailer per movie can be linked, thumbnailed and displayed in details view.  Statistics view will show count of movies seen per user, count of reviews made, total review rating calculated based on all ratings entered per user, functionality to list and compare individual user ratings, list, sort, and compare movies, and sort movies by when users saw them.  Ability to save statistical comparison.
+
+Movie Tracker acts as a platform allowing users to discuss movies as well as upload pictures, link to trailers, rate, review and comment on their favorites. Standard details about movies may be added along with links to trailers. Users can view information about Directors as well as Actors and discuss anything they would like on various message boards. Users can also find the nearest theater based on their current or specified location. Lists of movies, directors, and actors will all be searchable and sortable.
