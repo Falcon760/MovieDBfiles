@@ -59,6 +59,7 @@ html {
 
 body {
   margin: 0;
+
 }
 
 a:focus {
@@ -314,8 +315,8 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
-  color: #333333;
-  background-color: #ffffff;
+  color: #FFFFFF;
+  background-color: #000000;
 }
 
 input,
@@ -6820,9 +6821,9 @@ td.visible-print {
             border-radius:20px;
             background-color:aliceblue;
             text-align:left;
-            margin: 0 auto;
+            margin: 6px;
             padding: 8px;
-            display: inline-block; 
+             
             overflow: hidden;
 
         }
@@ -6851,10 +6852,11 @@ td.visible-print {
   font-size:30px;
   border:outset;
   margin:10px;
-  font-family:'Times New Roman';
+
 }
 .buttonrow{
     text-align:center;
+    margin:5px;
    
      
 }
