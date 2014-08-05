@@ -26,5 +26,7 @@ namespace TestComments
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual Movie Movie { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
+        public virtual Actor Actor { get; set; }
+        public virtual Director Director { get; set; }
     }
 }

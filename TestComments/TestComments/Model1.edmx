@@ -12,6 +12,8 @@
           <Property Name="ActorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="varchar" MaxLength="50" />
           <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="varchar" MaxLength="50" />
+          <Property Name="Bio" Type="varchar" MaxLength="950" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -28,6 +30,8 @@
           </Key>
           <Property Name="DirectorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DirectorName" Type="varchar" MaxLength="150" />
+          <Property Name="DateOfBirth" Type="varchar" MaxLength="20" />
+          <Property Name="Bio" Type="varchar" MaxLength="950" />
         </EntityType>
         <EntityType Name="Genre">
           <Key>
@@ -98,6 +102,30 @@
               <PropertyRef Name="MessageBoardId" />
             </Principal>
             <Dependent Role="Comment">
+              <PropertyRef Name="MessageBoardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageBoard_Actor">
+          <End Role="Actor" Type="Self.Actor" Multiplicity="1" />
+          <End Role="MessageBoard" Type="Self.MessageBoard" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Actor">
+              <PropertyRef Name="ActorId" />
+            </Principal>
+            <Dependent Role="MessageBoard">
+              <PropertyRef Name="MessageBoardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageBoard_Director">
+          <End Role="Director" Type="Self.Director" Multiplicity="1" />
+          <End Role="MessageBoard" Type="Self.MessageBoard" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Director">
+              <PropertyRef Name="DirectorId" />
+            </Principal>
+            <Dependent Role="MessageBoard">
               <PropertyRef Name="MessageBoardId" />
             </Dependent>
           </ReferentialConstraint>
@@ -213,6 +241,14 @@
             <End Role="MessageBoard" EntitySet="MessageBoard" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
+          <AssociationSet Name="FK_MessageBoard_Actor" Association="Self.FK_MessageBoard_Actor">
+            <End Role="Actor" EntitySet="Actor" />
+            <End Role="MessageBoard" EntitySet="MessageBoard" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageBoard_Director" Association="Self.FK_MessageBoard_Director">
+            <End Role="Director" EntitySet="Director" />
+            <End Role="MessageBoard" EntitySet="MessageBoard" />
+          </AssociationSet>
           <AssociationSet Name="FK_MessageBoard_Movie" Association="Self.FK_MessageBoard_Movie">
             <End Role="Movie" EntitySet="Movie" />
             <End Role="MessageBoard" EntitySet="MessageBoard" />
@@ -258,6 +294,9 @@
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Movies" Relationship="Self.MovieActor" FromRole="Actor" ToRole="Movie" />
+          <Property Name="DateOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bio" Type="String" MaxLength="950" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MessageBoard" Relationship="MovieLoversDBModel.FK_MessageBoard_Actor" FromRole="Actor" ToRole="MessageBoard" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -276,6 +315,9 @@
           <Property Name="DirectorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DirectorName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Movies" Relationship="Self.FK_Movie_Director" FromRole="Director" ToRole="Movie" />
+          <Property Name="DateOfBirth" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Bio" Type="String" MaxLength="950" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MessageBoard" Relationship="MovieLoversDBModel.FK_MessageBoard_Director" FromRole="Director" ToRole="MessageBoard" />
         </EntityType>
         <EntityType Name="Genre">
           <Key>
@@ -294,6 +336,8 @@
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_MessageBoard" FromRole="MessageBoard" ToRole="Comment" />
           <NavigationProperty Name="Movie" Relationship="Self.FK_MessageBoard_Movie" FromRole="MessageBoard" ToRole="Movie" />
           <NavigationProperty Name="Reviews" Relationship="Self.FK_Review_MessageBoard" FromRole="MessageBoard" ToRole="Review" />
+          <NavigationProperty Name="Actor" Relationship="MovieLoversDBModel.FK_MessageBoard_Actor" FromRole="MessageBoard" ToRole="Actor" />
+          <NavigationProperty Name="Director" Relationship="MovieLoversDBModel.FK_MessageBoard_Director" FromRole="MessageBoard" ToRole="Director" />
         </EntityType>
         <EntityType Name="Movie">
           <Key>
@@ -430,6 +474,14 @@
             <End Role="Rating" EntitySet="Ratings" />
             <End Role="MovieRating" EntitySet="MovieRatings" />
           </AssociationSet>
+          <AssociationSet Name="FK_MessageBoard_Actor" Association="MovieLoversDBModel.FK_MessageBoard_Actor">
+            <End Role="Actor" EntitySet="Actors" />
+            <End Role="MessageBoard" EntitySet="MessageBoards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageBoard_Director" Association="MovieLoversDBModel.FK_MessageBoard_Director">
+            <End Role="Director" EntitySet="Directors" />
+            <End Role="MessageBoard" EntitySet="MessageBoards" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="MovieRating">
           <Key>
@@ -474,6 +526,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MessageBoard_Actor">
+          <End Type="MovieLoversDBModel.Actor" Role="Actor" Multiplicity="1" />
+          <End Type="MovieLoversDBModel.MessageBoard" Role="MessageBoard" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Actor">
+              <PropertyRef Name="ActorId" />
+            </Principal>
+            <Dependent Role="MessageBoard">
+              <PropertyRef Name="MessageBoardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageBoard_Director">
+          <End Type="MovieLoversDBModel.Director" Role="Director" Multiplicity="1" />
+          <End Type="MovieLoversDBModel.MessageBoard" Role="MessageBoard" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Director">
+              <PropertyRef Name="DirectorId" />
+            </Principal>
+            <Dependent Role="MessageBoard">
+              <PropertyRef Name="MessageBoardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -483,6 +559,8 @@
           <EntitySetMapping Name="Actors">
             <EntityTypeMapping TypeName="MovieLoversDBModel.Actor">
               <MappingFragment StoreEntitySet="Actor">
+                <ScalarProperty Name="Bio" ColumnName="Bio" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
                 <ScalarProperty Name="ActorId" ColumnName="ActorId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -502,6 +580,8 @@
           <EntitySetMapping Name="Directors">
             <EntityTypeMapping TypeName="MovieLoversDBModel.Director">
               <MappingFragment StoreEntitySet="Director">
+                <ScalarProperty Name="Bio" ColumnName="Bio" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
                 <ScalarProperty Name="DirectorId" ColumnName="DirectorId" />
                 <ScalarProperty Name="DirectorName" ColumnName="DirectorName" />
               </MappingFragment>

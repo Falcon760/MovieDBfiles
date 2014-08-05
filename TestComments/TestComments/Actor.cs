@@ -22,7 +22,10 @@ namespace TestComments
         public int ActorId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string DateOfBirth { get; set; }
+        public string Bio { get; set; }
     
         public virtual ICollection<Movie> Movies { get; set; }
+        public virtual MessageBoard MessageBoard { get; set; }
     }
 }

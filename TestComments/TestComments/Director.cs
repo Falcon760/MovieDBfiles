@@ -21,7 +21,10 @@ namespace TestComments
     
         public int DirectorId { get; set; }
         public string DirectorName { get; set; }
+        public string DateOfBirth { get; set; }
+        public string Bio { get; set; }
     
         public virtual ICollection<Movie> Movies { get; set; }
+        public virtual MessageBoard MessageBoard { get; set; }
     }
 }

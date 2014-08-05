@@ -22,6 +22,8 @@
         <EntityTypeShape EntityType="MovieLoversDBModel.Rating" Width="1.5" PointX="3" PointY="0.75" />
         <AssociationConnector Association="MovieLoversDBModel.FK_MovieRating_Movie" />
         <AssociationConnector Association="MovieLoversDBModel.FK_MovieRating_Rating" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_MessageBoard_Actor" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_MessageBoard_Director" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
