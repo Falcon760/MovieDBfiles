@@ -6819,7 +6819,7 @@ td.visible-print {
 .roundedBox {
     border:2px black;
             color:black;
-            border-radius:5px;
+            border-radius:15px;
             background-color:aliceblue;
             /*height: 100px;*/
             text-align:left;
