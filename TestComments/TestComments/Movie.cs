@@ -17,6 +17,7 @@ namespace TestComments
         public Movie()
         {
             this.Actors = new HashSet<Actor>();
+            this.MovieRatings = new HashSet<MovieRating>();
         }
     
         public int MovieId { get; set; }
@@ -31,5 +32,6 @@ namespace TestComments
         public virtual Genre Genre { get; set; }
         public virtual MessageBoard MessageBoard { get; set; }
         public virtual ICollection<Actor> Actors { get; set; }
+        public virtual ICollection<MovieRating> MovieRatings { get; set; }
     }
 }

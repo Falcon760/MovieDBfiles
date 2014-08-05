@@ -12,15 +12,16 @@ namespace TestComments
     using System;
     using System.Collections.Generic;
     
-    public partial class Review
+    public partial class Rating
     {
-        public int ReviewId { get; set; }
-        public string ReviewTitle { get; set; }
-        public Nullable<decimal> Rating { get; set; }
-        public Nullable<int> MessageBoardId { get; set; }
-        public string ReviewContents { get; set; }
-        public string UserName { get; set; }
+        public Rating()
+        {
+            this.MovieRatings = new HashSet<MovieRating>();
+        }
     
-        public virtual MessageBoard MessageBoard { get; set; }
+        public int RatingId { get; set; }
+        public Nullable<decimal> RatingValue { get; set; }
+    
+        public virtual ICollection<MovieRating> MovieRatings { get; set; }
     }
 }

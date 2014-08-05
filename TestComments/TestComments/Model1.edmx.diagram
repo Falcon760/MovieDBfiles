@@ -18,6 +18,10 @@
         <AssociationConnector Association="MovieLoversDBModel.FK_MessageBoard_Movie" ManuallyRouted="false" />
         <AssociationConnector Association="MovieLoversDBModel.FK_Review_MessageBoard" ManuallyRouted="false" />
         <AssociationConnector Association="MovieLoversDBModel.MovieActor" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.MovieRating" Width="1.5" PointX="5.25" PointY="1.5" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.Rating" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_MovieRating_Movie" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_MovieRating_Rating" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

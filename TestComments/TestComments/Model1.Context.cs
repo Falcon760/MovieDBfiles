@@ -32,5 +32,7 @@ namespace TestComments
         public virtual DbSet<MessageBoard> MessageBoards { get; set; }
         public virtual DbSet<Movie> Movies { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<MovieRating> MovieRatings { get; set; }
+        public virtual DbSet<Rating> Ratings { get; set; }
     }
 }
