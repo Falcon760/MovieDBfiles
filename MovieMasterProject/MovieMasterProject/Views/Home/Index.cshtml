@@ -31,23 +31,21 @@
             </table>
 
         <br />
-        This is some more information.  More info here.
         <br />
 
 
+ 
 
-
-<div id="container" align="center">
+        @*Old javascript*@
+@*<div id="container" align="center">
     <div class="fadein">
+        <img src="~/Content/img/image1.jpg" alt="Photos" />
+        <img src="~/Content/img/image2.jpg" alt="Photos" />
         <img src="~/Content/img/image3.jpg" alt="Photos" />
         <img src="~/Content/img/image4.jpg" alt="Photos" />
-        <img src="~/Content/img/image5.jpg" alt="Photos" />
-        <img src="~/Content/img/image6.jpg" alt="Photos" />
     </div>
-</div>
-
-
-<script>
+</div>*@
+@*<script>
     $(function () {
         $('.fadein img:gt(0)').hide();
         setInterval(function () {
@@ -57,7 +55,7 @@
         },
           3000);
     });
-</script>
+</script>*@
 
         <div class="roundedBox">
             <h4>Summary </h4>
@@ -74,10 +72,8 @@
             Comment 2 - @Html.Truncate("Comment Comment Comment Comment Comment",55) 
         </div>
         <div class="buttonrow">
-            <input type="button" value="Button1" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Movie")' " />
-            <input type="button" value="Button2" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Home")' " />
-            <input type="button" value="Button3" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Home")' " />
-            <input type="button" value="Button4" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Home")' " />
+            <input type="button" value="Movie Details" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Movie")' " />
+          
         </div>
     </div>
 
