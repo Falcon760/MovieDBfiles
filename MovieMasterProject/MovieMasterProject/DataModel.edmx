@@ -699,7 +699,7 @@
           <Property Name="MovieId" Type="Int32" Nullable="false" />
           <Property Name="ActorId" Type="Int32" Nullable="false" />
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="true" />
           <NavigationProperty Name="Actor" Relationship="MovieLoversDBModel.FK_MovieActor_Actor" FromRole="MovieActor" ToRole="Actor" />
           <NavigationProperty Name="Movie" Relationship="MovieLoversDBModel.FK_MovieActor_Movie" FromRole="MovieActor" ToRole="Movie" />
         </EntityType>
