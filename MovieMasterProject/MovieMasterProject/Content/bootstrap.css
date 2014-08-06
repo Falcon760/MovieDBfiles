@@ -6817,7 +6817,7 @@ td.visible-print {
 }
 
 .roundedBox {
-    border:2px black;
+   
             color:black;
             border-radius:15px;
             background-color:aliceblue;
@@ -6873,3 +6873,17 @@ td.visible-print {
 
 div.toggler { cursor:pointer; }
 div.toggler div { display:none; }
+
+
+.roundedHead {
+   
+            color:black;
+            border-radius:15px;
+            background-color:silver;
+           
+            text-align:left;
+            margin: 6px;
+            padding: 10px;
+            
+
+        }

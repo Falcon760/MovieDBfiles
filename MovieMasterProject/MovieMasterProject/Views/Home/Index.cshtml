@@ -12,50 +12,52 @@
         <div class="containerrow">
             Movie Title in Yellow
         </div>
-
-        <table align="center" cellpadding="20" style="text-align:center">
-            <tr>
-                <td>
-                    <h4>Release Date</h4>
-                </td>
-                <td>
-                    <h4>Genre</h4>
-                </td>
-                <td>
-                    <h4>Running Time</h4>
-                </td>
-                <td>
-                    <h4>Total Rating</h4>
-                </td>
-            </tr>
-        </table>
-
-        <br />
-        <br />
-
-
-
-
-        @*Old javascript*@
-        @*<div id="container" align="center">
-                <div class="fadein">
-                    <img src="~/Content/img/image1.jpg" alt="Photos" />
-                    <img src="~/Content/img/image2.jpg" alt="Photos" />
-                    <img src="~/Content/img/image3.jpg" alt="Photos" />
-                    <img src="~/Content/img/image4.jpg" alt="Photos" />
+        <div class="roundedHead toggler">
+            Movie Details
+            <div>
+            <table align="center" cellpadding="20" style="text-align:center">
+                <tr>
+                    <td>
+                        <h4>Release Date</h4>
+                    </td>
+                    <td>
+                        <h4>Genre</h4>
+                    </td>
+                    <td>
+                        <h4>Running Time</h4>
+                    </td>
+                    <td>
+                        <h4>Total Rating</h4>
+                    </td>
+                </tr>
+            </table>
                 </div>
-            </div>*@
-        @*<script>
-                $(function () {
-                    $('.fadein img:gt(0)').hide();
-                    setInterval(function () {
-                        $('.fadein :first-child').fadeOut()
-                           .next('img').fadeIn()
-                           .end().appendTo('.fadein');
-                    },
-                      3000);
-                });
-            </script>*@
+        </div>
+        <br />
+        <br />
+        <div id="mySlider" class="carousel slide" >
+            <ol class="carousel-indicators">
+                <li data-target="#mySlider" data-slide-to="0" class="active"></li>
+                <li data-target="#mySlider" data-slide-to="1"></li>
+                <li data-target="#mySlider" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" >
+                <div class="item active">
+                    <img alt="First slide" src="~/Content/img/image9.jpg" style="margin:0 auto"/>
+                </div>
+                <div class="item">
+                    <img alt="Second slide" src="~/Content/img/image10.jpg" style="margin:0 auto" />
+                </div>
+                <div class="item">
+                    <img alt="second slide" src="~/Content/img/image11.jpg" style="margin:0 auto" />
+                </div>
+            </div>
+            <a class="left carousel-control" href="#mySlider" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            <a class="right carousel-control" href="#mySlider" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+        <br />
+
+  
 
         <script>
             $(function () {
@@ -89,7 +91,7 @@
             Comment 7
         </div></div>
         <div class="buttonrow">
-            <input type="button" value="Movie Details" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Movie")' " />
+            <input type="button" value="Upload Image" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Movie")' " />
 
         </div>
     </div>
