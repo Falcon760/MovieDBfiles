@@ -37,7 +37,7 @@ namespace MovieMasterProject.Controllers
             return View(comment);
         }
 
-        // GET: /Comment/Create
+        [Authorize]
         public ActionResult Create()
         {
             Comment comment = new Comment();
