@@ -179,17 +179,7 @@
                 Review 1 - @Html.Truncate("Review Review Review Review Review Review Review Review Review", 55)<br />
                 Review 2 - @Html.Truncate("Review Review Review Review Review Review Review", 55)
             </div>
-<<<<<<< HEAD
-        </div>
-        <div class="roundedBox toggler">
-            <h5>Movie Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> <div>
-                @foreach (var item in Model.MessageBoard.Comments)
-                {
 
-                    @Html.DisplayFor(model => item.CommentContents)
-
-                }
-=======
             <div class="roundedBox toggler">
                 <h5>Movie Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> 
                  <div>
@@ -198,7 +188,7 @@
                         @Html.DisplayFor(model => item.CommentContents)
                     }
                 </div>
->>>>>>> origin/master
+
             </div>
         </div>
         @*
