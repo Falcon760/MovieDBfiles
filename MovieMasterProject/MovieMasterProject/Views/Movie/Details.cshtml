@@ -174,14 +174,16 @@
                 </div>
             </div>
             <div class="roundedBox toggler">
-                <h5>Director Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> <div>
-                    @foreach (var item2 in Model)
-                    {
-                        @Html.DisplayFor(modelItem => item2.MessageBoard.Comments)
-
-                    }
+                <h5>Movie Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> <div>
+                                                                                                   @foreach (var item in Model.MessageBoard.Comments)
+        {
+                                                                                                       <li>
+                                                                                                           @Html.DisplayFor(model => item.CommentContents)
+                                                                                                       </li>
+        }
                 </div>
             </div>
+            @*
             <div class="roundedBox toggler">
                 <h5>Actor Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> <div>
                     @foreach (var item3 in Model)
@@ -199,7 +201,8 @@
 
                     }
                 </div>
-            </div>
+            </div>*@
+
             <div class="buttonrow">
                 <input type="button" value="Upload Image" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Movie")' " />
 
@@ -207,6 +210,5 @@
         </div>
 
     </div>
-
 
 
