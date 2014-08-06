@@ -8,7 +8,7 @@
 @using MovieMasterProject.Models;
 
 
-@*<h2>Index</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -70,129 +70,6 @@
     </tr>
 }
 
-</table>*@
-<input type="button" value="Add Movie" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","Movie")' " />
-@foreach (var item in Model)
-{ 
+</table>
 
-
-<div class="col-lg-12">
-    <br />
-
-    <div class="roundedSquare">
-        <div class="containerrow">
-            @Html.DisplayFor(modelItem => item.Title)
-        </div>
-        <div class="roundedHead toggler">
-            Movie Details
-            <div>
-                <table align="center" cellpadding="20" style="text-align:center">
-                    <tr>
-                        <td>
-                            <h4>Release Date</h4>
-                            @Html.DisplayFor(modelItem => item.ReleaseDate)
-                        </td>
-                        <td>
-                            <h4>Genre</h4>
-                            @Html.DisplayFor(modelItem => item.Genre)
-                        </td>
-                        <td>
-                            <h4>Director</h4>
-                            @Html.DisplayFor(modelItem => item.Director)
-                        </td>
-                        <td>
-                            <h4>Total Rating</h4>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <br />
-        <br />
-        <div id="mySlider" class="carousel slide">
-            <ol class="carousel-indicators">
-                <li data-target="#mySlider" data-slide-to="0" class="active"></li>
-                <li data-target="#mySlider" data-slide-to="1"></li>
-                <li data-target="#mySlider" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img alt="First slide" src="~/Content/img/image9.jpg" style="margin:0 auto" />
-                </div>
-                <div class="item">
-                    <img alt="Second slide" src="~/Content/img/image10.jpg" style="margin:0 auto" />
-                </div>
-                <div class="item">
-                    <img alt="second slide" src="~/Content/img/image11.jpg" style="margin:0 auto" />
-                </div>
-            </div>
-            <a class="left carousel-control" href="#mySlider" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-            <a class="right carousel-control" href="#mySlider" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-        </div>
-        <br />
-
-
-
-        <script>
-            $(function () {
-                $('.toggler').click(function () {
-                    $(this).find('div').slideToggle();
-                });
-            });
-        </script>
-
-        <div class="roundedBox toggler">
-            <h4>Summary </h4><div>
-            @Html.DisplayFor(modelItem => item.Summary)
-                This is truncated.  This is truncated. This is truncated.
-                This is truncated.This is truncated.  This is truncated.This is truncated.  This is truncated. This is truncated.
-                This is truncated.This is truncated.  This is truncated.This is truncated.  This is truncated. This is truncated.
-                This is truncated.This is truncated.  This is truncated.This is truncated.  This is truncated. This is truncated.
-                This is truncated.This is truncated.  This is truncated.
-            </div>
-        </div>
-        <div class="roundedBox toggler">
-            <h5>Reviews - @Html.ActionLink("Add Review", "Create", "Review")</h5><div>
-                Review 1 - @Html.Truncate("Review Review Review Review Review Review Review Review Review", 55)<br />
-                Review 2 - @Html.Truncate("Review Review Review Review Review Review Review", 55)
-            </div>
-        </div>
-        <div class="roundedBox toggler">
-            <h5>Director Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> <div>
-                @foreach (var item2 in Model)
-                {
-                    @Html.DisplayFor(modelItem => item2.MessageBoard.Comments)
-                    
-                }
-            </div>
-        </div>
-        @*<div class="roundedBox toggler">
-            <h5>Actor Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> <div>
-                @foreach (var item3 in Model)
-                {
-                    @Html.DisplayFor(modelItem => item3.MessageBoard.Director.MessageBoardD.Comments)
-
-                }
-            </div>
-        </div>
-        <div class="roundedBox toggler">
-            <h5>General Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> <div>
-                @foreach (var item4 in Model)
-                {
-                    @Html.DisplayFor(modelItem => item4.MessageBoard.Actor.MessageBoardA.Comments)
-
-                }
-            </div>
-        </div>*@
-        <div class="buttonrow">
-            <input type="button" value="Upload Image" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Movie")' " />
-
-        </div>
-    </div>
-
-</div>
-
-
-
-}
 
