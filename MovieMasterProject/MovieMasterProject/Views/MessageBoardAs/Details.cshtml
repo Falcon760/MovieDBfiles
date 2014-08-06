@@ -1,4 +1,4 @@
-﻿@model MovieMasterProject.MessageBoardD
+﻿@model MovieMasterProject.MessageBoardA
 
 @{
     ViewBag.Title = "Details";
@@ -7,8 +7,8 @@
 <h2>Details</h2>
 
 <div>
-    <h4>MessageBoardD</h4>
-	<hr />
+    <h4>MessageBoardA</h4>
+    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.MessageBoardName)
@@ -19,11 +19,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Director.DirectorName)
+            @Html.DisplayNameFor(model => model.Actor.FirstName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Director.DirectorName)
+            @Html.DisplayFor(model => model.Actor.FirstName)
         </dd>
 
     </dl>

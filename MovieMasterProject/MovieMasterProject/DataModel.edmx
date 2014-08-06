@@ -98,7 +98,7 @@
           <Property Name="MovieId" Type="int" Nullable="false" />
           <Property Name="ActorId" Type="int" Nullable="false" />
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" />
         </EntityType>
         <EntityType Name="MovieRating">
           <Key>

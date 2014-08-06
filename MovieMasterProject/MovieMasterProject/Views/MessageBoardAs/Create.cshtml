@@ -1,4 +1,4 @@
-﻿@model MovieMasterProject.MessageBoardD
+﻿@model MovieMasterProject.MessageBoardA
 
 @{
     ViewBag.Title = "Create";
@@ -12,12 +12,11 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>MessageBoardD</h4>
+        <h4>MessageBoardA</h4>
         <hr />
         @Html.ValidationSummary(true)
-
         <div class="form-group">
-            @Html.LabelFor(model => model.MessageBoardId, "MessageBoardId", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.MessageBoardId, "MessageBoardId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("MessageBoardId", String.Empty)
                 @Html.ValidationMessageFor(model => model.MessageBoardId)
@@ -25,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MessageBoardName, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.MessageBoardName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.MessageBoardName)
                 @Html.ValidationMessageFor(model => model.MessageBoardName)

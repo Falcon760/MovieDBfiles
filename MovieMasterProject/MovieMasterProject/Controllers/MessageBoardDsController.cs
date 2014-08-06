@@ -10,112 +10,112 @@ using MovieMasterProject;
 
 namespace MovieMasterProject.Controllers
 {
-    public class MessageBoardDController : Controller
+    public class MessageBoardDsController : Controller
     {
         private MovieLoversDBEntities db = new MovieLoversDBEntities();
 
-        // GET: /MessageBoardD/
+        // GET: MessageBoardDs
         public ActionResult Index()
         {
-            var messageboardds = db.MessageBoardDs.Include(m => m.Director);
-            return View(messageboardds.ToList());
+            var messageBoardDs = db.MessageBoardDs.Include(m => m.Director);
+            return View(messageBoardDs.ToList());
         }
 
-        // GET: /MessageBoardD/Details/5
+        // GET: MessageBoardDs/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MessageBoardD messageboardd = db.MessageBoardDs.Find(id);
-            if (messageboardd == null)
+            MessageBoardD messageBoardD = db.MessageBoardDs.Find(id);
+            if (messageBoardD == null)
             {
                 return HttpNotFound();
             }
-            return View(messageboardd);
+            return View(messageBoardD);
         }
 
-        // GET: /MessageBoardD/Create
+        // GET: MessageBoardDs/Create
         public ActionResult Create()
         {
             ViewBag.MessageBoardId = new SelectList(db.Directors, "DirectorId", "DirectorName");
             return View();
         }
 
-        // POST: /MessageBoardD/Create
+        // POST: MessageBoardDs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="MessageBoardId,MessageBoardName")] MessageBoardD messageboardd)
+        public ActionResult Create([Bind(Include = "MessageBoardId,MessageBoardName")] MessageBoardD messageBoardD)
         {
             if (ModelState.IsValid)
             {
-                db.MessageBoardDs.Add(messageboardd);
+                db.MessageBoardDs.Add(messageBoardD);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MessageBoardId = new SelectList(db.Directors, "DirectorId", "DirectorName", messageboardd.MessageBoardId);
-            return View(messageboardd);
+            ViewBag.MessageBoardId = new SelectList(db.Directors, "DirectorId", "DirectorName", messageBoardD.MessageBoardId);
+            return View(messageBoardD);
         }
 
-        // GET: /MessageBoardD/Edit/5
+        // GET: MessageBoardDs/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MessageBoardD messageboardd = db.MessageBoardDs.Find(id);
-            if (messageboardd == null)
+            MessageBoardD messageBoardD = db.MessageBoardDs.Find(id);
+            if (messageBoardD == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MessageBoardId = new SelectList(db.Directors, "DirectorId", "DirectorName", messageboardd.MessageBoardId);
-            return View(messageboardd);
+            ViewBag.MessageBoardId = new SelectList(db.Directors, "DirectorId", "DirectorName", messageBoardD.MessageBoardId);
+            return View(messageBoardD);
         }
 
-        // POST: /MessageBoardD/Edit/5
+        // POST: MessageBoardDs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="MessageBoardId,MessageBoardName")] MessageBoardD messageboardd)
+        public ActionResult Edit([Bind(Include = "MessageBoardId,MessageBoardName")] MessageBoardD messageBoardD)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(messageboardd).State = EntityState.Modified;
+                db.Entry(messageBoardD).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MessageBoardId = new SelectList(db.Directors, "DirectorId", "DirectorName", messageboardd.MessageBoardId);
-            return View(messageboardd);
+            ViewBag.MessageBoardId = new SelectList(db.Directors, "DirectorId", "DirectorName", messageBoardD.MessageBoardId);
+            return View(messageBoardD);
         }
 
-        // GET: /MessageBoardD/Delete/5
+        // GET: MessageBoardDs/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MessageBoardD messageboardd = db.MessageBoardDs.Find(id);
-            if (messageboardd == null)
+            MessageBoardD messageBoardD = db.MessageBoardDs.Find(id);
+            if (messageBoardD == null)
             {
                 return HttpNotFound();
             }
-            return View(messageboardd);
+            return View(messageBoardD);
         }
 
-        // POST: /MessageBoardD/Delete/5
+        // POST: MessageBoardDs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            MessageBoardD messageboardd = db.MessageBoardDs.Find(id);
-            db.MessageBoardDs.Remove(messageboardd);
+            MessageBoardD messageBoardD = db.MessageBoardDs.Find(id);
+            db.MessageBoardDs.Remove(messageBoardD);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
