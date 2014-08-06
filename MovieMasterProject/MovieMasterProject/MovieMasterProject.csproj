@@ -173,6 +173,7 @@
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActorController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\CommentDController.cs" />
     <Compile Include="Controllers\DirectorController.cs" />
@@ -338,6 +339,11 @@
     <Content Include="Views\CommentD\Details.cshtml" />
     <Content Include="Views\CommentD\Edit.cshtml" />
     <Content Include="Views\CommentD\Index.cshtml" />
+    <Content Include="Views\Actor\Create.cshtml" />
+    <Content Include="Views\Actor\Delete.cshtml" />
+    <Content Include="Views\Actor\Details.cshtml" />
+    <Content Include="Views\Actor\Edit.cshtml" />
+    <Content Include="Views\Actor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
