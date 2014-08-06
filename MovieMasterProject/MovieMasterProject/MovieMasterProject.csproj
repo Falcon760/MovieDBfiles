@@ -174,7 +174,6 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActorsController.cs" />
-    <Compile Include="Controllers\CommentAController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\CommentDController.cs" />
     <Compile Include="Controllers\DirectorController.cs" />
@@ -346,16 +345,6 @@
     <Content Include="Views\CommentD\Details.cshtml" />
     <Content Include="Views\CommentD\Edit.cshtml" />
     <Content Include="Views\CommentD\Index.cshtml" />
-    <Content Include="Views\MessageBoardA\Create.cshtml" />
-    <Content Include="Views\MessageBoardA\Delete.cshtml" />
-    <Content Include="Views\MessageBoardA\Details.cshtml" />
-    <Content Include="Views\MessageBoardA\Edit.cshtml" />
-    <Content Include="Views\MessageBoardA\Index.cshtml" />
-    <Content Include="Views\CommentA\Create.cshtml" />
-    <Content Include="Views\CommentA\Delete.cshtml" />
-    <Content Include="Views\CommentA\Details.cshtml" />
-    <Content Include="Views\CommentA\Edit.cshtml" />
-    <Content Include="Views\CommentA\Index.cshtml" />
     <Content Include="Views\Actors\Create.cshtml" />
     <Content Include="Views\Actors\Delete.cshtml" />
     <Content Include="Views\Actors\Details.cshtml" />
@@ -366,6 +355,11 @@
     <Content Include="Views\MovieActors\Details.cshtml" />
     <Content Include="Views\MovieActors\Edit.cshtml" />
     <Content Include="Views\MovieActors\Index.cshtml" />
+    <Content Include="Views\MessageBoardA\Create.cshtml" />
+    <Content Include="Views\MessageBoardA\Delete.cshtml" />
+    <Content Include="Views\MessageBoardA\Details.cshtml" />
+    <Content Include="Views\MessageBoardA\Edit.cshtml" />
+    <Content Include="Views\MessageBoardA\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
