@@ -12,19 +12,13 @@ namespace MovieMasterProject
     using System;
     using System.Collections.Generic;
     
-    public partial class MessageBoardA
+    public partial class CommentA
     {
-        public MessageBoardA()
-        {
-            this.Comments = new HashSet<Comment>();
-            this.CommentAs = new HashSet<CommentA>();
-        }
+        public int CommentId { get; set; }
+        public string UserName { get; set; }
+        public string CommentContents { get; set; }
+        public Nullable<int> MessageBoardId { get; set; }
     
-        public int MessageBoardId { get; set; }
-        public string MessageBoardName { get; set; }
-    
-        public virtual Actor Actor { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<CommentA> CommentAs { get; set; }
+        public virtual MessageBoardA MessageBoardA { get; set; }
     }
 }

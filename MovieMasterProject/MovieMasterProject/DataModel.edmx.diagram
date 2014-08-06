@@ -30,6 +30,10 @@
         <AssociationConnector Association="MovieLoversDBModel.FK_Comment_MessageBoardA" />
         <AssociationConnector Association="MovieLoversDBModel.FK_Comment_MessageBoardD" />
         <AssociationConnector Association="MovieLoversDBModel.FK_MessageBoardD_Director" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.CommentA" Width="1.5" PointX="5.25" PointY="18.625" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.CommentD" Width="1.5" PointX="5.25" PointY="15.875" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_CommentA_MessageBoardA" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_CommentD_MessageBoardD" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

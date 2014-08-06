@@ -36,5 +36,7 @@ namespace MovieMasterProject
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<MessageBoardA> MessageBoardAs { get; set; }
         public virtual DbSet<MessageBoardD> MessageBoardDs { get; set; }
+        public virtual DbSet<CommentA> CommentAs { get; set; }
+        public virtual DbSet<CommentD> CommentDs { get; set; }
     }
 }
