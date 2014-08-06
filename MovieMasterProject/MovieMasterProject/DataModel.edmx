@@ -97,7 +97,7 @@
           </Key>
           <Property Name="MovieId" Type="int" Nullable="false" />
           <Property Name="ActorId" Type="int" Nullable="false" />
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Count" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MovieRating">
@@ -409,11 +409,11 @@
             <End Role="MovieRating" EntitySet="MovieRatings" />
           </AssociationSet>
           <EntitySet Name="Actors" EntityType="MovieLoversDBModel.Actor" />
-          <EntitySet Name="MovieActors" EntityType="MovieLoversDBModel.MovieActor" />
           <AssociationSet Name="FK_MessageBoardA_Actor" Association="MovieLoversDBModel.FK_MessageBoardA_Actor">
             <End Role="Actor" EntitySet="Actors" />
             <End Role="MessageBoardA" EntitySet="MessageBoardAs" />
           </AssociationSet>
+          <EntitySet Name="MovieActors" EntityType="MovieLoversDBModel.MovieActor" />
           <AssociationSet Name="FK_MovieActor_Actor" Association="MovieLoversDBModel.FK_MovieActor_Actor">
             <End Role="Actor" EntitySet="Actors" />
             <End Role="MovieActor" EntitySet="MovieActors" />
@@ -422,7 +422,7 @@
             <End Role="Movie" EntitySet="Movies" />
             <End Role="MovieActor" EntitySet="MovieActors" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="CommentId" />
@@ -680,17 +680,6 @@
           <NavigationProperty Name="MessageBoardA" Relationship="MovieLoversDBModel.FK_MessageBoardA_Actor" FromRole="Actor" ToRole="MessageBoardA" />
           <NavigationProperty Name="MovieActors" Relationship="MovieLoversDBModel.FK_MovieActor_Actor" FromRole="Actor" ToRole="MovieActor" />
         </EntityType>
-        <EntityType Name="MovieActor">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="MovieId" Type="Int32" Nullable="false" />
-          <Property Name="ActorId" Type="Int32" Nullable="false" />
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Count" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Actor" Relationship="MovieLoversDBModel.FK_MovieActor_Actor" FromRole="MovieActor" ToRole="Actor" />
-          <NavigationProperty Name="Movie" Relationship="MovieLoversDBModel.FK_MovieActor_Movie" FromRole="MovieActor" ToRole="Movie" />
-        </EntityType>
         <Association Name="FK_MessageBoardA_Actor">
           <End Type="MovieLoversDBModel.Actor" Role="Actor" Multiplicity="1" />
           <End Type="MovieLoversDBModel.MessageBoardA" Role="MessageBoardA" Multiplicity="0..1" />
@@ -703,6 +692,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="MovieActor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="MovieId" Type="Int32" Nullable="false" />
+          <Property Name="ActorId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Actor" Relationship="MovieLoversDBModel.FK_MovieActor_Actor" FromRole="MovieActor" ToRole="Actor" />
+          <NavigationProperty Name="Movie" Relationship="MovieLoversDBModel.FK_MovieActor_Movie" FromRole="MovieActor" ToRole="Movie" />
+        </EntityType>
         <Association Name="FK_MovieActor_Actor">
           <End Type="MovieLoversDBModel.Actor" Role="Actor" Multiplicity="1" />
           <End Type="MovieLoversDBModel.MovieActor" Role="MovieActor" Multiplicity="*" />

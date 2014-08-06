@@ -122,7 +122,8 @@
             </div>
         </div>
         <div class="roundedHead toggler">
-            Cast<div>
+            Cast - <input type="button" value="Add" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","MovieActors")' " />
+            <div>
                     
             @foreach (var item in Model.MovieActors)
             {
@@ -179,7 +180,7 @@
                 Review 1 - @Html.Truncate("Review Review Review Review Review Review Review Review Review", 55)<br />
                 Review 2 - @Html.Truncate("Review Review Review Review Review Review Review", 55)
             </div>
-
+        </div>
             <div class="roundedBox toggler">
                 <h5>Movie Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> 
                  <div>
@@ -190,7 +191,7 @@
                 </div>
 
             </div>
-        </div>
+       
         @*
             <div class="roundedBox toggler">
                 <h5>Actor Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> <div>

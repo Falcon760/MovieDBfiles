@@ -28,11 +28,11 @@
         <AssociationConnector Association="MovieLoversDBModel.FK_MovieRating_Movie" />
         <AssociationConnector Association="MovieLoversDBModel.FK_MovieRating_Rating" />
         <EntityTypeShape EntityType="MovieLoversDBModel.Actor" Width="1.5" PointX="0.5" PointY="13" />
-        <EntityTypeShape EntityType="MovieLoversDBModel.MovieActor" Width="1.5" PointX="2.875" PointY="9" />
         <AssociationConnector Association="MovieLoversDBModel.FK_MessageBoardA_Actor" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.MovieActor" Width="1.5" PointX="8.25" PointY="11.125" />
         <AssociationConnector Association="MovieLoversDBModel.FK_MovieActor_Actor" />
         <AssociationConnector Association="MovieLoversDBModel.FK_MovieActor_Movie" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
