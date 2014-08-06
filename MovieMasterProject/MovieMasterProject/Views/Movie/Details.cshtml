@@ -177,9 +177,9 @@
                 <h5>Movie Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> <div>
                                                                                                    @foreach (var item in Model.MessageBoard.Comments)
         {
-                                                                                                       <li>
+                                                                                                       
                                                                                                            @Html.DisplayFor(model => item.CommentContents)
-                                                                                                       </li>
+                                                                                                       
         }
                 </div>
             </div>
