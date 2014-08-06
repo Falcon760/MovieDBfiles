@@ -178,6 +178,7 @@
     <Compile Include="Controllers\CommentDController.cs" />
     <Compile Include="Controllers\DirectorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MessageBoardAController.cs" />
     <Compile Include="Controllers\MessageBoardController.cs" />
     <Compile Include="Controllers\MessageBoardDController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
@@ -344,6 +345,11 @@
     <Content Include="Views\Actor\Details.cshtml" />
     <Content Include="Views\Actor\Edit.cshtml" />
     <Content Include="Views\Actor\Index.cshtml" />
+    <Content Include="Views\MessageBoardA\Create.cshtml" />
+    <Content Include="Views\MessageBoardA\Delete.cshtml" />
+    <Content Include="Views\MessageBoardA\Details.cshtml" />
+    <Content Include="Views\MessageBoardA\Edit.cshtml" />
+    <Content Include="Views\MessageBoardA\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
