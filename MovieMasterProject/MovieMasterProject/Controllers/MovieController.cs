@@ -134,8 +134,15 @@ namespace MovieMasterProject.Controllers
         {
             Movie movie = db.Movies.Find(id);
             MessageBoard messageboard = db.MessageBoards.Find(id);
-            //Comment comment = db.MessageBoards.Find(id).Comments(MessageBoardId);
-            //db.Comments.Remove(comment);
+            var query = from p in db.Comments
+                        where p.MessageBoardId == id
+                        select p;
+
+            foreach (var row in query)
+            {
+                db.Comments.Remove(row);
+            }
+
             db.MessageBoards.Remove(messageboard);
             db.Movies.Remove(movie);
             db.SaveChanges();
