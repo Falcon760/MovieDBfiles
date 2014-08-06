@@ -17,7 +17,7 @@ namespace MovieMasterProject.Controllers
         // GET: /MessageBoard/
         public ActionResult Index()
         {
-            var messageboards = db.MessageBoards.Include(m => m.Actor).Include(m => m.Director).Include(m => m.Movie);
+            var messageboards = db.MessageBoards.Include(m => m.Movie);
             return View(messageboards.ToList());
         }
 
@@ -39,8 +39,6 @@ namespace MovieMasterProject.Controllers
         // GET: /MessageBoard/Create
         public ActionResult Create()
         {
-            ViewBag.MessageBoardId = new SelectList(db.Actors, "ActorId", "FirstName");
-            ViewBag.MessageBoardId = new SelectList(db.Directors, "DirectorId", "DirectorName");
             ViewBag.MessageBoardId = new SelectList(db.Movies, "MovieId", "Title");
             return View();
         }
@@ -59,8 +57,6 @@ namespace MovieMasterProject.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MessageBoardId = new SelectList(db.Actors, "ActorId", "FirstName", messageboard.MessageBoardId);
-            ViewBag.MessageBoardId = new SelectList(db.Directors, "DirectorId", "DirectorName", messageboard.MessageBoardId);
             ViewBag.MessageBoardId = new SelectList(db.Movies, "MovieId", "Title", messageboard.MessageBoardId);
             return View(messageboard);
         }
@@ -77,8 +73,6 @@ namespace MovieMasterProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MessageBoardId = new SelectList(db.Actors, "ActorId", "FirstName", messageboard.MessageBoardId);
-            ViewBag.MessageBoardId = new SelectList(db.Directors, "DirectorId", "DirectorName", messageboard.MessageBoardId);
             ViewBag.MessageBoardId = new SelectList(db.Movies, "MovieId", "Title", messageboard.MessageBoardId);
             return View(messageboard);
         }
@@ -96,8 +90,6 @@ namespace MovieMasterProject.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MessageBoardId = new SelectList(db.Actors, "ActorId", "FirstName", messageboard.MessageBoardId);
-            ViewBag.MessageBoardId = new SelectList(db.Directors, "DirectorId", "DirectorName", messageboard.MessageBoardId);
             ViewBag.MessageBoardId = new SelectList(db.Movies, "MovieId", "Title", messageboard.MessageBoardId);
             return View(messageboard);
         }

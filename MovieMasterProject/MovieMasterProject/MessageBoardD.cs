@@ -16,15 +16,13 @@ namespace MovieMasterProject
     {
         public MessageBoardD()
         {
-            this.Comments = new HashSet<Comment>();
             this.CommentDs = new HashSet<CommentD>();
         }
     
         public int MessageBoardId { get; set; }
         public string MessageBoardName { get; set; }
     
-        public virtual ICollection<Comment> Comments { get; set; }
-        public virtual Director Director { get; set; }
         public virtual ICollection<CommentD> CommentDs { get; set; }
+        public virtual Director Director { get; set; }
     }
 }

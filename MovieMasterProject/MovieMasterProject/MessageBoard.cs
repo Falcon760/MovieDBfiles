@@ -23,9 +23,7 @@ namespace MovieMasterProject
         public int MessageBoardId { get; set; }
         public string MessageBoardName { get; set; }
     
-        public virtual Actor Actor { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
-        public virtual Director Director { get; set; }
         public virtual Movie Movie { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
     }

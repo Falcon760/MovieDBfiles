@@ -16,7 +16,6 @@ namespace MovieMasterProject
     {
         public MessageBoardA()
         {
-            this.Comments = new HashSet<Comment>();
             this.CommentAs = new HashSet<CommentA>();
         }
     
@@ -24,7 +23,6 @@ namespace MovieMasterProject
         public string MessageBoardName { get; set; }
     
         public virtual Actor Actor { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<CommentA> CommentAs { get; set; }
     }
 }

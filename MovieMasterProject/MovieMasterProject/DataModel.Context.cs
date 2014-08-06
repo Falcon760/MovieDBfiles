@@ -27,16 +27,16 @@ namespace MovieMasterProject
     
         public virtual DbSet<Actor> Actors { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<CommentA> CommentAs { get; set; }
+        public virtual DbSet<CommentD> CommentDs { get; set; }
         public virtual DbSet<Director> Directors { get; set; }
         public virtual DbSet<Genre> Genres { get; set; }
         public virtual DbSet<MessageBoard> MessageBoards { get; set; }
+        public virtual DbSet<MessageBoardA> MessageBoardAs { get; set; }
+        public virtual DbSet<MessageBoardD> MessageBoardDs { get; set; }
         public virtual DbSet<Movie> Movies { get; set; }
         public virtual DbSet<MovieRating> MovieRatings { get; set; }
         public virtual DbSet<Rating> Ratings { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
-        public virtual DbSet<MessageBoardA> MessageBoardAs { get; set; }
-        public virtual DbSet<MessageBoardD> MessageBoardDs { get; set; }
-        public virtual DbSet<CommentA> CommentAs { get; set; }
-        public virtual DbSet<CommentD> CommentDs { get; set; }
     }
 }

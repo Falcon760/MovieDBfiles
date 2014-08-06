@@ -113,7 +113,13 @@ namespace MovieMasterProject.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Movie movie = db.Movies.Find(id);
+
+            //Unnecessary?  V
+            MessageBoard messageboard = db.MessageBoards.Find(id);
+            
+            
             if (movie == null)
             {
                 return HttpNotFound();
@@ -127,6 +133,8 @@ namespace MovieMasterProject.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Movie movie = db.Movies.Find(id);
+            MessageBoard messageboard = db.MessageBoards.Find(id);
+            db.MessageBoards.Remove(messageboard);
             db.Movies.Remove(movie);
             db.SaveChanges();
             return RedirectToAction("Index");
