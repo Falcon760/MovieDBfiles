@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MovieLoversDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MovieLoversDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Actor">
           <Key>
             <PropertyRef Name="ActorId" />
@@ -93,11 +93,12 @@
         </EntityType>
         <EntityType Name="MovieActor">
           <Key>
-            <PropertyRef Name="MovieId" />
-            <PropertyRef Name="ActorId" />
+            <PropertyRef Name="Id" />
           </Key>
           <Property Name="MovieId" Type="int" Nullable="false" />
           <Property Name="ActorId" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MovieRating">
           <Key>
@@ -355,7 +356,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="MovieLoversDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="MovieLoversDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Actors" EntityType="MovieLoversDBModel.Actor" />
           <EntitySet Name="Comments" EntityType="MovieLoversDBModel.Comment" />
           <EntitySet Name="CommentAs" EntityType="MovieLoversDBModel.CommentA" />
           <EntitySet Name="CommentDs" EntityType="MovieLoversDBModel.CommentD" />
@@ -368,10 +368,6 @@
           <EntitySet Name="MovieRatings" EntityType="MovieLoversDBModel.MovieRating" />
           <EntitySet Name="Ratings" EntityType="MovieLoversDBModel.Rating" />
           <EntitySet Name="Reviews" EntityType="MovieLoversDBModel.Review" />
-          <AssociationSet Name="FK_MessageBoardA_Actor" Association="MovieLoversDBModel.FK_MessageBoardA_Actor">
-            <End Role="Actor" EntitySet="Actors" />
-            <End Role="MessageBoardA" EntitySet="MessageBoardAs" />
-          </AssociationSet>
           <AssociationSet Name="FK_Comment_MessageBoard" Association="MovieLoversDBModel.FK_Comment_MessageBoard">
             <End Role="MessageBoard" EntitySet="MessageBoards" />
             <End Role="Comment" EntitySet="Comments" />
@@ -412,23 +408,21 @@
             <End Role="Rating" EntitySet="Ratings" />
             <End Role="MovieRating" EntitySet="MovieRatings" />
           </AssociationSet>
-          <AssociationSet Name="MovieActor" Association="MovieLoversDBModel.MovieActor">
+          <EntitySet Name="Actors" EntityType="MovieLoversDBModel.Actor" />
+          <EntitySet Name="MovieActors" EntityType="MovieLoversDBModel.MovieActor" />
+          <AssociationSet Name="FK_MessageBoardA_Actor" Association="MovieLoversDBModel.FK_MessageBoardA_Actor">
             <End Role="Actor" EntitySet="Actors" />
+            <End Role="MessageBoardA" EntitySet="MessageBoardAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovieActor_Actor" Association="MovieLoversDBModel.FK_MovieActor_Actor">
+            <End Role="Actor" EntitySet="Actors" />
+            <End Role="MovieActor" EntitySet="MovieActors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovieActor_Movie" Association="MovieLoversDBModel.FK_MovieActor_Movie">
             <End Role="Movie" EntitySet="Movies" />
+            <End Role="MovieActor" EntitySet="MovieActors" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Actor">
-          <Key>
-            <PropertyRef Name="ActorId" />
-          </Key>
-          <Property Name="ActorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DateOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Bio" Type="String" MaxLength="950" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="MessageBoardA" Relationship="MovieLoversDBModel.FK_MessageBoardA_Actor" FromRole="Actor" ToRole="MessageBoardA" />
-          <NavigationProperty Name="Movies" Relationship="MovieLoversDBModel.MovieActor" FromRole="Actor" ToRole="Movie" />
-        </EntityType>
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="CommentId" />
@@ -494,8 +488,8 @@
           </Key>
           <Property Name="MessageBoardId" Type="Int32" Nullable="false" />
           <Property Name="MessageBoardName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Actor" Relationship="MovieLoversDBModel.FK_MessageBoardA_Actor" FromRole="MessageBoardA" ToRole="Actor" />
           <NavigationProperty Name="CommentAs" Relationship="MovieLoversDBModel.FK_CommentA_MessageBoardA" FromRole="MessageBoardA" ToRole="CommentA" />
+          <NavigationProperty Name="Actor" Relationship="MovieLoversDBModel.FK_MessageBoardA_Actor" FromRole="MessageBoardA" ToRole="Actor" />
         </EntityType>
         <EntityType Name="MessageBoardD">
           <Key>
@@ -521,7 +515,7 @@
           <NavigationProperty Name="Genre" Relationship="MovieLoversDBModel.FK_Movie_Genre" FromRole="Movie" ToRole="Genre" />
           <NavigationProperty Name="MessageBoard" Relationship="MovieLoversDBModel.FK_MessageBoard_Movie" FromRole="Movie" ToRole="MessageBoard" />
           <NavigationProperty Name="MovieRatings" Relationship="MovieLoversDBModel.FK_MovieRating_Movie" FromRole="Movie" ToRole="MovieRating" />
-          <NavigationProperty Name="Actors" Relationship="MovieLoversDBModel.MovieActor" FromRole="Movie" ToRole="Actor" />
+          <NavigationProperty Name="MovieActors" Relationship="MovieLoversDBModel.FK_MovieActor_Movie" FromRole="Movie" ToRole="MovieActor" />
         </EntityType>
         <EntityType Name="MovieRating">
           <Key>
@@ -554,18 +548,6 @@
           <Property Name="ReviewContents" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MessageBoard" Relationship="MovieLoversDBModel.FK_Review_MessageBoard" FromRole="Review" ToRole="MessageBoard" />
         </EntityType>
-        <Association Name="FK_MessageBoardA_Actor">
-          <End Type="MovieLoversDBModel.Actor" Role="Actor" Multiplicity="1" />
-          <End Type="MovieLoversDBModel.MessageBoardA" Role="MessageBoardA" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Actor">
-              <PropertyRef Name="ActorId" />
-            </Principal>
-            <Dependent Role="MessageBoardA">
-              <PropertyRef Name="MessageBoardId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Comment_MessageBoard">
           <End Type="MovieLoversDBModel.MessageBoard" Role="MessageBoard" Multiplicity="0..1" />
           <End Type="MovieLoversDBModel.Comment" Role="Comment" Multiplicity="*" />
@@ -686,9 +668,64 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="MovieActor">
-          <End Type="MovieLoversDBModel.Actor" Role="Actor" Multiplicity="*" />
-          <End Type="MovieLoversDBModel.Movie" Role="Movie" Multiplicity="*" />
+        <EntityType Name="Actor">
+          <Key>
+            <PropertyRef Name="ActorId" />
+          </Key>
+          <Property Name="ActorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Bio" Type="String" MaxLength="950" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MessageBoardA" Relationship="MovieLoversDBModel.FK_MessageBoardA_Actor" FromRole="Actor" ToRole="MessageBoardA" />
+          <NavigationProperty Name="MovieActors" Relationship="MovieLoversDBModel.FK_MovieActor_Actor" FromRole="Actor" ToRole="MovieActor" />
+        </EntityType>
+        <EntityType Name="MovieActor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="MovieId" Type="Int32" Nullable="false" />
+          <Property Name="ActorId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Actor" Relationship="MovieLoversDBModel.FK_MovieActor_Actor" FromRole="MovieActor" ToRole="Actor" />
+          <NavigationProperty Name="Movie" Relationship="MovieLoversDBModel.FK_MovieActor_Movie" FromRole="MovieActor" ToRole="Movie" />
+        </EntityType>
+        <Association Name="FK_MessageBoardA_Actor">
+          <End Type="MovieLoversDBModel.Actor" Role="Actor" Multiplicity="1" />
+          <End Type="MovieLoversDBModel.MessageBoardA" Role="MessageBoardA" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Actor">
+              <PropertyRef Name="ActorId" />
+            </Principal>
+            <Dependent Role="MessageBoardA">
+              <PropertyRef Name="MessageBoardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovieActor_Actor">
+          <End Type="MovieLoversDBModel.Actor" Role="Actor" Multiplicity="1" />
+          <End Type="MovieLoversDBModel.MovieActor" Role="MovieActor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actor">
+              <PropertyRef Name="ActorId" />
+            </Principal>
+            <Dependent Role="MovieActor">
+              <PropertyRef Name="ActorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovieActor_Movie">
+          <End Type="MovieLoversDBModel.Movie" Role="Movie" Multiplicity="1" />
+          <End Type="MovieLoversDBModel.MovieActor" Role="MovieActor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="MovieId" />
+            </Principal>
+            <Dependent Role="MovieActor">
+              <PropertyRef Name="MovieId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -696,17 +733,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MovieLoversDBModelStoreContainer" CdmEntityContainer="MovieLoversDBEntities">
-          <EntitySetMapping Name="Actors">
-            <EntityTypeMapping TypeName="MovieLoversDBModel.Actor">
-              <MappingFragment StoreEntitySet="Actor">
-                <ScalarProperty Name="Bio" ColumnName="Bio" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="ActorId" ColumnName="ActorId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Comments">
             <EntityTypeMapping TypeName="MovieLoversDBModel.Comment">
               <MappingFragment StoreEntitySet="Comment">
@@ -821,14 +847,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="MovieActor" TypeName="MovieLoversDBModel.MovieActor" StoreEntitySet="MovieActor">
-            <EndProperty Name="Movie">
-              <ScalarProperty Name="MovieId" ColumnName="MovieId" />
-            </EndProperty>
-            <EndProperty Name="Actor">
-              <ScalarProperty Name="ActorId" ColumnName="ActorId" />
-            </EndProperty>
-          </AssociationSetMapping>
+          <EntitySetMapping Name="Actors">
+            <EntityTypeMapping TypeName="MovieLoversDBModel.Actor">
+              <MappingFragment StoreEntitySet="Actor">
+                <ScalarProperty Name="Bio" ColumnName="Bio" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ActorId" ColumnName="ActorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MovieActors">
+            <EntityTypeMapping TypeName="MovieLoversDBModel.MovieActor">
+              <MappingFragment StoreEntitySet="MovieActor">
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ActorId" ColumnName="ActorId" />
+                <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

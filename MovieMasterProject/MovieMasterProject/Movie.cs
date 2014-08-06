@@ -17,7 +17,7 @@ namespace MovieMasterProject
         public Movie()
         {
             this.MovieRatings = new HashSet<MovieRating>();
-            this.Actors = new HashSet<Actor>();
+            this.MovieActors = new HashSet<MovieActor>();
         }
     
         public int MovieId { get; set; }
@@ -32,6 +32,6 @@ namespace MovieMasterProject
         public virtual Genre Genre { get; set; }
         public virtual MessageBoard MessageBoard { get; set; }
         public virtual ICollection<MovieRating> MovieRatings { get; set; }
-        public virtual ICollection<Actor> Actors { get; set; }
+        public virtual ICollection<MovieActor> MovieActors { get; set; }
     }
 }

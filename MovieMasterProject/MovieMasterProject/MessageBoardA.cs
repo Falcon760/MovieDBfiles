@@ -22,7 +22,7 @@ namespace MovieMasterProject
         public int MessageBoardId { get; set; }
         public string MessageBoardName { get; set; }
     
-        public virtual Actor Actor { get; set; }
         public virtual ICollection<CommentA> CommentAs { get; set; }
+        public virtual Actor Actor { get; set; }
     }
 }

@@ -12,20 +12,14 @@ namespace MovieMasterProject
     using System;
     using System.Collections.Generic;
     
-    public partial class Actor
+    public partial class MovieActor
     {
-        public Actor()
-        {
-            this.MovieActors = new HashSet<MovieActor>();
-        }
-    
+        public int MovieId { get; set; }
         public int ActorId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string DateOfBirth { get; set; }
-        public string Bio { get; set; }
+        public int Id { get; set; }
+        public int Count { get; set; }
     
-        public virtual MessageBoardA MessageBoardA { get; set; }
-        public virtual ICollection<MovieActor> MovieActors { get; set; }
+        public virtual Actor Actor { get; set; }
+        public virtual Movie Movie { get; set; }
     }
 }

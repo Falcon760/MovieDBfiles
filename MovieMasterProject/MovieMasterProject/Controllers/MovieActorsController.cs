@@ -10,115 +10,116 @@ using MovieMasterProject;
 
 namespace MovieMasterProject.Controllers
 {
-    public class ActorController : Controller
+    public class MovieActorsController : Controller
     {
         private MovieLoversDBEntities db = new MovieLoversDBEntities();
 
-        // GET: /Actor/
+        // GET: MovieActors
         public ActionResult Index()
         {
-            var actors = db.Actors.Include(a => a.MessageBoardA);
-            return View(actors.ToList());
+            var movieActors = db.MovieActors.Include(m => m.Actor).Include(m => m.Movie);
+            return View(movieActors.ToList());
         }
 
-        // GET: /Actor/Details/5
+        // GET: MovieActors/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Actor actor = db.Actors.Find(id);
-            if (actor == null)
+            MovieActor movieActor = db.MovieActors.Find(id);
+            if (movieActor == null)
             {
                 return HttpNotFound();
             }
-            return View(actor);
+            return View(movieActor);
         }
 
-        // GET: /Actor/Create
+        // GET: MovieActors/Create
         public ActionResult Create()
         {
-            ViewBag.ActorId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName");
+            ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "FirstName");
+            ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title");
             return View();
         }
 
-        // POST: /Actor/Create
+        // POST: MovieActors/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ActorId,FirstName,LastName,DateOfBirth,Bio")] Actor actor)
+        public ActionResult Create([Bind(Include = "MovieId,ActorId,Id,Count")] MovieActor movieActor)
         {
             if (ModelState.IsValid)
             {
-                db.Actors.Add(actor);
-                var msgboard = new MessageBoardA { MessageBoardId = actor.ActorId, MessageBoardName = (actor.FirstName + " " + actor.LastName + " Comments") };
-                db.MessageBoardAs.Add(msgboard);
+                db.MovieActors.Add(movieActor);
                 db.SaveChanges();
-
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ActorId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName", actor.ActorId);
-            return View(actor);
+            ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "FirstName", movieActor.ActorId);
+            ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title", movieActor.MovieId);
+            return View(movieActor);
         }
 
-        // GET: /Actor/Edit/5
+        // GET: MovieActors/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Actor actor = db.Actors.Find(id);
-            if (actor == null)
+            MovieActor movieActor = db.MovieActors.Find(id);
+            if (movieActor == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ActorId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName", actor.ActorId);
-            return View(actor);
+            ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "FirstName", movieActor.ActorId);
+            ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title", movieActor.MovieId);
+            return View(movieActor);
         }
 
-        // POST: /Actor/Edit/5
+        // POST: MovieActors/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ActorId,FirstName,LastName,DateOfBirth,Bio")] Actor actor)
+        public ActionResult Edit([Bind(Include = "MovieId,ActorId,Id,Count")] MovieActor movieActor)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(actor).State = EntityState.Modified;
+                db.Entry(movieActor).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ActorId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName", actor.ActorId);
-            return View(actor);
+            ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "FirstName", movieActor.ActorId);
+            ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title", movieActor.MovieId);
+            return View(movieActor);
         }
 
-        // GET: /Actor/Delete/5
+        // GET: MovieActors/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Actor actor = db.Actors.Find(id);
-            if (actor == null)
+            MovieActor movieActor = db.MovieActors.Find(id);
+            if (movieActor == null)
             {
                 return HttpNotFound();
             }
-            return View(actor);
+            return View(movieActor);
         }
 
-        // POST: /Actor/Delete/5
+        // POST: MovieActors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Actor actor = db.Actors.Find(id);
-            db.Actors.Remove(actor);
+            MovieActor movieActor = db.MovieActors.Find(id);
+            db.MovieActors.Remove(movieActor);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

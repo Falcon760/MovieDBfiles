@@ -173,7 +173,7 @@
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ActorController.cs" />
+    <Compile Include="Controllers\ActorsController.cs" />
     <Compile Include="Controllers\CommentAController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\CommentDController.cs" />
@@ -182,6 +182,7 @@
     <Compile Include="Controllers\MessageBoardAController.cs" />
     <Compile Include="Controllers\MessageBoardController.cs" />
     <Compile Include="Controllers\MessageBoardDController.cs" />
+    <Compile Include="Controllers\MovieActorsController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="DataModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -220,6 +221,9 @@
     <Compile Include="Models\HtmlHelpers.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Movie.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MovieActor.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MovieRating.cs">
@@ -341,11 +345,6 @@
     <Content Include="Views\CommentD\Details.cshtml" />
     <Content Include="Views\CommentD\Edit.cshtml" />
     <Content Include="Views\CommentD\Index.cshtml" />
-    <Content Include="Views\Actor\Create.cshtml" />
-    <Content Include="Views\Actor\Delete.cshtml" />
-    <Content Include="Views\Actor\Details.cshtml" />
-    <Content Include="Views\Actor\Edit.cshtml" />
-    <Content Include="Views\Actor\Index.cshtml" />
     <Content Include="Views\MessageBoardA\Create.cshtml" />
     <Content Include="Views\MessageBoardA\Delete.cshtml" />
     <Content Include="Views\MessageBoardA\Details.cshtml" />
@@ -356,6 +355,16 @@
     <Content Include="Views\CommentA\Details.cshtml" />
     <Content Include="Views\CommentA\Edit.cshtml" />
     <Content Include="Views\CommentA\Index.cshtml" />
+    <Content Include="Views\Actors\Create.cshtml" />
+    <Content Include="Views\Actors\Delete.cshtml" />
+    <Content Include="Views\Actors\Details.cshtml" />
+    <Content Include="Views\Actors\Edit.cshtml" />
+    <Content Include="Views\Actors\Index.cshtml" />
+    <Content Include="Views\MovieActors\Create.cshtml" />
+    <Content Include="Views\MovieActors\Delete.cshtml" />
+    <Content Include="Views\MovieActors\Details.cshtml" />
+    <Content Include="Views\MovieActors\Edit.cshtml" />
+    <Content Include="Views\MovieActors\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7102a38e21574c3fb9862ee7e3a7f344" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="MovieLoversDBModel.Actor" Width="1.5" PointX="0.75" PointY="8.625" />
         <EntityTypeShape EntityType="MovieLoversDBModel.Comment" Width="1.5" PointX="7.5" PointY="7.875" />
         <EntityTypeShape EntityType="MovieLoversDBModel.CommentA" Width="1.5" PointX="5.25" PointY="14.875" />
         <EntityTypeShape EntityType="MovieLoversDBModel.CommentD" Width="1.5" PointX="5.25" PointY="11.5" />
@@ -18,7 +17,6 @@
         <EntityTypeShape EntityType="MovieLoversDBModel.MovieRating" Width="1.5" PointX="5.25" PointY="3.625" />
         <EntityTypeShape EntityType="MovieLoversDBModel.Rating" Width="1.5" PointX="3" PointY="1.875" />
         <EntityTypeShape EntityType="MovieLoversDBModel.Review" Width="1.5" PointX="7.5" PointY="4.875" />
-        <AssociationConnector Association="MovieLoversDBModel.FK_MessageBoardA_Actor" />
         <AssociationConnector Association="MovieLoversDBModel.FK_Comment_MessageBoard" />
         <AssociationConnector Association="MovieLoversDBModel.FK_CommentA_MessageBoardA" />
         <AssociationConnector Association="MovieLoversDBModel.FK_CommentD_MessageBoardD" />
@@ -29,7 +27,11 @@
         <AssociationConnector Association="MovieLoversDBModel.FK_Review_MessageBoard" />
         <AssociationConnector Association="MovieLoversDBModel.FK_MovieRating_Movie" />
         <AssociationConnector Association="MovieLoversDBModel.FK_MovieRating_Rating" />
-        <AssociationConnector Association="MovieLoversDBModel.MovieActor" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.Actor" Width="1.5" PointX="0.5" PointY="13" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.MovieActor" Width="1.5" PointX="2.875" PointY="9" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_MessageBoardA_Actor" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_MovieActor_Actor" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_MovieActor_Movie" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

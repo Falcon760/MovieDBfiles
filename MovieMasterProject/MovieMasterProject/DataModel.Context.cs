@@ -25,7 +25,6 @@ namespace MovieMasterProject
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Actor> Actors { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<CommentA> CommentAs { get; set; }
         public virtual DbSet<CommentD> CommentDs { get; set; }
@@ -38,5 +37,7 @@ namespace MovieMasterProject
         public virtual DbSet<MovieRating> MovieRatings { get; set; }
         public virtual DbSet<Rating> Ratings { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<Actor> Actors { get; set; }
+        public virtual DbSet<MovieActor> MovieActors { get; set; }
     }
 }
