@@ -177,6 +177,7 @@
     <Compile Include="Controllers\DirectorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageBoardController.cs" />
+    <Compile Include="Controllers\MessageBoardDController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="DataModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -326,6 +327,11 @@
     <Content Include="Views\Director\Details.cshtml" />
     <Content Include="Views\Director\Edit.cshtml" />
     <Content Include="Views\Director\Index.cshtml" />
+    <Content Include="Views\MessageBoardD\Create.cshtml" />
+    <Content Include="Views\MessageBoardD\Delete.cshtml" />
+    <Content Include="Views\MessageBoardD\Details.cshtml" />
+    <Content Include="Views\MessageBoardD\Edit.cshtml" />
+    <Content Include="Views\MessageBoardD\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
