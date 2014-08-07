@@ -9,85 +9,6 @@
 
 <h2>Details</h2>
 
-@*<div>
-        <h4>Movie</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Title)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Rating)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Rating)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.ReleaseDate)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.ReleaseDate)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Summary)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Summary)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Director.DirectorName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Director.DirectorName)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Genre.GenreType)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Genre.GenreType)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.MessageBoard.MessageBoardName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.MessageBoard.MessageBoardName)
-            </dd>
-
-
-        </dl>
-    </div>
-
-            @foreach (var item in Model.MessageBoard.Comments)
-            {
-                <li>
-                    @Html.DisplayFor(model => item.CommentContents)
-                </li>
-            }
-
-
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.MovieId }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>*@
-
-@*<input type="button" value="Add Movie" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","Movie")' " />*@
-
 
 <div class="col-lg-12">
     <br />
@@ -189,7 +110,7 @@
             </div>
         </div>
             <div class="roundedBox toggler">
-                <h5>Movie Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> 
+                <h5>Movie Comments - @Html.ActionLink("Add Comment", "Create", "Comment", new {})</h5> 
                  <div>
                     @foreach (var item in Model.MessageBoard.Comments)
                     {

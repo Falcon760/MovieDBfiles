@@ -29,11 +29,13 @@ namespace MovieMasterProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Movie movie = db.Movies.Find(id);
+
             if (movie == null)
             {
                 return HttpNotFound();
             }
-            ViewData["Comments"] = movie.MessageBoard.Comments;
+
+
             return View(movie);
         }
 

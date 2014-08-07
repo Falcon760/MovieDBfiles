@@ -222,6 +222,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\HtmlHelpers.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\PartialViewComments.cs" />
     <Compile Include="Movie.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
