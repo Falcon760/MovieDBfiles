@@ -8,12 +8,23 @@
 @using MovieMasterProject.Models;
 
 <br />
+<div class="row2">
+    <div class="col-md-2">
+        <input type="button" value="Add Movie" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","Movie")' " />
+    </div>
+    <div class="col-md-10" style="text-align:left"> 
+        @using (Html.BeginForm("Search", "Movie"))
+        {
+            @Html.Editor("SearchBox")
+            <input type="submit" value="Search" />
 
-<input type="button" value="Add Movie" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","Movie")' " />
+        }
+    </div>
+</div>
 <br />
 <br />
 
-    @foreach (var item in Model)
+@foreach (var item in Model)
 {
     <div class="buttonrow">
         <div class="MovieBox">
@@ -26,10 +37,16 @@
                     </td>
                 </tr>
                 <tr>
+                    <th>Genre </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genre.GenreType)
+                    </td>
+                </tr>
+                <tr>
                     <th>Rating </th>
                     <td align="left">
 
-<script type="text/javascript">
+                        <script type="text/javascript">
 <!--
 function analyze(myButton) {
 	if (myButton == 1) {
@@ -48,21 +65,14 @@ function analyze(myButton) {
 }
 //-->
                         </script>
-                       
+
                         <input type="radio" name="fav_movie1" value=1 onclick="analyze(this.value);" />A
                         <input type="radio" name="fav_movie1" value=2 onclick="analyze(this.value);" />B
                         <input type="radio" name="fav_movie1" value=3 onclick="analyze(this.value);" />C
 
-                     
-</td>
-                </tr>
-                <tr>
-                    <th>Genre </th>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Genre.GenreType)
+
                     </td>
                 </tr>
-
             </table>
 
             <div class="buttonrow">
@@ -71,70 +81,70 @@ function analyze(myButton) {
             </div>
         </div>
     </div>
-           
+
 }
 
 
 
-        @*<p>
-            </p>
-            <table class="table">
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Title)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Rating)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ReleaseDate)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Summary)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Director.DirectorName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Genre.GenreType)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.MessageBoard.MessageBoardName)
-                    </th>
-                    <th></th>
-                </tr>
+@*<p>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Summary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Director.DirectorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre.GenreType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MessageBoard.MessageBoardName)
+            </th>
+            <th></th>
+        </tr>
 
-            @foreach (var item in Model) {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Rating)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ReleaseDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Summary)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Director.DirectorName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Genre.GenreType)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MessageBoard.MessageBoardName)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id=item.MovieId }) |
-                        @Html.ActionLink("Details", "Details", new { id=item.MovieId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id=item.MovieId })
-                    </td>
-                </tr>
-            }
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Summary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Director.DirectorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre.GenreType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MessageBoard.MessageBoardName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.MovieId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.MovieId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.MovieId })
+            </td>
+        </tr>
+    }
 
-            </table>*@
+    </table>*@
 
 
