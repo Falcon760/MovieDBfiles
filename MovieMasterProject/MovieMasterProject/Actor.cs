@@ -11,6 +11,8 @@ namespace MovieMasterProject
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     
     public partial class Actor
     {
@@ -24,6 +26,11 @@ namespace MovieMasterProject
         public string LastName { get; set; }
         public string DateOfBirth { get; set; }
         public string Bio { get; set; }
+        [NotMapped]
+        [Display(Name = "Player Name")]
+        public string FullName { get { return FirstName + " " + LastName; } }
+
+
     
         public virtual MessageBoardA MessageBoardA { get; set; }
         public virtual ICollection<MovieActor> MovieActors { get; set; }

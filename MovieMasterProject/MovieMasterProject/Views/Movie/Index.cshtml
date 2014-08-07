@@ -7,69 +7,118 @@
 @Scripts.Render("~/bundles/jquery")
 @using MovieMasterProject.Models;
 
+<br />
 
-<h2>Movies</h2>
+<input type="button" value="Add Movie" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","Movie")' " />
+<br />
+<br />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Summary)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Director.DirectorName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Genre.GenreType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MessageBoard.MessageBoardName)
-        </th>
-        <th></th>
-    </tr>
+    @foreach (var item in Model)
+{
+    <div class="buttonrow">
+        <div class="MovieBox">
+            <table>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rating)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReleaseDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Summary)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Director.DirectorName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genre.GenreType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MessageBoard.MessageBoardName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MovieId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MovieId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MovieId })
-        </td>
-    </tr>
+                <tr>
+                    <th>Title </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Rating </th>
+                    <td>
+                        @Html.DisplayFor(modelitem => item.Rating)
+                        @*@Html.DisplayFor(modelItem => item.MovieRatings)
+                        @{
+                                 item.Rating += item.;
+                        }
+                   @foreach (var item2 in Model.)
+                   {
+                       @Html.DisplayFor(modelItem => item2.RatingValue)
+                       
+                   }*@
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>Genre </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genre.GenreType)
+                    </td>
+                </tr>
+
+            </table>
+
+            <div class="buttonrow">
+                <input type="button" value="Movie Details" class="btn btn-sm" onclick="window.location.href='@Url.Action("Details", "Movie", new { id=item.MovieId })' " />
+            </div>
+        </div>
+    </div>
+           
 }
 
-</table>
+
+
+        @*<p>
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Rating)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ReleaseDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Summary)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Director.DirectorName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Genre.GenreType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MessageBoard.MessageBoardName)
+                    </th>
+                    <th></th>
+                </tr>
+
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rating)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReleaseDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Summary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Director.DirectorName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genre.GenreType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MessageBoard.MessageBoardName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.MovieId }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.MovieId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.MovieId })
+                    </td>
+                </tr>
+            }
+
+            </table>*@
 
 

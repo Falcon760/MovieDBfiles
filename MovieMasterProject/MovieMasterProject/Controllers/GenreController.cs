@@ -10,122 +10,107 @@ using MovieMasterProject;
 
 namespace MovieMasterProject.Controllers
 {
-    public class ActorsController : Controller
+    public class GenreController : Controller
     {
         private MovieLoversDBEntities db = new MovieLoversDBEntities();
 
-        // GET: Actors
+        // GET: /Genre/
         public ActionResult Index()
         {
-            var actors = db.Actors.Include(a => a.MessageBoardA);
-            return View(actors.ToList());
+            return View(db.Genres.ToList());
         }
 
-        // GET: Actors/Details/5
+        // GET: /Genre/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Actor actor = db.Actors.Find(id);
-            if (actor == null)
+            Genre genre = db.Genres.Find(id);
+            if (genre == null)
             {
                 return HttpNotFound();
             }
-            return View(actor);
+            return View(genre);
         }
 
-        // GET: Actors/Create
+        // GET: /Genre/Create
         public ActionResult Create()
         {
-            ViewBag.ActorId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName");
             return View();
         }
 
-        // POST: Actors/Create
+        // POST: /Genre/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ActorId,FirstName,LastName,DateOfBirth,Bio")] Actor actor)
+        public ActionResult Create([Bind(Include="GenreId,GenreType")] Genre genre)
         {
             if (ModelState.IsValid)
             {
-
-                db.Actors.Add(actor);
-                db.SaveChanges();
-                var msgboard = new MessageBoardA { MessageBoardId = actor.ActorId, MessageBoardName = (actor.FullName + " Comments") };
-                db.MessageBoardAs.Add(msgboard);
+                db.Genres.Add(genre);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-
-
-
-                //db.Actors.Add(actor);
-                //db.SaveChanges();
-                //return RedirectToAction("Index");
             }
 
-            ViewBag.ActorId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName", actor.ActorId);
-            return View(actor);
+            return View(genre);
         }
 
-        // GET: Actors/Edit/5
+        // GET: /Genre/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Actor actor = db.Actors.Find(id);
-            if (actor == null)
+            Genre genre = db.Genres.Find(id);
+            if (genre == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ActorId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName", actor.ActorId);
-            return View(actor);
+            return View(genre);
         }
 
-        // POST: Actors/Edit/5
+        // POST: /Genre/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ActorId,FirstName,LastName,DateOfBirth,Bio")] Actor actor)
+        public ActionResult Edit([Bind(Include="GenreId,GenreType")] Genre genre)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(actor).State = EntityState.Modified;
+                db.Entry(genre).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ActorId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName", actor.ActorId);
-            return View(actor);
+            return View(genre);
         }
 
-        // GET: Actors/Delete/5
+        // GET: /Genre/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Actor actor = db.Actors.Find(id);
-            if (actor == null)
+            Genre genre = db.Genres.Find(id);
+            if (genre == null)
             {
                 return HttpNotFound();
             }
-            return View(actor);
+            return View(genre);
         }
 
-        // POST: Actors/Delete/5
+        // POST: /Genre/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Actor actor = db.Actors.Find(id);
-            db.Actors.Remove(actor);
+            Genre genre = db.Genres.Find(id);
+            db.Genres.Remove(genre);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -94,8 +94,10 @@
 
     <div class="roundedSquare">
         <div class="containerrow">
-
             @Html.DisplayFor(model => model.Title)
+
+
+
         </div>
         <div class="roundedHead toggler">
             Movie Details
@@ -122,7 +124,9 @@
             </div>
         </div>
         <div class="roundedHead toggler">
-            Cast - <input type="button" value="Add" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","MovieActors")' " />
+            Cast - @Html.ActionLink("Add","Create","MovieActors")
+    
+    @*<input type="button" value="Add" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","MovieActors")' " />*@
             <div>
                     
             @foreach (var item in Model.MovieActors)
@@ -153,8 +157,11 @@
             <a class="left carousel-control" href="#mySlider" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
             <a class="right carousel-control" href="#mySlider" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
-        <br />
-
+        <div class="buttonrow">
+            
+            @*<input type="button" value="Upload Image" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Movie")' " />*@
+            <input type="button" value="Upload Image" class="btn btn-xs" onclick="window.location.href='@Url.Action("Index","Movie")' " />
+        </div>
 
 
         <script>
@@ -203,7 +210,7 @@
                 </div>
             </div>*@
 
-            <div class="roundedBox toggler">
+            @*<div class="roundedBox toggler">
                 <h5>General Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> 
                 <div>
                 @foreach (var item in Model.Director.MessageBoardD.CommentDs)
@@ -211,10 +218,11 @@
                         @Html.DisplayFor(modelItem => item.CommentContents)
                 }
                 </div>
-            </div>
+            </div>*@
 
         <div class="buttonrow">
-            <input type="button" value="Upload Image" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Movie")' " />
+            
+            <input type="button" value="Edit" class="btn btn-group-xs" onclick="window.location.href='@Url.Action("Edit", "Movie", new { id=Model.MovieId })' " />
 
         </div>
     </div>
