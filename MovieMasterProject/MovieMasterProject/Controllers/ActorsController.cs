@@ -55,7 +55,7 @@ namespace MovieMasterProject.Controllers
 
                 db.Actors.Add(actor);
                 db.SaveChanges();
-                var msgboard = new MessageBoardA { MessageBoardId = actor.ActorId, MessageBoardName = (actor.FullName + " Comments") };
+                var msgboard = new MessageBoardA { MessageBoardId = actor.ActorId, MessageBoardName = (actor.FirstName + " " + actor.LastName + " Comments") };
                 db.MessageBoardAs.Add(msgboard);
                 db.SaveChanges();
                 return RedirectToAction("Index");
