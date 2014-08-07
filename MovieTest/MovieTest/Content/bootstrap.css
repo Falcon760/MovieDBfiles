@@ -6363,3 +6363,56 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1ffff', end
 
 
         }
+
+/*Custom styling to navbar*/
+.navbar-wrapper{
+    position:absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 20;
+}
+.navbar-wrapper > .container{
+    padding-right: 0;
+    padding-left: 0;
+}
+.navbar-wrapper .navbar{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.navbar-navbar .navbar .container{
+    width: auto;
+}
+.right-inner-addon{
+    position: relative;
+        top: 8px;
+        right: 1px;
+        height: 3px;
+
+}
+.right-inner-addon input{
+ padding-right: 30px;
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 0px;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+@media (min-width: 786px){
+    .navbar-wrapper{
+        margin-top: 20px;
+    }
+    .navbar-wrapper .container{
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .navbar-wrapper .navbar{
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .navbar-wrapper .navbar {
+        border-radius: 4px;
+    }
+
+}
