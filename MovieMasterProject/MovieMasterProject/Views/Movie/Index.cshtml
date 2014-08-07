@@ -28,7 +28,11 @@
                 <tr>
                     <th>Rating </th>
                     <td align="left">
-                        @Html.DisplayFor(modelitem => item.Rating)
+                        @*@Html.DisplayFor(modelitem => item.Rating)*@
+                        <input type="radio" name="score" value="1">
+                        <input type="radio" name="score" value="2">
+                        <input type="radio" name="score" value="3">
+                        <input type="radio" name="score" value="4">
                         @*@Html.DisplayFor(modelItem => item.MovieRatings)
                         @{
                                  item.Rating += item.;
