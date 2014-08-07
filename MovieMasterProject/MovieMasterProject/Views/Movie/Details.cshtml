@@ -192,25 +192,26 @@
 
             </div>
        
-        @*
-            <div class="roundedBox toggler">
-                <h5>Actor Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> <div>
-                    @foreach (var item3 in Model)
-                    {
-                        @Html.DisplayFor(modelItem => item3.MessageBoard.Director.MessageBoardD.Comments)
-
-                    }
-                </div>
-            </div>
-            <div class="roundedBox toggler">
-                <h5>General Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> <div>
-                    @foreach (var item4 in Model)
-                    {
-                        @Html.DisplayFor(modelItem => item4.MessageBoard.Actor.MessageBoardA.Comments)
-
-                    }
+            @*<div class="roundedBox toggler">
+                <h5>Actor Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> 
+                <div>
+                   @foreach (var item in Model.MovieActors)
+                   { 
+                        @Html.DisplayFor(modelItem => item.Actor.
+                   }
+                    
                 </div>
             </div>*@
+
+            <div class="roundedBox toggler">
+                <h5>General Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> 
+                <div>
+                @foreach (var item in Model.Director.MessageBoardD.CommentDs)
+                { 
+                        @Html.DisplayFor(modelItem => item.CommentContents)
+                }
+                </div>
+            </div>
 
         <div class="buttonrow">
             <input type="button" value="Upload Image" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Movie")' " />

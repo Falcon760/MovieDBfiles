@@ -2,10 +2,13 @@
     ViewBag.Title = "Home Page";
 
 }
+<br />
 <div class="roundedBalls">
-    <h1>TEAM8 Movie Reviews</h1>
-    <p class="lead"><i>The #1 source for movie reviews and celebrity info-tainment.</i></p>
-    <p><a href="#" class="btn btn-info">Join Now</a></p>
+
+    <center><h1>TEAM8 Movie Reviews</h1>
+    <i>The #1 source for movie reviews and celebrity info-tainment.</i></p>
+    <input type="button" value="Join Now" class="btn btn-info" onclick="window.location.href='@Url.Action("Register","Account")' " />
+ 
     <style>
         body {
             background-color: #0094ff;
@@ -16,11 +19,13 @@
 
         }
     </style>
+    </center>
 </div>
+
 <br /><br />
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4" >
         <h2>NOW PLAYING</h2>
         <p></p>
     </div>
