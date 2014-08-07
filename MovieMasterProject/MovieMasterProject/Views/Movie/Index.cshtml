@@ -9,10 +9,10 @@
 
 <br />
 <div class="row2">
-    <div class="col-md-2">
+    <div class="col-md-1">
         <input type="button" value="Add Movie" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","Movie")' " />
     </div>
-    <div class="col-md-10" style="text-align:left"> 
+    <div class="col-md-11" style="text-align:left"> 
         @using (Html.BeginForm("Search", "Movie"))
         {
             @Html.Editor("SearchBox")
