@@ -185,6 +185,7 @@
     <Compile Include="Controllers\MessageBoardDsController.cs" />
     <Compile Include="Controllers\MovieActorsController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="DataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -373,6 +374,11 @@
     <Content Include="Views\CommentA\Details.cshtml" />
     <Content Include="Views\CommentA\Edit.cshtml" />
     <Content Include="Views\CommentA\Index.cshtml" />
+    <Content Include="Views\Review\Create.cshtml" />
+    <Content Include="Views\Review\Delete.cshtml" />
+    <Content Include="Views\Review\Details.cshtml" />
+    <Content Include="Views\Review\Edit.cshtml" />
+    <Content Include="Views\Review\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
