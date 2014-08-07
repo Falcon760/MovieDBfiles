@@ -7,119 +7,115 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MovieMasterProject;
-using Microsoft.AspNet.Identity;
 
 namespace MovieMasterProject.Controllers
 {
-    public class CommentController : Controller
+    public class ReviewController : Controller
     {
         private MovieLoversDBEntities db = new MovieLoversDBEntities();
 
-        // GET: /Comment/
+        // GET: /Review/
         public ActionResult Index()
         {
-            var comments = db.Comments.Include(c => c.MessageBoard);
-            return View(comments.ToList());
+            var reviews = db.Reviews.Include(r => r.MessageBoard);
+            return View(reviews.ToList());
         }
 
-        // GET: /Comment/Details/5
+        // GET: /Review/Details/5
         public ActionResult Details(int? id)
-        {       
+        {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comment comment = db.Comments.Find(id);
-            if (comment == null)
+            Review review = db.Reviews.Find(id);
+            if (review == null)
             {
                 return HttpNotFound();
             }
-            return View(comment);
+            return View(review);
         }
 
-        [Authorize]
+        // GET: /Review/Create
         public ActionResult Create()
         {
-            Comment comment = new Comment();
-            comment.UserName = User.Identity.GetUserName();
-
             ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName");
-            return View(comment);
+            return View();
         }
 
-        // POST: /Comment/Create
+        // POST: /Review/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="CommentId,UserName,CommentContents,MessageBoardId")] Comment comment)
+        public ActionResult Create([Bind(Include="ReviewId,UserName,ReviewTitle,Rating,MessageBoardId,ReviewContents")] Review review)
         {
             if (ModelState.IsValid)
             {
-                db.Comments.Add(comment);
+                db.Reviews.Add(review);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName", comment.MessageBoardId);
-            return View(comment);
+            ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName", review.MessageBoardId);
+            return View(review);
         }
 
-        // GET: /Comment/Edit/5
+        // GET: /Review/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comment comment = db.Comments.Find(id);
-            if (comment == null)
+            Review review = db.Reviews.Find(id);
+            if (review == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName", comment.MessageBoardId);
-            return View(comment);
+            ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName", review.MessageBoardId);
+            return View(review);
         }
 
-        // POST: /Comment/Edit/5
+        // POST: /Review/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="CommentId,UserName,CommentContents,MessageBoardId")] Comment comment)
+        public ActionResult Edit([Bind(Include="ReviewId,UserName,ReviewTitle,Rating,MessageBoardId,ReviewContents")] Review review)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(comment).State = EntityState.Modified;
+                db.Entry(review).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName", comment.MessageBoardId);
-            return View(comment);
+            ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName", review.MessageBoardId);
+            return View(review);
         }
 
-        // GET: /Comment/Delete/5
+        // GET: /Review/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comment comment = db.Comments.Find(id);
-            if (comment == null)
+            Review review = db.Reviews.Find(id);
+            if (review == null)
             {
                 return HttpNotFound();
             }
-            return View(comment);
+            return View(review);
         }
 
-        // POST: /Comment/Delete/5
+        // POST: /Review/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Comment comment = db.Comments.Find(id);
-            db.Comments.Remove(comment);
+            Review review = db.Reviews.Find(id);
+            db.Reviews.Remove(review);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

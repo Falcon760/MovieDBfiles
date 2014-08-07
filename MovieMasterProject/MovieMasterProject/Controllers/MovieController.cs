@@ -14,6 +14,17 @@ namespace MovieMasterProject.Controllers
     {
         private MovieLoversDBEntities db = new MovieLoversDBEntities();
 
+        public ActionResult Search(string SearchBox)
+        {
+            var movies = (from r in db.Movies
+                           where
+                               r.Title.Contains(SearchBox)
+                           select r).ToList();
+            return View("Index", movies);
+        }
+
+
+
         // GET: /Movie/
         public ActionResult Index()
         {
@@ -29,11 +40,13 @@ namespace MovieMasterProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Movie movie = db.Movies.Find(id);
+
             if (movie == null)
             {
                 return HttpNotFound();
             }
-            ViewData["Comments"] = movie.MessageBoard.Comments;
+
+
             return View(movie);
         }
 
@@ -132,6 +145,9 @@ namespace MovieMasterProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            //Movie movie = db.Movies.Include(i => i.MessageBoard).Where(i => i.Id == id).Single();
+
+
             Movie movie = db.Movies.Find(id);
             MessageBoard messageboard = db.MessageBoards.Find(id);
             var query = from p in db.Comments
