@@ -19,12 +19,25 @@
                 </button>
                 @Html.ActionLink("Movie Nerds Lite", "Index", "Home", null, new { @class = "navbar-brand" })
             </div>
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Movies", "Index", "Movie")</li>
                     <li>@Html.ActionLink("Actors", "Index", "Actors")</li>
                     <li>@Html.ActionLink("Directors", "Index", "Director")</li>
+                    <li class="dropdown">
+                        <a href="#" class="drop-toggle" data-toggle="dropdown">
+                            Search by Genre<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="dropdown-header">Genres</li>
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Comedy</a></li>
+                            <li><a href="#">Drama</a></li>
+                            <li><a href="#">Horror</a></li>
+                        </ul>
+                    </li>
                     @*<li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
 
