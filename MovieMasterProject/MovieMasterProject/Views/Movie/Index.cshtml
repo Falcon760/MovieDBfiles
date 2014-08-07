@@ -29,21 +29,26 @@
                     <th>Rating </th>
                     <td align="left">
                         @*@Html.DisplayFor(modelitem => item.Rating)*@
-                        <input type="radio" name="score" value="1">
-                        <input type="radio" name="score" value="2">
-                        <input type="radio" name="score" value="3">
-                        <input type="radio" name="score" value="4">
-                        @*@Html.DisplayFor(modelItem => item.MovieRatings)
-                        @{
-                                 item.Rating += item.;
-                        }
-                   @foreach (var item2 in Model.)
-                   {
-                       @Html.DisplayFor(modelItem => item2.RatingValue)
-                       
-                   }*@
-                       @*Rating System goes here*@
-                    </td>
+                        <form>
+                            <input type="radio" name="score" value="1">
+                            <input type="radio" name="score" value="2">
+                            <input type="radio" name="score" value="3">
+                            <input type="radio" name="score" value="4">
+                            <input type="button" name="button1" value="Submit" onclick="goto('select')">
+                            </form>
+
+
+                            @*@Html.DisplayFor(modelItem => item.MovieRatings)
+                 @{
+                          item.Rating += item.;
+                 }
+            @foreach (var item2 in Model.)
+            {
+                @Html.DisplayFor(modelItem => item2.RatingValue)
+
+            }*@
+                            @*Rating System goes here*@
+</td>
                 </tr>
                 <tr>
                     <th>Genre </th>
