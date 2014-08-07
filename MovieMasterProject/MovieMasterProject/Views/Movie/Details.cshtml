@@ -114,8 +114,9 @@
                  <div>
                     @foreach (var item in Model.MessageBoard.Comments)
                     {
+                        <div class="roundedBox" style="color: green">
                         @Html.DisplayFor(model => item.UserName) <ul> Comment: </ul>
-                        <p>@Html.DisplayFor(model => item.CommentContents)</p>
+                        @Html.DisplayFor(model => item.CommentContents)</div>
                     }
                 </div>
 
