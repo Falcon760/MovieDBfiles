@@ -193,7 +193,8 @@
                  <div>
                     @foreach (var item in Model.MessageBoard.Comments)
                     {
-                        @Html.DisplayFor(model => item.CommentContents)
+                        @Html.DisplayFor(model => item.UserName) <ul> Comment: </ul>
+                        <p>@Html.DisplayFor(model => item.CommentContents)</p>
                     }
                 </div>
 
