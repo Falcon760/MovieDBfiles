@@ -174,13 +174,13 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActorsController.cs" />
-    <Compile Include="Controllers\CommentAsController.cs" />
+    <Compile Include="Controllers\CommentAController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\CommentDsController.cs" />
     <Compile Include="Controllers\DirectorController.cs" />
     <Compile Include="Controllers\GenreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MessageBoardAsController.cs" />
+    <Compile Include="Controllers\MessageBoardAController.cs" />
     <Compile Include="Controllers\MessageBoardController.cs" />
     <Compile Include="Controllers\MessageBoardDsController.cs" />
     <Compile Include="Controllers\MovieActorsController.cs" />
@@ -348,16 +348,6 @@
     <Content Include="Views\Actors\Details.cshtml" />
     <Content Include="Views\Actors\Edit.cshtml" />
     <Content Include="Views\Actors\Index.cshtml" />
-    <Content Include="Views\CommentAs\Create.cshtml" />
-    <Content Include="Views\CommentAs\Delete.cshtml" />
-    <Content Include="Views\CommentAs\Details.cshtml" />
-    <Content Include="Views\CommentAs\Edit.cshtml" />
-    <Content Include="Views\CommentAs\Index.cshtml" />
-    <Content Include="Views\MessageBoardAs\Create.cshtml" />
-    <Content Include="Views\MessageBoardAs\Delete.cshtml" />
-    <Content Include="Views\MessageBoardAs\Details.cshtml" />
-    <Content Include="Views\MessageBoardAs\Edit.cshtml" />
-    <Content Include="Views\MessageBoardAs\Index.cshtml" />
     <Content Include="Views\CommentDs\Create.cshtml" />
     <Content Include="Views\CommentDs\Delete.cshtml" />
     <Content Include="Views\CommentDs\Details.cshtml" />
@@ -373,6 +363,16 @@
     <Content Include="Views\Genre\Details.cshtml" />
     <Content Include="Views\Genre\Edit.cshtml" />
     <Content Include="Views\Genre\Index.cshtml" />
+    <Content Include="Views\MessageBoardA\Create.cshtml" />
+    <Content Include="Views\MessageBoardA\Delete.cshtml" />
+    <Content Include="Views\MessageBoardA\Details.cshtml" />
+    <Content Include="Views\MessageBoardA\Edit.cshtml" />
+    <Content Include="Views\MessageBoardA\Index.cshtml" />
+    <Content Include="Views\CommentA\Create.cshtml" />
+    <Content Include="Views\CommentA\Delete.cshtml" />
+    <Content Include="Views\CommentA\Details.cshtml" />
+    <Content Include="Views\CommentA\Edit.cshtml" />
+    <Content Include="Views\CommentA\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

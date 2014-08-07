@@ -10,112 +10,112 @@ using MovieMasterProject;
 
 namespace MovieMasterProject.Controllers
 {
-    public class CommentAsController : Controller
+    public class CommentAController : Controller
     {
         private MovieLoversDBEntities db = new MovieLoversDBEntities();
 
-        // GET: CommentAs
+        // GET: /CommentA/
         public ActionResult Index()
         {
-            var commentAs = db.CommentAs.Include(c => c.MessageBoardA);
-            return View(commentAs.ToList());
+            var commentas = db.CommentAs.Include(c => c.MessageBoardA);
+            return View(commentas.ToList());
         }
 
-        // GET: CommentAs/Details/5
+        // GET: /CommentA/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CommentA commentA = db.CommentAs.Find(id);
-            if (commentA == null)
+            CommentA commenta = db.CommentAs.Find(id);
+            if (commenta == null)
             {
                 return HttpNotFound();
             }
-            return View(commentA);
+            return View(commenta);
         }
 
-        // GET: CommentAs/Create
+        // GET: /CommentA/Create
         public ActionResult Create()
         {
             ViewBag.MessageBoardId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName");
             return View();
         }
 
-        // POST: CommentAs/Create
+        // POST: /CommentA/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CommentId,UserName,CommentContents,MessageBoardId")] CommentA commentA)
+        public ActionResult Create([Bind(Include="CommentId,UserName,CommentContents,MessageBoardId")] CommentA commenta)
         {
             if (ModelState.IsValid)
             {
-                db.CommentAs.Add(commentA);
+                db.CommentAs.Add(commenta);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MessageBoardId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName", commentA.MessageBoardId);
-            return View(commentA);
+            ViewBag.MessageBoardId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName", commenta.MessageBoardId);
+            return View(commenta);
         }
 
-        // GET: CommentAs/Edit/5
+        // GET: /CommentA/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CommentA commentA = db.CommentAs.Find(id);
-            if (commentA == null)
+            CommentA commenta = db.CommentAs.Find(id);
+            if (commenta == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MessageBoardId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName", commentA.MessageBoardId);
-            return View(commentA);
+            ViewBag.MessageBoardId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName", commenta.MessageBoardId);
+            return View(commenta);
         }
 
-        // POST: CommentAs/Edit/5
+        // POST: /CommentA/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CommentId,UserName,CommentContents,MessageBoardId")] CommentA commentA)
+        public ActionResult Edit([Bind(Include="CommentId,UserName,CommentContents,MessageBoardId")] CommentA commenta)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(commentA).State = EntityState.Modified;
+                db.Entry(commenta).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MessageBoardId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName", commentA.MessageBoardId);
-            return View(commentA);
+            ViewBag.MessageBoardId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName", commenta.MessageBoardId);
+            return View(commenta);
         }
 
-        // GET: CommentAs/Delete/5
+        // GET: /CommentA/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CommentA commentA = db.CommentAs.Find(id);
-            if (commentA == null)
+            CommentA commenta = db.CommentAs.Find(id);
+            if (commenta == null)
             {
                 return HttpNotFound();
             }
-            return View(commentA);
+            return View(commenta);
         }
 
-        // POST: CommentAs/Delete/5
+        // POST: /CommentA/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CommentA commentA = db.CommentAs.Find(id);
-            db.CommentAs.Remove(commentA);
+            CommentA commenta = db.CommentAs.Find(id);
+            db.CommentAs.Remove(commenta);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
