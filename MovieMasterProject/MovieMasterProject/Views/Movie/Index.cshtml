@@ -28,26 +28,32 @@
                 <tr>
                     <th>Rating </th>
                     <td align="left">
-                        @*@Html.DisplayFor(modelitem => item.Rating)*@
-                        <form>
-                            <input type="radio" name="score" value="1">
-                            <input type="radio" name="score" value="2">
-                            <input type="radio" name="score" value="3">
-                            <input type="radio" name="score" value="4">
-                            <input type="button" name="button1" value="Submit" onclick="goto('select')">
-                            </form>
 
+<script type="text/javascript">
+<!--
+function analyze(myButton) {
+	if (myButton == 1) {
+	    alert("You rated it an A");
+	    item["Rating"] == 1;
+	}
+	if (myButton == 2) {
+	    alert("You rated it a B");
+	}
+	if (myButton == 3)
+	{
+	    alert("You rated it a C");
 
-                            @*@Html.DisplayFor(modelItem => item.MovieRatings)
-                 @{
-                          item.Rating += item.;
-                 }
-            @foreach (var item2 in Model.)
-            {
-                @Html.DisplayFor(modelItem => item2.RatingValue)
+	}
 
-            }*@
-                            @*Rating System goes here*@
+}
+//-->
+                        </script>
+                       
+                        <input type="radio" name="fav_movie1" value=1 onclick="analyze(this.value);" />A
+                        <input type="radio" name="fav_movie1" value=2 onclick="analyze(this.value);" />B
+                        <input type="radio" name="fav_movie1" value=3 onclick="analyze(this.value);" />C
+
+                     
 </td>
                 </tr>
                 <tr>
@@ -60,7 +66,8 @@
             </table>
 
             <div class="buttonrow">
-                <input type="button" value="Movie Details" class="btn btn-sm" onclick="window.location.href='@Url.Action("Details", "Movie", new { id=item.MovieId })' " />
+                <input type="button" value="Details" class="btn btn-sm" onclick="window.location.href='@Url.Action("Details", "Movie", new { id=item.MovieId })' " />
+                <input type="button" value="Delete" class="btn btn-sm" onclick="window.location.href='@Url.Action("Delete", "Movie", new { id=item.MovieId })' " />
             </div>
         </div>
     </div>
