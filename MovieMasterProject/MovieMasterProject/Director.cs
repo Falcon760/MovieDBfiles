@@ -11,6 +11,7 @@ namespace MovieMasterProject
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     
     public partial class Director
     {
@@ -20,7 +21,9 @@ namespace MovieMasterProject
         }
     
         public int DirectorId { get; set; }
+        [DisplayName("Name")]
         public string DirectorName { get; set; }
+        [DisplayName("Date of Birth")]
         public string DateOfBirth { get; set; }
         public string Bio { get; set; }
     

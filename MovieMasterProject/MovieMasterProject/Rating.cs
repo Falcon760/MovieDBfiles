@@ -11,6 +11,7 @@ namespace MovieMasterProject
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     
     public partial class Rating
     {
@@ -20,6 +21,7 @@ namespace MovieMasterProject
         }
     
         public int RatingId { get; set; }
+        [DisplayName("Rating")]
         public Nullable<decimal> RatingValue { get; set; }
     
         public virtual ICollection<MovieRating> MovieRatings { get; set; }
