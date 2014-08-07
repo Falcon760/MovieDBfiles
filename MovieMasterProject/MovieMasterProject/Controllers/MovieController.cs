@@ -51,6 +51,7 @@ namespace MovieMasterProject.Controllers
         }
 
         // GET: /Movie/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.DirectorId = new SelectList(db.Directors, "DirectorId", "DirectorName");
