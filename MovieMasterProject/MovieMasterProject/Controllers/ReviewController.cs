@@ -37,6 +37,10 @@ namespace MovieMasterProject.Controllers
         }
 
         // GET: /Review/Create
+<<<<<<< HEAD
+=======
+        [Authorize]
+>>>>>>> origin/master
         public ActionResult Create()
         {
             ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName");

@@ -213,3 +213,6 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 MovieMasterProject/MovieMasterProject/Content/bootstrap.css
+MovieMasterProject/MovieMasterProject/Controllers/ReviewController.cs
+MovieMasterProject/MovieMasterProject/Content/bootstrap.css
+MovieMasterProject/MovieMasterProject/Controllers/ReviewController.cs
