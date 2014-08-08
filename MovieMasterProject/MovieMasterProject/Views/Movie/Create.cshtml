@@ -1,10 +1,11 @@
 ﻿@model MovieMasterProject.Movie
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create Movie";
 }
 
 <h2>Create</h2>
+    <img src="~/Content/images/movie3.jpg">
 
 
 @using (Html.BeginForm()) 
@@ -12,8 +13,8 @@
     @Html.AntiForgeryToken()
    
     
-    <div class="form-horizontal">
-        <h4>Movie</h4>
+    <div class="form-horizontal" >
+        
         <hr />
         @Html.ValidationSummary(true)
 
@@ -23,8 +24,8 @@
                 @Html.EditorFor(model => model.Title)
                 @Html.ValidationMessageFor(model => model.Title)
             </div>
-            <div style="background-image:url(../../Content/images/movie3.jpg);">
             </div>
+            
 
         <div class="form-group">
             @Html.LabelFor(model => model.DirectorId, "DirectorId", new { @class = "control-label col-md-2" })
