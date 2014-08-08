@@ -6,7 +6,7 @@
 <div class="roundedBalls">
 
     <center><h1>TEAM8 Movie Reviews</h1>
-    <i>The #1 source for movie reviews and celebrity info-tainment.</i></p>
+    <p><i>The #1 source for movie reviews and celebrity info-tainment.</i></p>
     @if (User.Identity.IsAuthenticated == false) { 
     <input type="button" value="Join Now" class="btn btn-info" onclick="window.location.href='@Url.Action("Register","Account")' " />
     }
