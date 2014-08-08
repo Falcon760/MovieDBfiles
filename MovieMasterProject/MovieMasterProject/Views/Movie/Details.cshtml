@@ -4,12 +4,6 @@
 @Scripts.Render("~/bundles/jquery")
 @using MovieMasterProject.Models;
 
-
-
-
-<h2>Details</h2>
-
-
 <div class="col-lg-12">
     <br />
 
@@ -78,11 +72,13 @@
             <a class="left carousel-control" href="#mySlider" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
             <a class="right carousel-control" href="#mySlider" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
-        <div class="buttonrow">
-            
-            @*<input type="button" value="Upload Image" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Movie")' " />*@
+        <center>
+        @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        { @Html.AntiForgeryToken() <fieldset><div class="editor-field"> @Html.TextBox("file", "", new { type = "file" }) </div> <div class="editor-field"> <input type="submit" value="Upload" /> </div> </fieldset> }
+            </center>
+        @*<div class="buttonrow">
             <input type="button" value="Upload Image" class="btn btn-xs" onclick="window.location.href='@Url.Action("Index","Movie")' " />
-        </div>
+        </div>*@
 
 
         <script>
@@ -104,9 +100,9 @@
             </div>
         </div>
         <div class="roundedBox toggler">
-            <h5>Reviews - @Html.ActionLink("Add Review", "Create", "Review")</h5><div>
-                Review 1 - @Html.Truncate("Review Review Review Review Review Review Review Review Review", 55)<br />
-                Review 2 - @Html.Truncate("Review Review Review Review Review Review Review", 55)
+            <h5>Reviews - @Html.ActionLink("Add Review", "Create", "Review")</h5>
+             <div>
+               
             </div>
         </div>
             <div class="roundedBox toggler">

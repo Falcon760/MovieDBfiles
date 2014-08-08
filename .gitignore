@@ -216,3 +216,4 @@ MovieMasterProject/MovieMasterProject/Content/bootstrap.css
 MovieMasterProject/MovieMasterProject/Controllers/ReviewController.cs
 MovieMasterProject/MovieMasterProject/Content/bootstrap.css
 MovieMasterProject/MovieMasterProject/Controllers/ReviewController.cs
+MovieMasterProject/MovieMasterProject/Views/Movie/Create.cshtml

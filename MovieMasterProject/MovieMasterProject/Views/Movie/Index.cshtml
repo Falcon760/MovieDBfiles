@@ -9,10 +9,10 @@
 
 <br />
 <div class="row2">
-    <div class="col-md-1">
+    <div class="col-md-2">
         <input type="button" value="Add Movie" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","Movie")' " />
     </div>
-    <div class="col-md-11" style="text-align:left"> 
+    <div class="col-md-10" style="text-align:left"> 
         @using (Html.BeginForm("Search", "Movie"))
         {
             @Html.Editor("SearchBox")
@@ -49,9 +49,11 @@
                         <script type="text/javascript">
 <!--
 function analyze(myButton) {
-	if (myButton == 1) {
+    if (myButton == 1) {
+        var movie = new Object();
+        movie.Rating = 1;
 	    alert("You rated it an A");
-	    item["Rating"] == 1;
+	    //document.write(movie.Rating)
 	}
 	if (myButton == 2) {
 	    alert("You rated it a B");
@@ -59,7 +61,6 @@ function analyze(myButton) {
 	if (myButton == 3)
 	{
 	    alert("You rated it a C");
-
 	}
 
 }
@@ -81,9 +82,9 @@ function analyze(myButton) {
             </div>
         </div>
     </div>
+    
 
 }
-
 
 
 @*<p>

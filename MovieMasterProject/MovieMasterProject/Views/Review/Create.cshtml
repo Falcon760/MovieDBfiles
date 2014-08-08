@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Create Review</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,36 +12,47 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Review</h4>
+       
         <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })
+            @*@Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+
+                @Html.HiddenFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName)
+
+            </div>
+        </div>
+
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.UserName, "User", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.UserName)
                 @Html.ValidationMessageFor(model => model.UserName)
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ReviewTitle, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ReviewTitle, "Title", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ReviewTitle)
                 @Html.ValidationMessageFor(model => model.ReviewTitle)
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Rating, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Rating)
                 @Html.ValidationMessageFor(model => model.Rating)
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.MessageBoardId, "MessageBoardId", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.MessageBoardId, "MessageBoard Name", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("MessageBoardId", String.Empty)
                 @Html.ValidationMessageFor(model => model.MessageBoardId)
@@ -51,7 +62,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ReviewContents, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ReviewContents)
+                @Html.TextAreaFor(model => model.ReviewContents, new { cols = 100, rows = 10 })
                 @Html.ValidationMessageFor(model => model.ReviewContents)
             </div>
         </div>
