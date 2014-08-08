@@ -49,9 +49,11 @@
                         <script type="text/javascript">
 <!--
 function analyze(myButton) {
-	if (myButton == 1) {
+    if (myButton == 1) {
+        var movie = new Object();
+        movie.Rating = 1;
 	    alert("You rated it an A");
-	    //var rating = document.
+	    //document.write(movie.Rating)
 	}
 	if (myButton == 2) {
 	    alert("You rated it a B");
@@ -59,7 +61,6 @@ function analyze(myButton) {
 	if (myButton == 3)
 	{
 	    alert("You rated it a C");
-
 	}
 
 }
@@ -81,9 +82,9 @@ function analyze(myButton) {
             </div>
         </div>
     </div>
+    
 
 }
-
 
 
 @*<p>
