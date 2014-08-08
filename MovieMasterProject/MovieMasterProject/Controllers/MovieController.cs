@@ -16,9 +16,11 @@ namespace MovieMasterProject.Controllers
 
         public ActionResult Search(string SearchBox)
         {
+            //ViewBag.Genre = (from q in db.Genres
+            //                 select q.GenreType);
+
             var movies = (from r in db.Movies
-                           where
-                               r.Title.Contains(SearchBox)
+                           where r.Title.Contains(SearchBox)
                            select r).ToList();
             return View("Index", movies);
         }

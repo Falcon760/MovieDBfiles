@@ -13,12 +13,19 @@
         <input type="button" value="Add Movie" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","Movie")' " />
     </div>
     <div class="col-md-10" style="text-align:left"> 
-        @using (Html.BeginForm("Search", "Movie"))
+        @*@using (Html.BeginForm("Search", "Movie"))
         {
             @Html.Editor("SearchBox")
             <input type="submit" value="Search" />
 
+        }*@
+        
+        @using (Html.BeginForm("Search","Movie")) { 
+   
+        @Html.Editor("SearchBox")    
+         <input type="submit" value="Search" />
         }
+
     </div>
 </div>
 <br />
@@ -43,7 +50,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>Rating </th>
+                    <th id="edit">Rating<script>localStorage.getItem("Rating");</script> </th>
                     <td align="left">
 
                         <script type="text/javascript">
@@ -52,8 +59,10 @@ function analyze(myButton) {
     if (myButton == 1) {
         var movie = new Object();
         movie.Rating = 1;
-	    alert("You rated it an A");
-	    //document.write(movie.Rating)
+        alert("You rated it an A");
+        localStorage.setItem("Rating", "A");
+        //lobcation.replace(movie.Rating)
+	    //document.getElementById("#edit").innerHTML = "You rated it an A!";​
 	}
 	if (myButton == 2) {
 	    alert("You rated it a B");
