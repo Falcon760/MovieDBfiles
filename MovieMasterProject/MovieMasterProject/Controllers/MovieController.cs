@@ -21,6 +21,7 @@ namespace MovieMasterProject.Controllers
 
             var movies = (from r in db.Movies
                            where r.Title.Contains(SearchBox)
+                           || r.Genre.GenreType.Contains(SearchBox)
                            select r).ToList();
             return View("Index", movies);
         }

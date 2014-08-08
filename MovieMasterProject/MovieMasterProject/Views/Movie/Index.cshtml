@@ -61,13 +61,13 @@
 <!--
 function analyze(myButton) {
     if (myButton == 1) {
-        var movie = new Object();
-        movie.Rating = 1;
         alert("You rated it an A");
-        localStorage.setItem("Rating", "A");
+        //localStorage.setItem("Rating", "A");
         //lobcation.replace(movie.Rating)
-	    //document.getElementById("#edit").innerHTML = "You rated it an A!";​
-	}
+        //document.getElementById("#edit").innerHTML = "You rated it an A!";​
+        document.cookie = "A";
+        }
+
 	if (myButton == 2) {
 	    alert("You rated it a B");
 	}
