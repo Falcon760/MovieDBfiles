@@ -10,12 +10,10 @@
         <EntityTypeShape EntityType="MovieLoversDBModel.CommentD" Width="1.5" PointX="5.25" PointY="11.5" />
         <EntityTypeShape EntityType="MovieLoversDBModel.Director" Width="1.5" PointX="0.75" PointY="5.5" />
         <EntityTypeShape EntityType="MovieLoversDBModel.Genre" Width="1.5" PointX="0.75" PointY="2.25" />
-        <EntityTypeShape EntityType="MovieLoversDBModel.MessageBoard" Width="1.5" PointX="5.25" PointY="6.375" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.MessageBoard" Width="1.5" PointX="5.375" PointY="6" />
         <EntityTypeShape EntityType="MovieLoversDBModel.MessageBoardA" Width="1.5" PointX="3" PointY="14.875" />
         <EntityTypeShape EntityType="MovieLoversDBModel.MessageBoardD" Width="1.5" PointX="3" PointY="11.625" />
         <EntityTypeShape EntityType="MovieLoversDBModel.Movie" Width="1.5" PointX="3" PointY="5" />
-        <EntityTypeShape EntityType="MovieLoversDBModel.MovieRating" Width="1.5" PointX="5.25" PointY="3.625" />
-        <EntityTypeShape EntityType="MovieLoversDBModel.Rating" Width="1.5" PointX="3" PointY="1.875" />
         <EntityTypeShape EntityType="MovieLoversDBModel.Review" Width="1.5" PointX="7.5" PointY="4.875" />
         <AssociationConnector Association="MovieLoversDBModel.FK_Comment_MessageBoard" />
         <AssociationConnector Association="MovieLoversDBModel.FK_CommentA_MessageBoardA" />
@@ -25,13 +23,13 @@
         <AssociationConnector Association="MovieLoversDBModel.FK_Movie_Genre" />
         <AssociationConnector Association="MovieLoversDBModel.FK_MessageBoard_Movie" />
         <AssociationConnector Association="MovieLoversDBModel.FK_Review_MessageBoard" />
-        <AssociationConnector Association="MovieLoversDBModel.FK_MovieRating_Movie" />
-        <AssociationConnector Association="MovieLoversDBModel.FK_MovieRating_Rating" />
         <EntityTypeShape EntityType="MovieLoversDBModel.Actor" Width="1.5" PointX="0.5" PointY="13" />
         <AssociationConnector Association="MovieLoversDBModel.FK_MessageBoardA_Actor" />
         <EntityTypeShape EntityType="MovieLoversDBModel.MovieActor" Width="1.5" PointX="8.25" PointY="11.125" />
         <AssociationConnector Association="MovieLoversDBModel.FK_MovieActor_Actor" />
         <AssociationConnector Association="MovieLoversDBModel.FK_MovieActor_Movie" />
+        <EntityTypeShape EntityType="MovieLoversDBModel.Rating" Width="1.5" PointX="5.25" PointY="2.625" />
+        <AssociationConnector Association="MovieLoversDBModel.FK_Rating_Movie" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -14,7 +14,7 @@ namespace MovieMasterProject
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    
+
     public partial class Actor
     {
         public Actor()
@@ -28,13 +28,9 @@ namespace MovieMasterProject
         [DisplayName("Last Name")]
         public string LastName { get; set; }
         [DisplayName("Date of Birth")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public string DateOfBirth { get; set; }
         public string Bio { get; set; }
-        [NotMapped]
-        [Display(Name = "Player Name")]
-        public string FullName { get { return FirstName + " " + LastName; } }
-
-
     
         public virtual MessageBoardA MessageBoardA { get; set; }
         public virtual ICollection<MovieActor> MovieActors { get; set; }

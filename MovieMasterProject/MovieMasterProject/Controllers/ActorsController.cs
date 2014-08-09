@@ -36,7 +36,7 @@ namespace MovieMasterProject.Controllers
             return View(actor);
         }
 
-        // GET: Actors/Create
+       [Authorize]
         public ActionResult Create()
         {
             ViewBag.ActorId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName");

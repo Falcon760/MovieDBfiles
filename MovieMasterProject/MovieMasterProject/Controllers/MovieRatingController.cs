@@ -7,40 +7,24 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MovieMasterProject;
-using MovieMasterProject.Models;
+using Microsoft.AspNet.Identity;
+
+
 
 namespace MovieMasterProject.Controllers
 {
-    public class RatingsController : Controller
+    public class MovieRatingController : Controller
     {
         private MovieLoversDBEntities db = new MovieLoversDBEntities();
 
-        // GET: /Rating/
+        // GET: /MovieRating/
         public ActionResult Index()
         {
-            RatingsModel model = new RatingsModel();
-            IEnumerable<RatingType> ratingsTypes = Enum.GetValues(typeof(RatingType))
-                                                       .Cast<RatingType>();
-            model.RatingsList = from rating in ratingsTypes
-                                select new SelectListItem
-                                {
-                                    Text = rating.ToString(),
-                                    Value = ((int)rating).ToString()
-                                };
-            ViewBag.Movies = from x in db.Movies
-                             select x;
-            ViewBag.Ratings = model.RatingsList;
-
-            return View(model);
-
-
-
-
-
-            //return View(db.Ratings.ToList());
+            var ratings = db.Ratings.Include(r => r.Movie);
+            return View(ratings.ToList());
         }
 
-        // GET: /Rating/Details/5
+        // GET: /MovieRating/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -55,36 +39,32 @@ namespace MovieMasterProject.Controllers
             return View(rating);
         }
 
-        // GET: /Rating/Create
+        [Authorize]
         public ActionResult Create()
         {
-            return View();
+            Rating rating = new Rating();
+            ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title");
+            rating.UserName = User.Identity.GetUserName();
+            return View(rating);
         }
 
-        // POST: /Rating/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(RatingsModel rating, Movie movie)
+        public ActionResult Create([Bind(Include="RatingId,UserName,MovieId,Value")] Rating rating)
         {
+            if (ModelState.IsValid)
+            {
+                db.Ratings.Add(rating);
+                db.SaveChanges();
+                return RedirectToAction("Index","Movie");
+            }
 
-            //movie.Rating = rating;
-            return View();
-          
+            ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title", rating.MovieId);
+            return View("Index","Movie",rating);
+        }
 
-        
-
-    }
-                //db.Ratings.Add(rating);
-                //db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-
-        //    return View(rating);
-        //}
-
-        // GET: /Rating/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -96,15 +76,14 @@ namespace MovieMasterProject.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title", rating.MovieId);
             return View(rating);
         }
 
-        // POST: /Rating/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="RatingId,RatingValue")] Rating rating)
+        public ActionResult Edit([Bind(Include="RatingId,UserName,MovieId,Value")] Rating rating)
         {
             if (ModelState.IsValid)
             {
@@ -112,10 +91,11 @@ namespace MovieMasterProject.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title", rating.MovieId);
             return View(rating);
         }
 
-        // GET: /Rating/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -130,7 +110,7 @@ namespace MovieMasterProject.Controllers
             return View(rating);
         }
 
-        // POST: /Rating/Delete/5
+        // POST: /MovieRating/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -11,13 +11,10 @@ namespace MovieMasterProject
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     
     public partial class MovieActor
     {
-        [DisplayName("Movie")]
         public int MovieId { get; set; }
-        [DisplayName("Actor")]
         public int ActorId { get; set; }
         public int Id { get; set; }
         public Nullable<int> Count { get; set; }

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MovieMasterProject;
+using PagedList;
 
 namespace MovieMasterProject.Controllers
 {
@@ -31,9 +32,39 @@ namespace MovieMasterProject.Controllers
         // GET: /Movie/
         public ActionResult Index()
         {
+            //if (searchString != null) {
+
+            //page = 1; 
+            //} else { 
+            //    searchString = currentFilter; }
+            //    ViewBag.CurrentFilter = searchString;
+
             var movies = db.Movies.Include(m => m.Director).Include(m => m.Genre).Include(m => m.MessageBoard);
             return View(movies.ToList());
-        }
+
+//            if (!String.IsNullOrEmpty(searchString))
+//{
+//movies = movies.Where(s => s.Title.ToUpper().Contains(searchString.ToUpper())
+//|| s.Genre.GenreType.ToUpper().Contains(searchString.ToUpper()));
+//}
+//switch (sortOrder)
+//{
+//case "name_desc":
+//movies = movies.OrderByDescending(s => s.Title);
+//break;
+//case "Date":
+//movies = movies.OrderBy(s => s.ReleaseDate);
+//break;
+//case "date_desc":
+//movies = movies.OrderByDescending(s => s.ReleaseDate);
+//break;
+//default: // Name ascending
+//movies = movies.OrderBy(s => s.Title);
+//break;
+//}
+//int pageSize = 3; int pageNumber = (page ?? 1); return View(movies.ToPagedList(pageNumber, pageSize));
+}
+
 
         // GET: /Movie/Details/5
         public ActionResult Details(int? id)
@@ -154,17 +185,21 @@ namespace MovieMasterProject.Controllers
 
             Movie movie = db.Movies.Find(id);
             MessageBoard messageboard = db.MessageBoards.Find(id);
+            Rating rating = db.Ratings.Find(id);
+          
             var query = from p in db.Comments
                         where p.MessageBoardId == id
                         select p;
-
+  
             foreach (var row in query)
             {
                 db.Comments.Remove(row);
             }
 
             db.MessageBoards.Remove(messageboard);
+
             db.Movies.Remove(movie);
+            
             db.SaveChanges();
             return RedirectToAction("Index");
         }

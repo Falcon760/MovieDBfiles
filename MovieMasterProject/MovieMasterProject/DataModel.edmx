@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MovieLoversDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MovieLoversDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Actor">
           <Key>
             <PropertyRef Name="ActorId" />
@@ -100,21 +100,14 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Count" Type="int" />
         </EntityType>
-        <EntityType Name="MovieRating">
-          <Key>
-            <PropertyRef Name="MovieId" />
-            <PropertyRef Name="RatingId" />
-          </Key>
-          <Property Name="MovieId" Type="int" Nullable="false" />
-          <Property Name="RatingId" Type="int" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Rating">
           <Key>
             <PropertyRef Name="RatingId" />
           </Key>
-          <Property Name="RatingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RatingValue" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="RatingId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MovieId" Type="int" />
+          <Property Name="Value" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Review">
           <Key>
@@ -247,27 +240,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MovieRating_Movie">
-          <End Role="Movie" Type="Self.Movie" Multiplicity="1" />
-          <End Role="MovieRating" Type="Self.MovieRating" Multiplicity="*" />
+        <Association Name="FK_Rating_Movie">
+          <End Role="Movie" Type="Self.Movie" Multiplicity="0..1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Movie">
               <PropertyRef Name="MovieId" />
             </Principal>
-            <Dependent Role="MovieRating">
+            <Dependent Role="Rating">
               <PropertyRef Name="MovieId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MovieRating_Rating">
-          <End Role="Rating" Type="Self.Rating" Multiplicity="1" />
-          <End Role="MovieRating" Type="Self.MovieRating" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rating">
-              <PropertyRef Name="RatingId" />
-            </Principal>
-            <Dependent Role="MovieRating">
-              <PropertyRef Name="RatingId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -295,7 +276,6 @@
           <EntitySet Name="MessageBoardD" EntityType="Self.MessageBoardD" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Movie" EntityType="Self.Movie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MovieActor" EntityType="Self.MovieActor" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MovieRating" EntityType="Self.MovieRating" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Comment_MessageBoard" Association="Self.FK_Comment_MessageBoard">
@@ -338,13 +318,9 @@
             <End Role="Movie" EntitySet="Movie" />
             <End Role="MovieActor" EntitySet="MovieActor" />
           </AssociationSet>
-          <AssociationSet Name="FK_MovieRating_Movie" Association="Self.FK_MovieRating_Movie">
+          <AssociationSet Name="FK_Rating_Movie" Association="Self.FK_Rating_Movie">
             <End Role="Movie" EntitySet="Movie" />
-            <End Role="MovieRating" EntitySet="MovieRating" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MovieRating_Rating" Association="Self.FK_MovieRating_Rating">
             <End Role="Rating" EntitySet="Rating" />
-            <End Role="MovieRating" EntitySet="MovieRating" />
           </AssociationSet>
           <AssociationSet Name="FK_Review_MessageBoard" Association="Self.FK_Review_MessageBoard">
             <End Role="MessageBoard" EntitySet="MessageBoard" />
@@ -365,8 +341,6 @@
           <EntitySet Name="MessageBoardAs" EntityType="MovieLoversDBModel.MessageBoardA" />
           <EntitySet Name="MessageBoardDs" EntityType="MovieLoversDBModel.MessageBoardD" />
           <EntitySet Name="Movies" EntityType="MovieLoversDBModel.Movie" />
-          <EntitySet Name="MovieRatings" EntityType="MovieLoversDBModel.MovieRating" />
-          <EntitySet Name="Ratings" EntityType="MovieLoversDBModel.Rating" />
           <EntitySet Name="Reviews" EntityType="MovieLoversDBModel.Review" />
           <AssociationSet Name="FK_Comment_MessageBoard" Association="MovieLoversDBModel.FK_Comment_MessageBoard">
             <End Role="MessageBoard" EntitySet="MessageBoards" />
@@ -400,14 +374,6 @@
             <End Role="MessageBoard" EntitySet="MessageBoards" />
             <End Role="Review" EntitySet="Reviews" />
           </AssociationSet>
-          <AssociationSet Name="FK_MovieRating_Movie" Association="MovieLoversDBModel.FK_MovieRating_Movie">
-            <End Role="Movie" EntitySet="Movies" />
-            <End Role="MovieRating" EntitySet="MovieRatings" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MovieRating_Rating" Association="MovieLoversDBModel.FK_MovieRating_Rating">
-            <End Role="Rating" EntitySet="Ratings" />
-            <End Role="MovieRating" EntitySet="MovieRatings" />
-          </AssociationSet>
           <EntitySet Name="Actors" EntityType="MovieLoversDBModel.Actor" />
           <AssociationSet Name="FK_MessageBoardA_Actor" Association="MovieLoversDBModel.FK_MessageBoardA_Actor">
             <End Role="Actor" EntitySet="Actors" />
@@ -421,6 +387,11 @@
           <AssociationSet Name="FK_MovieActor_Movie" Association="MovieLoversDBModel.FK_MovieActor_Movie">
             <End Role="Movie" EntitySet="Movies" />
             <End Role="MovieActor" EntitySet="MovieActors" />
+          </AssociationSet>
+          <EntitySet Name="Ratings" EntityType="MovieLoversDBModel.Rating" />
+          <AssociationSet Name="FK_Rating_Movie" Association="MovieLoversDBModel.FK_Rating_Movie">
+            <End Role="Movie" EntitySet="Movies" />
+            <End Role="Rating" EntitySet="Ratings" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Comment">
@@ -514,27 +485,8 @@
           <NavigationProperty Name="Director" Relationship="MovieLoversDBModel.FK_Movie_Director" FromRole="Movie" ToRole="Director" />
           <NavigationProperty Name="Genre" Relationship="MovieLoversDBModel.FK_Movie_Genre" FromRole="Movie" ToRole="Genre" />
           <NavigationProperty Name="MessageBoard" Relationship="MovieLoversDBModel.FK_MessageBoard_Movie" FromRole="Movie" ToRole="MessageBoard" />
-          <NavigationProperty Name="MovieRatings" Relationship="MovieLoversDBModel.FK_MovieRating_Movie" FromRole="Movie" ToRole="MovieRating" />
           <NavigationProperty Name="MovieActors" Relationship="MovieLoversDBModel.FK_MovieActor_Movie" FromRole="Movie" ToRole="MovieActor" />
-        </EntityType>
-        <EntityType Name="MovieRating">
-          <Key>
-            <PropertyRef Name="MovieId" />
-            <PropertyRef Name="RatingId" />
-          </Key>
-          <Property Name="MovieId" Type="Int32" Nullable="false" />
-          <Property Name="RatingId" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Movie" Relationship="MovieLoversDBModel.FK_MovieRating_Movie" FromRole="MovieRating" ToRole="Movie" />
-          <NavigationProperty Name="Rating" Relationship="MovieLoversDBModel.FK_MovieRating_Rating" FromRole="MovieRating" ToRole="Rating" />
-        </EntityType>
-        <EntityType Name="Rating">
-          <Key>
-            <PropertyRef Name="RatingId" />
-          </Key>
-          <Property Name="RatingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RatingValue" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="MovieRatings" Relationship="MovieLoversDBModel.FK_MovieRating_Rating" FromRole="Rating" ToRole="MovieRating" />
+          <NavigationProperty Name="Ratings" Relationship="MovieLoversDBModel.FK_Rating_Movie" FromRole="Movie" ToRole="Rating" />
         </EntityType>
         <EntityType Name="Review">
           <Key>
@@ -644,30 +596,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MovieRating_Movie">
-          <End Type="MovieLoversDBModel.Movie" Role="Movie" Multiplicity="1" />
-          <End Type="MovieLoversDBModel.MovieRating" Role="MovieRating" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Movie">
-              <PropertyRef Name="MovieId" />
-            </Principal>
-            <Dependent Role="MovieRating">
-              <PropertyRef Name="MovieId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MovieRating_Rating">
-          <End Type="MovieLoversDBModel.Rating" Role="Rating" Multiplicity="1" />
-          <End Type="MovieLoversDBModel.MovieRating" Role="MovieRating" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rating">
-              <PropertyRef Name="RatingId" />
-            </Principal>
-            <Dependent Role="MovieRating">
-              <PropertyRef Name="RatingId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Actor">
           <Key>
             <PropertyRef Name="ActorId" />
@@ -723,6 +651,28 @@
               <PropertyRef Name="MovieId" />
             </Principal>
             <Dependent Role="MovieActor">
+              <PropertyRef Name="MovieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="RatingId" />
+          </Key>
+          <Property Name="RatingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MovieId" Type="Int32" />
+          <Property Name="Value" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Movie" Relationship="MovieLoversDBModel.FK_Rating_Movie" FromRole="Rating" ToRole="Movie" />
+        </EntityType>
+        <Association Name="FK_Rating_Movie">
+          <End Type="MovieLoversDBModel.Movie" Role="Movie" Multiplicity="0..1" />
+          <End Type="MovieLoversDBModel.Rating" Role="Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="MovieId" />
+            </Principal>
+            <Dependent Role="Rating">
               <PropertyRef Name="MovieId" />
             </Dependent>
           </ReferentialConstraint>
@@ -818,23 +768,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MovieRatings">
-            <EntityTypeMapping TypeName="MovieLoversDBModel.MovieRating">
-              <MappingFragment StoreEntitySet="MovieRating">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="RatingId" ColumnName="RatingId" />
-                <ScalarProperty Name="MovieId" ColumnName="MovieId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ratings">
-            <EntityTypeMapping TypeName="MovieLoversDBModel.Rating">
-              <MappingFragment StoreEntitySet="Rating">
-                <ScalarProperty Name="RatingValue" ColumnName="RatingValue" />
-                <ScalarProperty Name="RatingId" ColumnName="RatingId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Reviews">
             <EntityTypeMapping TypeName="MovieLoversDBModel.Review">
               <MappingFragment StoreEntitySet="Review">
@@ -865,6 +798,16 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ActorId" ColumnName="ActorId" />
                 <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ratings">
+            <EntityTypeMapping TypeName="MovieLoversDBModel.Rating">
+              <MappingFragment StoreEntitySet="Rating">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="RatingId" ColumnName="RatingId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

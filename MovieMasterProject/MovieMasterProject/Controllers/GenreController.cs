@@ -35,7 +35,7 @@ namespace MovieMasterProject.Controllers
             return View(genre);
         }
 
-        // GET: /Genre/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
