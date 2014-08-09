@@ -1,0 +1,46 @@
+﻿@*@model IEnumerable<MovieMasterProject.Rating>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RatingValue)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RatingValue)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RatingId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RatingId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RatingId })
+        </td>
+    </tr>
+}
+
+</table>*@
+
+<h2>Rate This</h2>
+
+@model MovieMasterProject.Models.RatingsModel
+@{
+    ViewBag.Title = "Index";
+}
+
+@Html.LabelFor(model => model.RatingId)
+@Html.DropDownListFor(model => model.RatingId, new SelectList(ViewBag.Movies,"MovieId", "Title"))
+@Html.DropDownListFor(model => model.RatingId, Model.RatingsList)
+@Html.ValidationMessageFor(m => m.RatingId)
+    <input type="submit" value="Create">

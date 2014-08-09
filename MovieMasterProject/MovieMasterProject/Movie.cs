@@ -17,7 +17,7 @@ namespace MovieMasterProject
         public string Title { get; set; }
         public Nullable<int> DirectorId { get; set; }
         public Nullable<int> GenreId { get; set; }
-        public Nullable<decimal> Rating { get; set; }
+        public Nullable<int> Rating { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> ReleaseDate { get; set; }

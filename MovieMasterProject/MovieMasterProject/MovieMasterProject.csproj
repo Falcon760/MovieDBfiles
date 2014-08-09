@@ -185,6 +185,7 @@
     <Compile Include="Controllers\MessageBoardDsController.cs" />
     <Compile Include="Controllers\MovieActorsController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
+    <Compile Include="Controllers\RatingsController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="DataModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -223,6 +224,8 @@
     <Compile Include="Models\HtmlHelpers.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\PartialViewComments.cs" />
+    <Compile Include="Models\RatingsModel.cs" />
+    <Compile Include="Models\RatingType.cs" />
     <Compile Include="Movie.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
@@ -382,6 +385,11 @@
     <Content Include="Views\Review\Details.cshtml" />
     <Content Include="Views\Review\Edit.cshtml" />
     <Content Include="Views\Review\Index.cshtml" />
+    <Content Include="Views\Ratings\Create.cshtml" />
+    <Content Include="Views\Ratings\Delete.cshtml" />
+    <Content Include="Views\Ratings\Details.cshtml" />
+    <Content Include="Views\Ratings\Edit.cshtml" />
+    <Content Include="Views\Ratings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

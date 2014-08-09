@@ -56,8 +56,12 @@
                 <tr>
                     <th id="edit">Rating</th>
                     <td align="left">
+                       
+                        @Html.DropDownListFor(modelItem => item.MovieId, new SelectList(ViewBag.Ratings, "Value", "Text"))
 
-                        <script type="text/javascript">
+
+
+                        @*<script type="text/javascript">
 <!--
 function analyze(myButton) {
     if (myButton == 1) {
@@ -82,7 +86,7 @@ function analyze(myButton) {
 
                         <input type="radio" name="fav_movie1" value=1 onclick="analyze(this.value);" />A
                         <input type="radio" name="fav_movie1" value=2 onclick="analyze(this.value);" />B
-                        <input type="radio" name="fav_movie1" value=3 onclick="analyze(this.value);" />C
+                        <input type="radio" name="fav_movie1" value=3 onclick="analyze(this.value);" />C*@
 
 
                     </td>
