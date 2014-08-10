@@ -135,7 +135,10 @@
 
 
 
-                <div class="buttonrow">
+                <div class="buttonrow btn-group">
+                
+
+
                     <input type="button" value="Details" class="btn btn-xs" onclick="window.location.href='@Url.Action("Details", "Movie", new { id=item.MovieId })' " />
                     <input type="button" value="Delete" class="btn btn-xs" onclick="window.location.href='@Url.Action("Delete", "Movie", new { id=item.MovieId })' " />
                     <input type="button" value="Rate" class="btn btn-xs" onclick="window.location.href='@Url.Action("Create", "MovieRating", new { id=item.MovieId })' " />
