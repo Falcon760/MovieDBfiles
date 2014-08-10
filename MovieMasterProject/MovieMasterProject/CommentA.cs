@@ -11,13 +11,11 @@ namespace MovieMasterProject
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     
     public partial class CommentA
     {
         public int CommentId { get; set; }
         public string UserName { get; set; }
-        [DisplayName("Contents")]
         public string CommentContents { get; set; }
         public Nullable<int> MessageBoardId { get; set; }
     

@@ -6842,6 +6842,7 @@ td.visible-print {
             /*background-color:aliceblue;*/
             text-align:left;
             margin:2px;
+            clear:both;
             padding: 10px;
             float:left;
             width:100%;
@@ -6859,7 +6860,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1ffff', end
             color:white;
             border-radius:20px;
             /*background-color: #428bca;*/
-            height:100%;
+            clear:both;
             width:80%;
             text-align:left;
             margin: 0 auto;
@@ -6906,7 +6907,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
 
 }
 div.toggler { cursor:pointer; }
-div.toggler div { display:none; }
+div.toggler div { display:none; height:200px; overflow-y:scroll; }
 
 .roundedHead
  {

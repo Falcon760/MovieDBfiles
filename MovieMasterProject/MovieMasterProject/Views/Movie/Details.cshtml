@@ -95,12 +95,9 @@
              <div>
                @foreach (var item in Model.MessageBoard.Reviews)
                {
-                   <table>
-                   <tr><th>@Html.DisplayFor(modelItem => item.UserName) </th>
-                       <td>posted the review <u>@Html.DisplayFor(modelItem => item.ReviewTitle)</u> = </td>
-                       <td>@Html.DisplayFor(modelItem => item.ReviewContents)</td>
-                    </tr>
-                   </table>
+                   <ul>@Html.DisplayFor(modelItem => item.UserName)
+                       posted the review <u>@Html.DisplayFor(modelItem => item.ReviewTitle)</u>
+                       @Html.DisplayFor(modelItem => item.ReviewContents)</ul>
                    
                }
             </div>

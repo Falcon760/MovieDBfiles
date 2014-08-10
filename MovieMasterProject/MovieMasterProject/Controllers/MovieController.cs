@@ -156,7 +156,7 @@ namespace MovieMasterProject.Controllers
             }
             return View(movie);
         }
-
+        //[Authorize(Users="UserName", Roles="")]
        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
