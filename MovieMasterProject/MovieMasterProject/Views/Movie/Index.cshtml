@@ -68,7 +68,7 @@
                     <tr>
                         <th>Release </th>
                         <td> 
-                            @Html.DisplayFor(modelItem => item.ReleaseDate)
+                            @Html.DisplayFor(modelItem => item.ReleaseDate, new { DataFormatString = "{0:MM/dd/yyyy}" })
                         </td>
                     </tr>
                 </table>
