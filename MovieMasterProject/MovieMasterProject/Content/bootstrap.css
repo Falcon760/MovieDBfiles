@@ -7056,6 +7056,40 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
     overflow-y:scroll;
 
 }
+.navbar-inverse { 
+  background: rgb(6,79,153); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(6,79,153,1) 0%, rgba(38,95,155,1) 38%, rgba(49,122,196,1) 68%, rgba(49,122,196,1) 68%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(6,79,153,1)), color-stop(38%,rgba(38,95,155,1)), color-stop(68%,rgba(49,122,196,1)), color-stop(68%,rgba(49,122,196,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(6,79,153,1) 0%,rgba(38,95,155,1) 38%,rgba(49,122,196,1) 68%,rgba(49,122,196,1) 68%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(6,79,153,1) 0%,rgba(38,95,155,1) 38%,rgba(49,122,196,1) 68%,rgba(49,122,196,1) 68%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(6,79,153,1) 0%,rgba(38,95,155,1) 38%,rgba(49,122,196,1) 68%,rgba(49,122,196,1) 68%); /* IE10+ */
+background: linear-gradient(to bottom, rgba(6,79,153,1) 0%,rgba(38,95,155,1) 38%,rgba(49,122,196,1) 68%,rgba(49,122,196,1) 68%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#064f99', endColorstr='#317ac4',GradientType=0 ); /* IE6-9 */
 
 
+
+border-radius:5px; 
+margin-left:50px;
+margin-right:50px;
+margin-top: 1px;
+margin-bottom:5px;
+}
+
+
+.navbar .nav > li > a {
+
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    color:  rgb(6,6,6);
+}
+
+.navbar .navbar-brand {
+  color: rgb(237,144,23); /* Old browsers */
+color: -moz-linear-gradient(top, rgba(237,144,23,1) 7%, rgba(246,230,180,1) 100%); /* FF3.6+ */
+color: -webkit-gradient(linear, left top, left bottom, color-stop(7%,rgba(237,144,23,1)), color-stop(100%,rgba(246,230,180,1))); /* Chrome,Safari4+ */
+color: -webkit-linear-gradient(top, rgba(237,144,23,1) 7%,rgba(246,230,180,1) 100%); /* Chrome10+,Safari5.1+ */
+color: -o-linear-gradient(top, rgba(237,144,23,1) 7%,rgba(246,230,180,1) 100%); /* Opera 11.10+ */
+color: -ms-linear-gradient(top, rgba(237,144,23,1) 7%,rgba(246,230,180,1) 100%); /* IE10+ */
+color: linear-gradient(to bottom, rgba(237,144,23,1) 7%,rgba(246,230,180,1) 100%); /* W3C */
+text-shadow:1px 1px 1px  #000;
+}
 
