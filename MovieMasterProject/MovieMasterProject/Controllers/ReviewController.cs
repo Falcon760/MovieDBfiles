@@ -7,6 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MovieMasterProject;
+using MovieMasterProject;
+using Microsoft.AspNet.Identity;
+
+
 
 namespace MovieMasterProject.Controllers
 {
@@ -40,8 +44,11 @@ namespace MovieMasterProject.Controllers
         [Authorize]
         public ActionResult Create()
         {
+            Review review = new Review();
+            review.UserName = User.Identity.GetUserName();
+
             ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName");
-            return View();
+            return View(review);
         }
 
         // POST: /Review/Create
@@ -55,7 +62,7 @@ namespace MovieMasterProject.Controllers
             {
                 db.Reviews.Add(review);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Movie");
             }
 
             ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName", review.MessageBoardId);

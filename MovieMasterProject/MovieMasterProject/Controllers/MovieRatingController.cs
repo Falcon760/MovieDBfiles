@@ -89,7 +89,7 @@ namespace MovieMasterProject.Controllers
             {
                 db.Entry(rating).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Movie");
             }
             ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title", rating.MovieId);
             return View(rating);

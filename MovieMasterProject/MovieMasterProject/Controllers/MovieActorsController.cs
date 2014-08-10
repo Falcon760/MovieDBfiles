@@ -39,7 +39,12 @@ namespace MovieMasterProject.Controllers
         // GET: MovieActors/Create
         public ActionResult Create()
         {
-            ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "FirstName");
+            ViewBag.ActorId = new SelectList((from s in db.Actors select new { 
+    ID=s.ActorId,
+    FullName = s.FirstName+ " " + s.LastName}), 
+    "ID", 
+    "FullName", 
+    null);
             ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title");
             return View();
         }
@@ -55,7 +60,7 @@ namespace MovieMasterProject.Controllers
             {
                 db.MovieActors.Add(movieActor);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Movie");
             }
 
             ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "FirstName", movieActor.ActorId);
