@@ -17,14 +17,25 @@ namespace MovieMasterProject.Controllers
 
         public ActionResult Search(string SearchBox)
         {
-            //ViewBag.Genre = (from q in db.Genres
-            //                 select q.GenreType);
+            var movies = from t in db.Movies select t;
+            DateTime searchDate;
+            if(!String.IsNullOrEmpty(SearchBox))
+            {
+                bool isDateSearch = DateTime.TryParse(SearchBox, out searchDate);
+                if (isDateSearch)
+                {
+                    movies = movies.Where(s => s.ReleaseDate == searchDate);
+                }
+                else
+                {
 
-            var movies = (from r in db.Movies
-                           where r.Title.Contains(SearchBox)
-                           || r.Genre.GenreType.Contains(SearchBox)
-                           select r).ToList();
-            return View("Index", movies);
+                    movies = from t in db.Movies
+                              where t.Title.Contains(SearchBox)
+                              || t.Genre.GenreType.Contains(SearchBox)
+                              select t;
+                }
+            }
+            return View("Index", movies.ToList());
         }
 
 
@@ -32,37 +43,11 @@ namespace MovieMasterProject.Controllers
         // GET: /Movie/
         public ActionResult Index()
         {
-            //if (searchString != null) {
-
-            //page = 1; 
-            //} else { 
-            //    searchString = currentFilter; }
-            //    ViewBag.CurrentFilter = searchString;
 
             var movies = db.Movies.Include(m => m.Director).Include(m => m.Genre).Include(m => m.MessageBoard);
             return View(movies.ToList());
 
-//            if (!String.IsNullOrEmpty(searchString))
-//{
-//movies = movies.Where(s => s.Title.ToUpper().Contains(searchString.ToUpper())
-//|| s.Genre.GenreType.ToUpper().Contains(searchString.ToUpper()));
-//}
-//switch (sortOrder)
-//{
-//case "name_desc":
-//movies = movies.OrderByDescending(s => s.Title);
-//break;
-//case "Date":
-//movies = movies.OrderBy(s => s.ReleaseDate);
-//break;
-//case "date_desc":
-//movies = movies.OrderByDescending(s => s.ReleaseDate);
-//break;
-//default: // Name ascending
-//movies = movies.OrderBy(s => s.Title);
-//break;
-//}
-//int pageSize = 3; int pageNumber = (page ?? 1); return View(movies.ToPagedList(pageNumber, pageSize));
+
 }
 
 
@@ -94,9 +79,7 @@ namespace MovieMasterProject.Controllers
             return View();
         }
 
-        // POST: /Movie/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+       [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="MovieId,Title,DirectorId,GenreId,Rating,ReleaseDate,Summary")] Movie movie)
@@ -136,8 +119,7 @@ namespace MovieMasterProject.Controllers
         }
 
         // POST: /Movie/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="MovieId,Title,DirectorId,GenreId,Rating,ReleaseDate,Summary")] Movie movie)
@@ -175,7 +157,7 @@ namespace MovieMasterProject.Controllers
             return View(movie);
         }
 
-        // POST: /Movie/Delete/5
+       [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

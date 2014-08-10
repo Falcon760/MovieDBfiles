@@ -64,7 +64,7 @@ namespace MovieMasterProject.Controllers
             ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName", comment.MessageBoardId);
             return View(comment);
         }
-
+        [Authorize]
         // GET: /Comment/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -112,7 +112,7 @@ namespace MovieMasterProject.Controllers
             }
             return View(comment);
         }
-
+        [Authorize]
         // POST: /Comment/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

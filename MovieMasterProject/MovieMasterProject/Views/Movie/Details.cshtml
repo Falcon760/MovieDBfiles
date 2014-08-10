@@ -20,29 +20,30 @@
                     <tr><th>Genre</th><td>@Html.DisplayFor(model => model.Genre.GenreType)</td></tr>
                     <tr><th>Director</th><td>@Html.DisplayFor(model => model.Director.DirectorName)</td></tr>
                     <tr><th>Release Date</th><td>@Html.DisplayFor(model => model.ReleaseDate)</td></tr>
-                    <tr><th>Cast</th><td>@Html.ActionLink("Add", "Create", "MovieActors")</td>
-               
-                      
-
-                            @foreach (var item in Model.MovieActors)
-                            {
-                                <table>
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(model => item.Actor.FirstName)
-                                            @Html.DisplayFor(model => item.Actor.LastName)
-                                        </td>
-                                    </tr>
-
-                                </table>
-
-                            }
-
-                       
-
-                    
+                    <tr><th>Cast</th><td>@Html.ActionLink("Add", "Create", "MovieActors") or @Html.ActionLink("Delete", "Index", "MovieActors")</td>             
                     </tr>
+
                 </table>
+                <table class="X"><tr>
+    @foreach (var item in Model.MovieActors)
+    {
+
+
+        <td>
+            @Html.DisplayFor(model => item.Actor.FirstName)
+            @Html.DisplayFor(model => item.Actor.LastName)
+        </td>
+
+
+
+    }
+
+</tr></table>
+
+
+
+
+
             </div>
 
         <div id="mySlider" class="carousel slide" style="width:50%; float:left">
@@ -87,11 +88,6 @@
         <div class="roundedBox toggler">
             <h5>Summary </h5><div>
                 @Html.DisplayFor(model => model.Summary)
-                This is truncated.  This is truncated. This is truncated.
-                This is truncated.This is truncated.  This is truncated.This is truncated.  This is truncated. This is truncated.
-                This is truncated.This is truncated.  This is truncated.This is truncated.  This is truncated. This is truncated.
-                This is truncated.This is truncated.  This is truncated.This is truncated.  This is truncated. This is truncated.
-                This is truncated.This is truncated.  This is truncated.
             </div>
         </div>
         <div class="roundedBox toggler">

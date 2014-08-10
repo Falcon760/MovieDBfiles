@@ -36,6 +36,7 @@ namespace MovieMasterProject.Controllers
             return View(commenta);
         }
 
+        [Authorize]
         // GET: /CommentA/Create
         public ActionResult Create()
         {
@@ -77,9 +78,7 @@ namespace MovieMasterProject.Controllers
             return View(commenta);
         }
 
-        // POST: /CommentA/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="CommentId,UserName,CommentContents,MessageBoardId")] CommentA commenta)
@@ -93,7 +92,7 @@ namespace MovieMasterProject.Controllers
             ViewBag.MessageBoardId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName", commenta.MessageBoardId);
             return View(commenta);
         }
-
+        [Authorize]
         // GET: /CommentA/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -108,7 +107,7 @@ namespace MovieMasterProject.Controllers
             }
             return View(commenta);
         }
-
+        [Authorize]
         // POST: /CommentA/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

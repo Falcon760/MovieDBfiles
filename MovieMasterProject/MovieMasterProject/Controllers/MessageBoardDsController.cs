@@ -43,9 +43,7 @@ namespace MovieMasterProject.Controllers
             return View();
         }
 
-        // POST: MessageBoardDs/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+      [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MessageBoardId,MessageBoardName")] MessageBoardD messageBoardD)
@@ -77,9 +75,7 @@ namespace MovieMasterProject.Controllers
             return View(messageBoardD);
         }
 
-        // POST: MessageBoardDs/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+       [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MessageBoardId,MessageBoardName")] MessageBoardD messageBoardD)
@@ -109,7 +105,7 @@ namespace MovieMasterProject.Controllers
             return View(messageBoardD);
         }
 
-        // POST: MessageBoardDs/Delete/5
+       [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

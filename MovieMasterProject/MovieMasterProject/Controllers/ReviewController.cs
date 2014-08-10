@@ -51,9 +51,7 @@ namespace MovieMasterProject.Controllers
             return View(review);
         }
 
-        // POST: /Review/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+       [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="ReviewId,UserName,ReviewTitle,Rating,MessageBoardId,ReviewContents")] Review review)
@@ -86,8 +84,7 @@ namespace MovieMasterProject.Controllers
         }
 
         // POST: /Review/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="ReviewId,UserName,ReviewTitle,Rating,MessageBoardId,ReviewContents")] Review review)
@@ -117,7 +114,7 @@ namespace MovieMasterProject.Controllers
             return View(review);
         }
 
-        // POST: /Review/Delete/5
+       [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

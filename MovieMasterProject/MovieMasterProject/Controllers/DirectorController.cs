@@ -42,10 +42,7 @@ namespace MovieMasterProject.Controllers
             ViewBag.DirectorId = new SelectList(db.MessageBoardDs, "MessageBoardId", "MessageBoardName");
             return View();
         }
-
-        // POST: /Director/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="DirectorId,DirectorName,DateOfBirth,Bio")] Director director)
@@ -117,7 +114,7 @@ namespace MovieMasterProject.Controllers
             return View(director);
         }
 
-        // POST: /Director/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

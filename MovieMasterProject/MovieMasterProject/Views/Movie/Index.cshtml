@@ -80,7 +80,7 @@
                     <center>User Ratings</center>
                     <div>
                     @foreach (var item2 in item.Ratings)
-               {
+                    {
     <table cellpadding="13" align="center">
         <tr>
             <th>
@@ -92,7 +92,9 @@
         </tr>
         
     </table>
+              
                     }
+                @Html.DisplayFor(modelItem => item.Rating)
                         </div>
                 </div>
 

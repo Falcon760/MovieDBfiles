@@ -7049,6 +7049,12 @@ background: -ms-linear-gradient(top, #1e5799 0%,#2989d8 65%,#7db9e8 100%); /* IE
 background: linear-gradient(to bottom, #1e5799 0%,#2989d8 65%,#7db9e8 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
         }
+.Table .X {
+    table-layout:fixed;
+    width:90%;
+    overflow-y:scroll;
+
+}
 
 
 

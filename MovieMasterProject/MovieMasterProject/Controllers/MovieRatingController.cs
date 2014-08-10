@@ -48,7 +48,7 @@ namespace MovieMasterProject.Controllers
             return View(rating);
         }
 
-
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="RatingId,UserName,MovieId,Value")] Rating rating)
@@ -110,7 +110,7 @@ namespace MovieMasterProject.Controllers
             return View(rating);
         }
 
-        // POST: /MovieRating/Delete/5
+       [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
