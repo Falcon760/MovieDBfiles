@@ -22,10 +22,7 @@ namespace MovieMasterProject
         }
 
         public int DirectorId { get; set; }
-        [DisplayName("Director Name")]
         public string DirectorName { get; set; }
-        [DisplayName("Birth Date")]
-        [DisplayFormat(DataFormatString = "{0:MMM dd, yyyy}", ApplyFormatInEditMode = true)]
         public string DateOfBirth { get; set; }
         public string Bio { get; set; }
 
