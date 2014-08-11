@@ -101,21 +101,22 @@
              <div>
                @foreach (var item in Model.MessageBoard.Reviews)
                {
+                   <div class="borderclass" style="overflow:initial;height:50px;" > 
                    <ul>@Html.DisplayFor(modelItem => item.UserName)
                        posted the review <u>@Html.DisplayFor(modelItem => item.ReviewTitle)</u>
-                       @Html.DisplayFor(modelItem => item.ReviewContents)</ul>
+                       @Html.DisplayFor(modelItem => item.ReviewContents)</ul></div>
                    
                }
             </div>
         </div>
             <div class="roundedBox toggler">
-                <h5>Movie Comments - @Html.ActionLink("Add Comment", "Create", "Comment", new {})</h5> 
+                <h5>Movie Comments - @Html.ActionLink("Add Comment", "Create", "Comment")</h5> 
                  <div>
                     @foreach (var item in Model.MessageBoard.Comments)
                     {
-                        <div class="roundedBox" style="color: green">
-                        @Html.DisplayFor(model => item.UserName) <ul> Comment: </ul>
-                        @Html.DisplayFor(model => item.CommentContents)</div>
+                        <div class="borderclass" style="overflow:initial;height:50px;" >
+                        @Html.DisplayFor(model => item.UserName) <ul> Comment:
+                        @Html.DisplayFor(model => item.CommentContents)</ul></div>
                     }
                 </div>
 
