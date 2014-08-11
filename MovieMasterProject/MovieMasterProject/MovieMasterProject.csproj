@@ -165,7 +165,7 @@
     <Compile Include="Actor.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ActorPartial.cs" />
+    <Compile Include="Models\ActorPartial.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -233,7 +233,6 @@
     <Compile Include="Models\HtmlHelpers.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\PartialViewComments.cs" />
-    <Compile Include="Models\RatingsModel.cs" />
     <Compile Include="Models\RatingsPartial.cs" />
     <Compile Include="Models\RatingType.cs" />
     <Compile Include="Movie.cs">
