@@ -6915,7 +6915,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#191919', end
 
 }
 div.toggler { cursor:pointer; }
-div.toggler div { display:none; height:200px; overflow-y:scroll; }
+div.toggler div { display:none; height:200px; overflow-y:scroll; word-wrap:break-word; }
 
 .roundedHead
  {
@@ -7146,3 +7146,8 @@ margin-bottom:5px;
 
 }
 
+.borderclass{
+    border-bottom-width:1px;
+    border-bottom-style:solid;
+
+}

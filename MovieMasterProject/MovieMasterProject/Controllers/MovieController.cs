@@ -39,7 +39,6 @@ namespace MovieMasterProject.Controllers
         }
 
 
-
         // GET: /Movie/
         public ActionResult Index()
         {
