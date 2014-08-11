@@ -1,0 +1,58 @@
+//in the movie model
+
+[Column(TypeName = "image")]
+public byte[] Picture {get;set;}
+
+public string ImagePath {get;set;}
+
+//create page of movie
+
+ <div class="form-group">
+        @Html.LabelFor(model => model.Picture, "Director Name", new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                <input name="ImageFile" type="file" />
+                @Html.ValidationMessageFor(model => model.Picture)
+            </div>
+        </div>
+
+//to receive the picture, specify the controller in view
+@using (Html.BeginForm("Create", "Movie", FormMethod.Post, new {enctype = "multipart/form=data"})
+
+
+
+//in the http POST action method
+public ActionResult Create([Bind(Include="MovieId,Title,DirectorId,GenreId,Rating,ReleaseDate,Summary")] Movie movie, HttpPostedFileBase ImageFile)
+{
+if (ModelState.IsValid)
+{
+if (ImageFile != null)
+{
+string pic = System.IO.Path.GetFileName(ImageFile.FileName);
+string path = System.IO.Path.Combine(Server.MapPath(~/Content/img"),pic);
+ImageFile.SaveAs(path);
+movie.ImagePath = pic;
+using (MemoryStream ms = new MemoryStream())
+{
+ImageFile.InputStream.CopyTo(ms);
+movie.Picture = ms.GetBuffer();
+}
+}
+
+
+//to get picture
+public ActionResult GetImage(int id)
+{
+byte[] imageData = db.Movies.Find(id).Picture;
+return File(imageData, "image/jpeg");
+}
+
+
+
+//to display picture
+<dd>
+<img src="~/Content/img/@Model.ImagePath" />
+</dd>
+
+
+
+

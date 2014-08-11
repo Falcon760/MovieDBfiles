@@ -13,7 +13,7 @@ namespace MovieMasterProject
         }
     
         public int GenreId { get; set; }
-        [DisplayName("Genre Type")]
+        [DisplayName("Genre")]
         public string GenreType { get; set; }
     
         public virtual ICollection<Movie> Movies { get; set; }

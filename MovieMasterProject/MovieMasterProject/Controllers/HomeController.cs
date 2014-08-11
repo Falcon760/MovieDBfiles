@@ -9,12 +9,13 @@ namespace MovieMasterProject.Controllers
 {
     public class HomeController : Controller
     {
-        [HttpPost] public ActionResult Upload(HttpPostedFileBase file) { try { if (file.ContentLength > 0) 
+        [HttpPost] 
+        public ActionResult Upload(HttpPostedFileBase file) { try { if (file.ContentLength > 0) 
         { var fileName = Path.GetFileName(file.FileName); 
             var path = Path.Combine(Server.MapPath("~/Content/Images"), fileName); file.SaveAs(path); } 
             ViewBag.Message = "Upload successful"; return RedirectToAction("Index"); } 
         catch { ViewBag.Message = "Upload failed"; return RedirectToAction("Uploads"); } }
-        //does not work
+        //does work 8/8
 
 
 

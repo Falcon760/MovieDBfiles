@@ -7,6 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MovieMasterProject;
+using MovieMasterProject;
+using Microsoft.AspNet.Identity;
+
+
 
 namespace MovieMasterProject.Controllers
 {
@@ -40,13 +44,14 @@ namespace MovieMasterProject.Controllers
         [Authorize]
         public ActionResult Create()
         {
+            Review review = new Review();
+            review.UserName = User.Identity.GetUserName();
+
             ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName");
-            return View();
+            return View(review);
         }
 
-        // POST: /Review/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+       [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="ReviewId,UserName,ReviewTitle,Rating,MessageBoardId,ReviewContents")] Review review)
@@ -55,7 +60,7 @@ namespace MovieMasterProject.Controllers
             {
                 db.Reviews.Add(review);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Movie");
             }
 
             ViewBag.MessageBoardId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName", review.MessageBoardId);
@@ -79,8 +84,7 @@ namespace MovieMasterProject.Controllers
         }
 
         // POST: /Review/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="ReviewId,UserName,ReviewTitle,Rating,MessageBoardId,ReviewContents")] Review review)
@@ -110,7 +114,7 @@ namespace MovieMasterProject.Controllers
             return View(review);
         }
 
-        // POST: /Review/Delete/5
+       [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

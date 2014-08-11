@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MovieMasterProject;
+using PagedList;
 
 namespace MovieMasterProject.Controllers
 {
@@ -16,13 +17,25 @@ namespace MovieMasterProject.Controllers
 
         public ActionResult Search(string SearchBox)
         {
-            //ViewBag.Genre = (from q in db.Genres
-            //                 select q.GenreType);
+            var movies = from t in db.Movies select t;
+            DateTime searchDate;
+            if(!String.IsNullOrEmpty(SearchBox))
+            {
+                bool isDateSearch = DateTime.TryParse(SearchBox, out searchDate);
+                if (isDateSearch)
+                {
+                    movies = movies.Where(s => s.ReleaseDate == searchDate);
+                }
+                else
+                {
 
-            var movies = (from r in db.Movies
-                           where r.Title.Contains(SearchBox)
-                           select r).ToList();
-            return View("Index", movies);
+                    movies = from t in db.Movies
+                              where t.Title.Contains(SearchBox)
+                              || t.Genre.GenreType.Contains(SearchBox)
+                              select t;
+                }
+            }
+            return View("Index", movies.ToList());
         }
 
 
@@ -30,9 +43,13 @@ namespace MovieMasterProject.Controllers
         // GET: /Movie/
         public ActionResult Index()
         {
+
             var movies = db.Movies.Include(m => m.Director).Include(m => m.Genre).Include(m => m.MessageBoard);
             return View(movies.ToList());
-        }
+
+
+}
+
 
         // GET: /Movie/Details/5
         public ActionResult Details(int? id)
@@ -62,9 +79,7 @@ namespace MovieMasterProject.Controllers
             return View();
         }
 
-        // POST: /Movie/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+       [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="MovieId,Title,DirectorId,GenreId,Rating,ReleaseDate,Summary")] Movie movie)
@@ -104,8 +119,7 @@ namespace MovieMasterProject.Controllers
         }
 
         // POST: /Movie/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="MovieId,Title,DirectorId,GenreId,Rating,ReleaseDate,Summary")] Movie movie)
@@ -142,8 +156,8 @@ namespace MovieMasterProject.Controllers
             }
             return View(movie);
         }
-
-        // POST: /Movie/Delete/5
+        //[Authorize(Users="UserName", Roles="")]
+       [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -153,17 +167,21 @@ namespace MovieMasterProject.Controllers
 
             Movie movie = db.Movies.Find(id);
             MessageBoard messageboard = db.MessageBoards.Find(id);
+            Rating rating = db.Ratings.Find(id);
+          
             var query = from p in db.Comments
                         where p.MessageBoardId == id
                         select p;
-
+  
             foreach (var row in query)
             {
                 db.Comments.Remove(row);
             }
 
             db.MessageBoards.Remove(messageboard);
+
             db.Movies.Remove(movie);
+            
             db.SaveChanges();
             return RedirectToAction("Index");
         }

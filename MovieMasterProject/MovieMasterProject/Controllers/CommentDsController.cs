@@ -46,6 +46,7 @@ namespace MovieMasterProject.Controllers
         // POST: CommentDs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CommentId,UserName,CommentContents,MessageBoardId")] CommentD commentD)
@@ -109,7 +110,7 @@ namespace MovieMasterProject.Controllers
             return View(commentD);
         }
 
-        // POST: CommentDs/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

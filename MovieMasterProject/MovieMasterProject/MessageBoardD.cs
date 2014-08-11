@@ -11,7 +11,6 @@ namespace MovieMasterProject
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     
     public partial class MessageBoardD
     {
@@ -21,7 +20,6 @@ namespace MovieMasterProject
         }
     
         public int MessageBoardId { get; set; }
-        [DisplayName("Board Name")]
         public string MessageBoardName { get; set; }
     
         public virtual ICollection<CommentD> CommentDs { get; set; }

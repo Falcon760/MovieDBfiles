@@ -1,4 +1,4 @@
-﻿@model MovieMasterProject.MovieActor
+﻿@model MovieMasterProject.Rating
 
 @{
     ViewBag.Title = "Delete";
@@ -8,23 +8,23 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>MovieActor</h4>
+    <h4>Rating</h4>
     <hr />
     <dl class="dl-horizontal">
-        @*<dt>
-            @Html.DisplayNameFor(model => model.Count)
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Count)
-        </dd>*@
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Actor.FirstName)
+            @Html.DisplayNameFor(model => model.Value)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Actor.FirstName)
+            @Html.DisplayFor(model => model.Value)
         </dd>
 
         <dt>

@@ -36,16 +36,15 @@ namespace MovieMasterProject.Controllers
             return View(actor);
         }
 
-        // GET: Actors/Create
+       [Authorize]
         public ActionResult Create()
         {
             ViewBag.ActorId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName");
             return View();
         }
 
-        // POST: Actors/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+       
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ActorId,FirstName,LastName,DateOfBirth,Bio")] Actor actor)
@@ -118,7 +117,7 @@ namespace MovieMasterProject.Controllers
             }
             return View(actor);
         }
-
+        [Authorize]
         // POST: Actors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

@@ -7,52 +7,46 @@
 <div class="col-lg-12">
     <br />
 
-    <div class="roundedSquare">
+    <div class="roundedSquare"><center>
         <div class="containerrow">
             @Html.DisplayFor(model => model.Title)
+        </div></center>
 
+        <div class="row2">
+            <div class="roundedDetails" style="float:left">
 
+                <table cellspacing="15">
 
-        </div>
-        <div class="roundedHead toggler">
-            Movie Details
-            <div>
-                <table align="center" cellpadding="20" style="text-align:center">
-                    <tr>
-                        <td>
-                            <h4>Release Date</h4>
-                            @Html.DisplayFor(model => model.ReleaseDate)
-                        </td>
-                        <td>
-                            <h4>Genre</h4>
-                            @Html.DisplayFor(model => model.Genre.GenreType)
-                        </td>
-                        <td>
-                            <h4>Director</h4>
-                            @Html.DisplayFor(model => model.Director.DirectorName)
-                        </td>
-                        <td>
-                            <h4>Total Rating</h4>
-                        </td>
+                    <tr><th>Genre</th><td>@Html.DisplayFor(model => model.Genre.GenreType)</td></tr>
+                    <tr><th>Director</th><td>@Html.DisplayFor(model => model.Director.DirectorName)</td></tr>
+                    <tr><th>Release Date</th><td>@Html.DisplayFor(model => model.ReleaseDate)</td></tr>
+                    <tr><th>Cast</th><td>@Html.ActionLink("Add", "Create", "MovieActors") or @Html.ActionLink("Delete", "Index", "MovieActors")</td>             
                     </tr>
+
                 </table>
+                <table class="X"><tr>
+    @foreach (var item in Model.MovieActors)
+    {
+
+
+        <td>
+            @Html.DisplayFor(model => item.Actor.FirstName)
+            @Html.DisplayFor(model => item.Actor.LastName)
+        </td>
+
+
+
+    }
+
+</tr></table>
+
+
+
+
+
             </div>
-        </div>
-        <div class="roundedHead toggler">
-            Cast - @Html.ActionLink("Add","Create","MovieActors")
-    
-    @*<input type="button" value="Add" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","MovieActors")' " />*@
-            <div>
-                    
-            @foreach (var item in Model.MovieActors)
-            {
-                @Html.DisplayFor(model => item.Actor.FirstName)
-                @Html.DisplayFor(model => item.Actor.LastName)
-            }
-            </div>
-        </div>
-        <br />
-        <div id="mySlider" class="carousel slide">
+
+        <div id="mySlider" class="carousel slide" style="width:50%; float:left">
             <ol class="carousel-indicators">
                 <li data-target="#mySlider" data-slide-to="0" class="active"></li>
                 <li data-target="#mySlider" data-slide-to="1"></li>
@@ -72,15 +66,17 @@
             <a class="left carousel-control" href="#mySlider" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
             <a class="right carousel-control" href="#mySlider" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
         </div>
-        <center>
-        @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        { @Html.AntiForgeryToken() <fieldset><div class="editor-field"> @Html.TextBox("file", "", new { type = "file" }) </div> <div class="editor-field"> <input type="submit" value="Upload" /> </div> </fieldset> }
-            </center>
-        @*<div class="buttonrow">
-            <input type="button" value="Upload Image" class="btn btn-xs" onclick="window.location.href='@Url.Action("Index","Movie")' " />
-        </div>*@
+ </div>    
+    <br />
+        <div class="row3"style="float:left;" >
+            <center>
 
-
+                @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                { @Html.AntiForgeryToken() <fieldset><div class="editor-field"> @Html.TextBox("file", "", new { type = "file" }) </div> <div class="editor-field"> <input type="submit" value="Upload" /> </div> </fieldset> }
+            </center> 
+        </div>
+        
+        
         <script>
             $(function () {
                 $('.toggler').click(function () {
@@ -90,19 +86,20 @@
         </script>
 
         <div class="roundedBox toggler">
-            <h4>Summary </h4><div>
+            <h5>Summary </h5><div>
                 @Html.DisplayFor(model => model.Summary)
-                This is truncated.  This is truncated. This is truncated.
-                This is truncated.This is truncated.  This is truncated.This is truncated.  This is truncated. This is truncated.
-                This is truncated.This is truncated.  This is truncated.This is truncated.  This is truncated. This is truncated.
-                This is truncated.This is truncated.  This is truncated.This is truncated.  This is truncated. This is truncated.
-                This is truncated.This is truncated.  This is truncated.
             </div>
         </div>
         <div class="roundedBox toggler">
             <h5>Reviews - @Html.ActionLink("Add Review", "Create", "Review")</h5>
              <div>
-               
+               @foreach (var item in Model.MessageBoard.Reviews)
+               {
+                   <ul>@Html.DisplayFor(modelItem => item.UserName)
+                       posted the review <u>@Html.DisplayFor(modelItem => item.ReviewTitle)</u>
+                       @Html.DisplayFor(modelItem => item.ReviewContents)</ul>
+                   
+               }
             </div>
         </div>
             <div class="roundedBox toggler">

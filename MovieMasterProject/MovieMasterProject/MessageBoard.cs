@@ -14,11 +14,12 @@ namespace MovieMasterProject
         }
     
         public int MessageBoardId { get; set; }
-        [DisplayName("Board Name")]
+        [DisplayName("Message Board Name")]
         public string MessageBoardName { get; set; }
     
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual Movie Movie { get; set; }
+        
         public virtual ICollection<Review> Reviews { get; set; }
     }
 }

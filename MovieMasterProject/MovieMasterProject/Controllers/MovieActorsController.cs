@@ -39,14 +39,17 @@ namespace MovieMasterProject.Controllers
         // GET: MovieActors/Create
         public ActionResult Create()
         {
-            ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "FirstName");
+            ViewBag.ActorId = new SelectList((from s in db.Actors select new { 
+    ID=s.ActorId,
+    FullName = s.FirstName+ " " + s.LastName}), 
+    "ID", 
+    "FullName", 
+    null);
             ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title");
             return View();
         }
 
-        // POST: MovieActors/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+       [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MovieId,ActorId,Id,Count")] MovieActor movieActor)
@@ -55,7 +58,7 @@ namespace MovieMasterProject.Controllers
             {
                 db.MovieActors.Add(movieActor);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Movie");
             }
 
             ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "FirstName", movieActor.ActorId);
@@ -80,9 +83,7 @@ namespace MovieMasterProject.Controllers
             return View(movieActor);
         }
 
-        // POST: MovieActors/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+      [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MovieId,ActorId,Id,Count")] MovieActor movieActor)
@@ -113,7 +114,7 @@ namespace MovieMasterProject.Controllers
             return View(movieActor);
         }
 
-        // POST: MovieActors/Delete/5
+       [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

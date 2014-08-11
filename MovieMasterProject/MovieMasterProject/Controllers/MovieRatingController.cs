@@ -7,102 +7,107 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MovieMasterProject;
+using Microsoft.AspNet.Identity;
+
+
 
 namespace MovieMasterProject.Controllers
 {
-    public class MessageBoardDsController : Controller
+    public class MovieRatingController : Controller
     {
         private MovieLoversDBEntities db = new MovieLoversDBEntities();
 
-        // GET: MessageBoardDs
+        // GET: /MovieRating/
         public ActionResult Index()
         {
-            var messageBoardDs = db.MessageBoardDs.Include(m => m.Director);
-            return View(messageBoardDs.ToList());
+            var ratings = db.Ratings.Include(r => r.Movie);
+            return View(ratings.ToList());
         }
 
-        // GET: MessageBoardDs/Details/5
+        // GET: /MovieRating/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MessageBoardD messageBoardD = db.MessageBoardDs.Find(id);
-            if (messageBoardD == null)
+            Rating rating = db.Ratings.Find(id);
+            if (rating == null)
             {
                 return HttpNotFound();
             }
-            return View(messageBoardD);
+            return View(rating);
         }
 
-        // GET: MessageBoardDs/Create
+        [Authorize]
         public ActionResult Create()
         {
-            ViewBag.MessageBoardId = new SelectList(db.Directors, "DirectorId", "DirectorName");
-            return View();
+            Rating rating = new Rating();
+            ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title");
+            rating.UserName = User.Identity.GetUserName();
+            return View(rating);
         }
 
-      [Authorize]
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MessageBoardId,MessageBoardName")] MessageBoardD messageBoardD)
+        public ActionResult Create([Bind(Include="RatingId,UserName,MovieId,Value")] Rating rating)
         {
             if (ModelState.IsValid)
             {
-                db.MessageBoardDs.Add(messageBoardD);
+                db.Ratings.Add(rating);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Movie");
             }
 
-            ViewBag.MessageBoardId = new SelectList(db.Directors, "DirectorId", "DirectorName", messageBoardD.MessageBoardId);
-            return View(messageBoardD);
+            ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title", rating.MovieId);
+            return View("Index","Movie",rating);
         }
 
-        // GET: MessageBoardDs/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MessageBoardD messageBoardD = db.MessageBoardDs.Find(id);
-            if (messageBoardD == null)
+            Rating rating = db.Ratings.Find(id);
+            if (rating == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MessageBoardId = new SelectList(db.Directors, "DirectorId", "DirectorName", messageBoardD.MessageBoardId);
-            return View(messageBoardD);
+            ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title", rating.MovieId);
+            return View(rating);
         }
 
-       [Authorize]
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MessageBoardId,MessageBoardName")] MessageBoardD messageBoardD)
+        public ActionResult Edit([Bind(Include="RatingId,UserName,MovieId,Value")] Rating rating)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(messageBoardD).State = EntityState.Modified;
+                db.Entry(rating).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Movie");
             }
-            ViewBag.MessageBoardId = new SelectList(db.Directors, "DirectorId", "DirectorName", messageBoardD.MessageBoardId);
-            return View(messageBoardD);
+            ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title", rating.MovieId);
+            return View(rating);
         }
 
-        // GET: MessageBoardDs/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MessageBoardD messageBoardD = db.MessageBoardDs.Find(id);
-            if (messageBoardD == null)
+            Rating rating = db.Ratings.Find(id);
+            if (rating == null)
             {
                 return HttpNotFound();
             }
-            return View(messageBoardD);
+            return View(rating);
         }
 
        [Authorize]
@@ -110,8 +115,8 @@ namespace MovieMasterProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            MessageBoardD messageBoardD = db.MessageBoardDs.Find(id);
-            db.MessageBoardDs.Remove(messageBoardD);
+            Rating rating = db.Ratings.Find(id);
+            db.Ratings.Remove(rating);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -12,8 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Movie</h4>
-        <hr />
+
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.MovieId)
 
@@ -41,13 +40,13 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Rating, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Rating)
                 @Html.ValidationMessageFor(model => model.Rating)
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.ReleaseDate, new { @class = "control-label col-md-2" })
@@ -60,7 +59,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Summary, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Summary)
+                @Html.TextAreaFor(model => model.Summary, new { cols = 60, rows = 6 })
                 @Html.ValidationMessageFor(model => model.Summary)
             </div>
         </div>

@@ -3,10 +3,14 @@
 @{
     ViewBag.Title = "Create Movie";
 }
+<br />
 
-<h2>Create Movie</h2>
-    <center><img src="~/Content/images/movie3.jpg" alt="image description" height="250" width="870" 
-                 style="opacity: 0.3;filter: alpha (opacity= 100);"></center>
+<div class="ActorBox" style="float:left">
+
+    <div style="float:left;margin-left:15px">
+        <h2 style="font-family:'Global Serif'"> Create Movie</h2>
+        <img src="~/Content/images/movie3.jpg" alt="image description" height="200" width="200">
+    </div>
 
 
 @using (Html.BeginForm()) 
@@ -14,14 +18,15 @@
     @Html.AntiForgeryToken()
    
     
-    <div class="form-horizontal" >
+    <div class="form-horizontal" style="float:left;padding:20px" >
         
-        <hr />
+  
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+
                 @Html.EditorFor(model => model.Title)
                 @Html.ValidationMessageFor(model => model.Title)
 
@@ -29,18 +34,20 @@
             </div>           
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DirectorId, "DirectorId", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.DirectorId, "Director Name", new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
                 @Html.DropDownList("DirectorId", String.Empty)
                 @Html.ValidationMessageFor(model => model.DirectorId)
+                <input type="button" value="Add New" class="btn btn-xs" onclick="window.location.href='@Url.Action("Create","Director")' " />
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.GenreId, "GenreId", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.GenreId, "Genre Type", new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
                 @Html.DropDownList("GenreId", String.Empty)
                 @Html.ValidationMessageFor(model => model.GenreId)
+                <input type="button" value="Add New" class="btn btn-xs" onclick="window.location.href='@Url.Action("Create","Genre")' " />
             </div>
         </div>
 
@@ -53,35 +60,35 @@
         </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ReleaseDate, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.ReleaseDate, "Release Date", new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
                 @Html.EditorFor(model => model.ReleaseDate)
                 @Html.ValidationMessageFor(model => model.ReleaseDate)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Summary, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.Summary, new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
                 @Html.TextAreaFor(model => model.Summary, new { cols = 60, rows = 6 })
                 @Html.ValidationMessageFor(model => model.Summary)
+
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-offset-6 col-md-8">
                 <input type="submit" value="Create" class="btn btn-default" />
+                <input type="button" value="Back" class="btn btn-default" onclick="window.location.href='@Url.Action("Index","Movie")' " />
             </div>
         </div>
     </div>
-        
-    
+
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
+   
+    
+    </div>
+   
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
