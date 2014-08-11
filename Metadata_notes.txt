@@ -15,3 +15,6 @@ public string WhateverThisPropertyIs {get;set;}
 }
 }
 }
+
+//notes on aggregating
+http://social.msdn.microsoft.com/Forums/en-US/ed63a466-c5ea-4bff-978b-f28eac0437c2/entity-framework-code-first-product-total-sum?forum=adodotnetentityframework
