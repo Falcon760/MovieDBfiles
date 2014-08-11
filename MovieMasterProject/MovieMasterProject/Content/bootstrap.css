@@ -7151,3 +7151,10 @@ margin-bottom:5px;
     border-bottom-style:solid;
 
 }
+.btn-right
+{
+    border-right-style:solid;
+    border-collapse:collapse;
+    border-right-color:black;
+    border-right-width:2px;
+}

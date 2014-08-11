@@ -13,25 +13,27 @@
 <div class="row2">
     <div class="col-md-2">
         <input type="button" value="Add Movie" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","Movie")' " />
-    
 
 
-</div>
-    <div class="col-md-10" style="text-align:left"> 
+
+    </div>
+    <div class="col-md-10" style="text-align:left">
         @*@using (Html.BeginForm("Search", "Movie"))
+            {
+                @Html.Editor("SearchBox")
+                <input type="submit" value="Search" />
+
+            }*@
+
+        @using (Html.BeginForm("Search", "Movie"))
         {
+
             @Html.Editor("SearchBox")
             <input type="submit" value="Search" />
-
-        }*@
-        
-        @using (Html.BeginForm("Search","Movie")) { 
-   
-        @Html.Editor("SearchBox")    
-         <input type="submit" value="Search" />
         }
 
     </div>
+
 </div>
 <br />
 <br />
@@ -47,11 +49,11 @@
 {
     <div class="buttonrow">
         <div class="MovieBox">
-         <div style="float:left">
-  <img src="~/Content/img/image1.JPG" height="100" width="75" style="padding:5px" />
-          </div>
+            <div style="float:left">
+                <img src="~/Content/img/image1.JPG" height="100" width="75" style="padding:5px" />
+            </div>
             <div class="row2">
-                <table cellpadding="3" >
+                <table cellpadding="3">
 
                     <tr>
                         <th>Title </th>
@@ -67,36 +69,37 @@
                     </tr>
                     <tr>
                         <th>Release </th>
-                        <td> 
+                        <td>
                             @Html.DisplayFor(modelItem => item.ReleaseDate, new { DataFormatString = "{0:MM/dd/yyyy}" })
                         </td>
                     </tr>
                 </table>
 
-               
+
 
 
                 <div class="roundedBox toggler">
-                    
+
                     <center>Overall Rating: @Html.DisplayFor(ModelItem => item.Rating)</center>
                     <div>
-                    @foreach (var item2 in item.Ratings)
-                    {
-    <table cellpadding="13" align="center">
-        <tr>
-            <th>
-            @Html.DisplayFor(modelItem => item2.UserName)
-                </th><td>
-            @Html.DisplayFor(modelItem => item2.Value)/5.00
-            </td>
-              
-        </tr>
-        
-    </table>
-              
-                    }
-                @Html.DisplayFor(modelItem => item.Rating)
-                        </div>
+                        @foreach (var item2 in item.Ratings)
+                        {
+                            <table cellpadding="13" align="center">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayFor(modelItem => item2.UserName)
+                                    </th>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item2.Value)/5.00
+                                    </td>
+
+                                </tr>
+
+                            </table>
+
+                        }
+                        @Html.DisplayFor(modelItem => item.Rating)
+                    </div>
                 </div>
 
 
@@ -107,47 +110,53 @@
 
 
                 @*<script type="text/javascript">
-            <!--
-            function analyze(myButton) {
-                if (myButton == 1) {
-                    alert("You rated it an A");
-                    //localStorage.setItem("Rating", "A");
-                    //lobcation.replace(movie.Rating)
-                    //document.getElementById("#edit").innerHTML = "You rated it an A!";
-                    //document.cookie = "A";
+                    <!--
+                    function analyze(myButton) {
+                        if (myButton == 1) {
+                            alert("You rated it an A");
+                            //localStorage.setItem("Rating", "A");
+                            //lobcation.replace(movie.Rating)
+                            //document.getElementById("#edit").innerHTML = "You rated it an A!";
+                            //document.cookie = "A";
+                            }
+
+                        if (myButton == 2) {
+                            alert("You rated it a B");
+                        }
+                        if (myButton == 3)
+                        {
+                            alert("You rated it a C");
+                        }
+
                     }
+                    //-->
+                                            </script>
 
-                if (myButton == 2) {
-                    alert("You rated it a B");
-                }
-                if (myButton == 3)
-                {
-                    alert("You rated it a C");
-                }
-
-            }
-            //-->
-                                    </script>
-
-                                    <input type="radio" name="fav_movie1" value=1 onclick="analyze(this.value);" />A
-                                    <input type="radio" name="fav_movie1" value=2 onclick="analyze(this.value);" />B
-                                    <input type="radio" name="fav_movie1" value=3 onclick="analyze(this.value);" />C*@
+                                            <input type="radio" name="fav_movie1" value=1 onclick="analyze(this.value);" />A
+                                            <input type="radio" name="fav_movie1" value=2 onclick="analyze(this.value);" />B
+                                            <input type="radio" name="fav_movie1" value=3 onclick="analyze(this.value);" />C*@
 
 
 
 
                 <div class="buttonrow btn-group">
-                
 
 
-                    <input type="button" value="Details" class="btn btn-xs" onclick="window.location.href='@Url.Action("Details", "Movie", new { id=item.MovieId })' " />
-                    <input type="button" value="Delete" class="btn btn-xs" onclick="window.location.href='@Url.Action("Delete", "Movie", new { id=item.MovieId })' " />
+
+                    <input type="button" value="Details" class="btn btn-xs btn-right" onclick="window.location.href='@Url.Action("Details", "Movie", new { id=item.MovieId })' " />
+                    <input type="button" value="Delete" class="btn btn-xs btn-right" onclick="window.location.href='@Url.Action("Delete", "Movie", new { id=item.MovieId })' " />
                     <input type="button" value="Rate" class="btn btn-xs" onclick="window.location.href='@Url.Action("Create", "MovieRating", new { id=item.MovieId })' " />
+
+
                 </div>
+                <div class="buttonrow">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="large" data-count="none">Tweet</a>
+                    <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+                    </div>
             </div>
-    </div>
+        </div>
     </div>
 
 }
 
-<br /> 
+<br />
