@@ -43,6 +43,7 @@ namespace MovieMasterProject.Controllers
         public ActionResult Index()
         {
 
+
             int rCount = 0;
 
             
@@ -96,6 +97,8 @@ namespace MovieMasterProject.Controllers
         [Authorize]
         public ActionResult Create()
         {
+     
+
             ViewBag.DirectorId = new SelectList(db.Directors, "DirectorId", "DirectorName");
             ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "GenreType");
             ViewBag.MovieId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName");
@@ -107,6 +110,9 @@ namespace MovieMasterProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="MovieId,Title,DirectorId,GenreId,Rating,ReleaseDate,Summary")] Movie movie)
         {
+
+
+
             if (ModelState.IsValid)
             {
                 db.Movies.Add(movie);

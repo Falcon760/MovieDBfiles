@@ -33,10 +33,12 @@
             </div>
             </div>           
 
+
         <div class="form-group">
             @Html.LabelFor(model => model.DirectorId, "Director Name", new { @class = "control-label col-md-6" })
             <div class="col-md-6">
-                @Html.DropDownList("DirectorId", String.Empty)
+
+                @Html.DropDownList("DirectorId", String.Empty)}
                 @Html.ValidationMessageFor(model => model.DirectorId)
                 <input type="button" value="Add New" class="btn btn-xs" onclick="window.location.href='@Url.Action("Create","Director")' " />
             </div>
