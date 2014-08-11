@@ -50,7 +50,7 @@ namespace MovieMasterProject.Controllers
             {
                 db.Genres.Add(genre);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Movie");
             }
 
             return View(genre);
