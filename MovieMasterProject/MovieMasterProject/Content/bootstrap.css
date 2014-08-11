@@ -6882,8 +6882,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', end
 .containerrow {
   padding-right: 15px;
   padding-left: 15px;
-  background:
-      background: rgb(25,25,25); /* Old browsers */
+background: rgb(25,25,25); /* Old browsers */
 background: -moz-linear-gradient(top, rgba(25,25,25,1) 16%, rgba(33,33,33,1) 62%, rgba(50,51,45,1) 97%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(16%,rgba(25,25,25,1)), color-stop(62%,rgba(33,33,33,1)), color-stop(97%,rgba(50,51,45,1))); /* Chrome,Safari4+ */
 background: -webkit-linear-gradient(top, rgba(25,25,25,1) 16%,rgba(33,33,33,1) 62%,rgba(50,51,45,1) 97%); /* Chrome10+,Safari5.1+ */
