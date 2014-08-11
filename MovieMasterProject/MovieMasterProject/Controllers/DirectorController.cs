@@ -54,7 +54,7 @@ namespace MovieMasterProject.Controllers
                 var msgboard = new MessageBoardD { MessageBoardId = director.DirectorId, MessageBoardName = (director.DirectorName + " Comments") };
                 db.MessageBoardDs.Add(msgboard);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Movie");
 
 
                 //db.Directors.Add(director);
