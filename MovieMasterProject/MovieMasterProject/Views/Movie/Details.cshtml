@@ -24,22 +24,28 @@
                     </tr>
 
                 </table>
-                <table class="X"><tr>
-    @foreach (var item in Model.MovieActors)
-    {
-
-
-        <td>
-            @Html.DisplayFor(model => item.Actor.FirstName)
-            @Html.DisplayFor(model => item.Actor.LastName)
-        </td>
+                    <table class="X">
+                        <tr>
 
 
 
-    }
+                            @foreach (var item in Model.MovieActors)
+                            {
 
-</tr></table>
 
+                            <tr>
+                                <ul>
+                                    @Html.DisplayFor(model => item.Actor.FirstName)
+                                @Html.DisplayFor(model => item.Actor.LastName)
+                            </ul>
+                        </tr>
+
+
+
+                            }
+                            </tr>
+                        </table>
+                    
 
 
 
