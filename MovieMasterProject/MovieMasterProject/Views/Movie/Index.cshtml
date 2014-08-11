@@ -78,7 +78,8 @@
 
 
                 <div class="roundedBox toggler">
-                    <center>User Ratings</center>
+                    
+                    <center>Overall Rating: @Html.DisplayFor(ModelItem => item.Rating)</center>
                     <div>
                     @foreach (var item2 in item.Ratings)
                     {

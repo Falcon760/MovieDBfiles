@@ -54,8 +54,12 @@ namespace MovieMasterProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MovieId,ActorId,Id,Count")] MovieActor movieActor)
         {
+
+           
+            
             if (ModelState.IsValid)
             {
+
                 db.MovieActors.Add(movieActor);
                 db.SaveChanges();
                 return RedirectToAction("Index","Movie");
