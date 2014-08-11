@@ -12,7 +12,7 @@
             @Html.DisplayFor(model => model.Title)
         </div></center>
 
-        <div class="row2">
+        <div class="row2" style="overflow:hidden">
             <div class="roundedDetails" style="float:left">
 
                 <table cellspacing="15">
@@ -101,12 +101,16 @@
              <div>
                @foreach (var item in Model.MessageBoard.Reviews)
                {
-                   <div class="borderclass" style="overflow:initial;height:50px;" > 
-                   <ul>@Html.DisplayFor(modelItem => item.UserName)
-                       posted the review <u>@Html.DisplayFor(modelItem => item.ReviewTitle)</u>
-                       @Html.DisplayFor(modelItem => item.ReviewContents)</ul></div>
-                   
+                <div class="borderclass" style="overflow:initial;height:50px;">
+                    <ul>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    posted the review
+                    <u>@Html.DisplayFor(modelItem => item.ReviewTitle)</u>
+                    @Html.DisplayFor(modelItem => item.ReviewContents)
+                </ul>
+            </div>
                }
+                      
             </div>
         </div>
             <div class="roundedBox toggler">
