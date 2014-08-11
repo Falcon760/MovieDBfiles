@@ -1,16 +1,74 @@
 ﻿@{
     ViewBag.Title = "Home Page";
-
+   
 }
+
+<br /> <br />
+<div class="container">
+    <div class="jumbotron">
+       <center><h1>Movie Nerds</h1>
+        <p>Your #1 source for premium movie and video reviews. Sign up for free to add your movie reviews today.</p>
+        <a class="btn btn-info">Join Now!</a></center> 
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <h3>Gaurdians of the Galaxy</h3>
+        <iframe width="420" height="345"
+        src="//www.youtube.com/embed/aHUBlv5_K8Y" frameborder="0"></iframe>
+    </div>
+    <div class="col-sm-4">
+        <h3>Let's Be Cops</h3>
+        <iframe width="420" height="345"
+            src="//www.youtube.com/embed/WM_OkdRElrI" frameborder="0" allowtransparency="true"></iframe>       
+</div>
+    <div class="col-sm-4">
+        <h3>Sin City 2</h3>
+        <iframe width="420" height="345"
+            src="//www.youtube.com/embed/HE-RvfaQKBY" frameborder="0" allowtransparency="false"></iframe>
+            
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @*<div class="roundedBalls">
 
 
-    <center><h1>TEAM8 Movie Reviews</h1>
+    <center><h1>TEAM8 Movie Reviews</h1></center>
     <p><i>The #1 source for movie reviews and celebrity info-tainment.</i></p>
     @if (User.Identity.IsAuthenticated == false) { 
 
     <input type="button" value="Join Now" class="btn btn-info" onclick="window.location.href='@Url.Action("Register","Account")' " />
-    }*@
+    }
     <style>
         body {
             background-color: #0094ff;
@@ -22,15 +80,16 @@
         }
     </style>
 
-<div id="myCarousel" class="carousel slide">
+<center>
+<div id="myCarousel" class="carousel slide">*@
     <!-- Carousel indicators -->
-    <ol class="carousel-indicators">
+    @*<ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
+    </ol*@>
     <!-- Carousel items -->
-    <div class="carousel-inner">
+    @*<div class="carousel-inner">
         <div class="item active">
             <img src="~/Content/img/image8.jpg" alt="First slide">
         </div>
@@ -40,16 +99,16 @@
         <div class="item">
             <img src="~/Content/img/image7.jpg" alt= "Third slide">
         </div>
-    </div>
+    </div>*@
     <!-- Carousel nav -->
-    <a class="carousel-control left" href="#myCarousel"
+    @*<a class="carousel-control left" href="#myCarousel"
        data-slide="prev">&lsaquo;</a>
     <a class="carousel-control right" href="#myCarousel"
        data-slide="next">&rsaquo;</a>
 </div> 
+    </center>
 
-
-<br /><br />
+<br /><br />*@
 
 
 

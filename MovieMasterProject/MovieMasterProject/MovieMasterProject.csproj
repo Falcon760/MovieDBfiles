@@ -244,9 +244,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\GaurdiansOtheGlxy.jpg" />
+    <Content Include="Content\images\LetsBeCops.jpg" />
     <Content Include="Content\images\logo_887738_web.jpg" />
     <Content Include="Content\images\movie3.jpg" />
+    <Content Include="Content\images\moviescreen.jpg" />
     <Content Include="Content\images\movie_theatre.jpg" />
+    <Content Include="Content\images\Popcorn-Movie-Ticket-deal.png" />
+    <Content Include="Content\images\sincity2.jpg" />
     <Content Include="Content\img\alt_star %281%29.gif" />
     <Content Include="Content\img\alt_star %282%29.gif" />
     <Content Include="Content\img\alt_star.gif" />
@@ -295,6 +300,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr-2.7.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
