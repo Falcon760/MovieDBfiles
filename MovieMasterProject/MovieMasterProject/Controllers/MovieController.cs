@@ -115,6 +115,10 @@ namespace MovieMasterProject.Controllers
 
             if (ModelState.IsValid)
             {
+
+
+
+
                 db.Movies.Add(movie);
                 db.SaveChanges();
                 var msgboard = new MessageBoard { MessageBoardId = movie.MovieId, MessageBoardName = (movie.Title + " Comments") };
