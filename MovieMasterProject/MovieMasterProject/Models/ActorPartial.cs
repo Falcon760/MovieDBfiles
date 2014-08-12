@@ -13,9 +13,9 @@ namespace MovieMasterProject
 
         public class ActorMetaData
         {
-            [DisplayName("Name")]
+            [DisplayName("First Name")]
             public string FirstName { get; set; }
-            [DisplayName("Name")]
+            [DisplayName("Last Name")]
             public string LastName { get; set; }
             [DisplayName("Date of Birth")]
             [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]

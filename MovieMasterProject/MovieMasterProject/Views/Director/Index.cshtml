@@ -8,6 +8,7 @@
 @*<p>
     @Html.ActionLink("Create New", "Create")
 </p>*@
+<br />
 <div class="roundedList">
 <div class="col-md-10" style="text-align:left;margin:10px;">
 
@@ -57,9 +58,16 @@
                         @Html.DisplayFor(modelItem => item.MessageBoardD.MessageBoardName)
                     </td>*@
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.DirectorId }) |
+                        <div class="btn-group">
+
+                            <input type="button" value="Edit" class="btn btn-xs btn-right" onclick="window.location.href='@Url.Action("Edit", "Director", new { id=item.DirectorId })' " />
+                            <input type="button" value="Details" class="btn btn-xs btn-right" onclick="window.location.href='@Url.Action("Details", "Director", new { id=item.DirectorId })' " />
+                            <input type="button" value="Delete" class="btn btn-xs" onclick="window.location.href='@Url.Action("Delete", "Director", new { id=item.DirectorId })' " />
+                        </div>
+
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.DirectorId }) |
                         @Html.ActionLink("Details", "Details", new { id = item.DirectorId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.DirectorId })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.DirectorId })*@
                     </td>
                 </tr>
             }

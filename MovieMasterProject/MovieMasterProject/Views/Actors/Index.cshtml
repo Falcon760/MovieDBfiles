@@ -8,7 +8,7 @@
 @*<p>
     @Html.ActionLink("Create New", "Create","Actors")
 </p>*@
-
+<br />
 
 <div class="roundedList">
     <div class="col-md-10" style="text-align:left;margin:10px;">
@@ -22,13 +22,13 @@
         }
     </div>
     <div style="float:left;text-align:left;">
-        <input type="button" value="Create New" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","Director")' " />
+        <input type="button" value="Create New" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","Actors")' " />
     </div>
 
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                Name
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateOfBirth)
