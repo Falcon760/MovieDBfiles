@@ -4,28 +4,26 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create","Actors")
-</p>
+</p>*@
 
-<div class="col-md-10" style="text-align:left">
-    @*@using (Html.BeginForm("Search", "Movie"))
+
+<div class="roundedList">
+    <div class="col-md-10" style="text-align:left;margin:10px;">
+
+
+        @using (Html.BeginForm("Search", "Actors"))
         {
+
             @Html.Editor("SearchBox")
             <input type="submit" value="Search" />
-
-        }*@
-
-    @using (Html.BeginForm("Search", "Actors"))
-    {
-
-        @Html.Editor("SearchBox")
-        <input type="submit" value="Search" />
-    }
-</div>
-
+        }
+    </div>
+    <div style="float:left;text-align:left;">
+        <input type="button" value="Create New" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","Director")' " />
+    </div>
 
     <table class="table">
         <tr>
@@ -33,17 +31,14 @@
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.DateOfBirth)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Bio)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.MessageBoardA.MessageBoardName)
-            </th>
+            </th>*@
             <th></th>
         </tr>
 
@@ -52,8 +47,6 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.LastName)
                 </td>
                 <td>
@@ -62,9 +55,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Bio)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.MessageBoardA.MessageBoardName)
-                </td>
+                </td>*@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.ActorId }) |
                     @Html.ActionLink("Details", "Details", new { id = item.ActorId }) |
@@ -74,3 +67,4 @@
         }
 
     </table>
+</div>
