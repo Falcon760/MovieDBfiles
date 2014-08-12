@@ -6901,7 +6901,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#191919', end
 }
 .buttonrow{
     text-align:center;
-    margin:5px;
+    margin-left:38px;
+
 
      
 }
@@ -6999,7 +7000,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93cede', end
 }
 .VideoBox   /*Related to video trailer column.*/
 {
-    color:black;
+    
     width:30%;
     float:left;
     margin:10px;

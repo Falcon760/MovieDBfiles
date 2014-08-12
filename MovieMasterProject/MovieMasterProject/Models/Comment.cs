@@ -17,6 +17,7 @@ namespace MovieMasterProject
         {
 
             [DisplayName("Contents")]
+            [MaxLength(500,ErrorMessage="Your comment cannot excede 500 characters.")]
             public string CommentContents { get; set; }
 
 
