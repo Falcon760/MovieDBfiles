@@ -497,7 +497,7 @@
           <Property Name="ReviewTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Rating" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="MessageBoardId" Type="Int32" />
-          <Property Name="ReviewContents" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ReviewContents" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MessageBoard" Relationship="MovieLoversDBModel.FK_Review_MessageBoard" FromRole="Review" ToRole="MessageBoard" />
         </EntityType>
         <Association Name="FK_Comment_MessageBoard">
