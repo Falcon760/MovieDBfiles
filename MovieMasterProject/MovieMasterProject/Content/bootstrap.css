@@ -7019,7 +7019,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93cede', end
     padding:20px;
     font-size:12pt;
     color: white;
-    border: 3px solid rgb(105, 19, 19);
+    border: 3px outset rgb(105, 19, 19);
     text-align: center;
     background-image:url(images/curtains.jpg);
     background-position:center;
