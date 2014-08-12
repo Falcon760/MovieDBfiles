@@ -108,7 +108,7 @@
                     @foreach (var item in Model.MessageBoard.Reviews)
                     {
                         <div class="borderclass" style="overflow:initial;height:auto;">
-                            <input type="button" value="Delete" class="btn btn-xs" onclick="window.location.href='@Url.Action("Delete", "Movie", new { id=Model.MovieId })' " />
+                            <input type="button" value="Delete" class="btn btn-xs" onclick="window.location.href='@Url.Action("Delete", "Review", new { id=item.ReviewId })' " />
                             
                                 @Html.DisplayFor(modelItem => item.Rating)/5.00 -
                                 @Html.DisplayFor(modelItem => item.UserName)
@@ -130,7 +130,7 @@
                     {
                         
                         <div class="borderclass" style="overflow:initial;height:auto;">
-                           <input type="button" value="Delete" class="btn btn-xs" onclick="window.location.href='@Url.Action("Delete", "Movie", new { id=Model.MovieId })' " />
+                           <input type="button" value="Delete" class="btn btn-xs" onclick="window.location.href='@Url.Action("Delete", "Comment", new { id=item.CommentId })' " />
                             @Html.DisplayFor(model => item.UserName): 
                             @Html.DisplayFor(model => item.CommentContents)
                         </div>
