@@ -27,6 +27,8 @@ namespace MovieMasterProject
         public Nullable<decimal> Rating { get; set; }
         public Nullable<System.DateTime> ReleaseDate { get; set; }
         public string Summary { get; set; }
+        public byte[] Picture { get; set; }
+        public string ImagePath { get; set; }
     
         public virtual Director Director { get; set; }
         public virtual Genre Genre { get; set; }

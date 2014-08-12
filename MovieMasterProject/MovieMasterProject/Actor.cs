@@ -22,7 +22,7 @@ namespace MovieMasterProject
         public int ActorId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string DateOfBirth { get; set; }
+        public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string Bio { get; set; }
     
         public virtual MessageBoardA MessageBoardA { get; set; }

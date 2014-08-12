@@ -21,7 +21,7 @@ namespace MovieMasterProject
     
         public int DirectorId { get; set; }
         public string DirectorName { get; set; }
-        public string DateOfBirth { get; set; }
+        public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string Bio { get; set; }
     
         public virtual MessageBoardD MessageBoardD { get; set; }
