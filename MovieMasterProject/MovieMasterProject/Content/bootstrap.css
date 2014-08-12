@@ -6906,6 +6906,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#191919', end
 
      
 }
+.buttonrow2{
+    text-align:center;
+    margin-left:-15px;
+
+
+     
+}
+
+
+
+
 .trailerbox{
   background-color:black;
   width: 200px;
@@ -7142,15 +7153,14 @@ margin-bottom:5px;
 
 }
 
-/*.btn-group
+.btn-group
 { 
 
-    border-bottom-right-radius: 0px;
-    border-top-right-radius: 0px;
-    margin-right: -1px;
+   
+    margin-right: 150px;
     margin: 9px 0;
 
-}*/
+}
 
 .borderclass{
     border-bottom-width:1px;

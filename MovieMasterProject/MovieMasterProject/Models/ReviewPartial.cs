@@ -19,6 +19,8 @@ namespace MovieMasterProject
             public Nullable<decimal> Rating { get; set; }
             [DisplayName("Message Board Name")]
             public Nullable<int> MessageBoardId { get; set; }
+            [MaxLength(5000,ErrorMessage="Your comment cannot excede 500 characters.")]
+            public string ReviewContents { get; set; }
 
 
 
