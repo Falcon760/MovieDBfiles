@@ -14,6 +14,22 @@ namespace MovieMasterProject.Controllers
     {
         private MovieLoversDBEntities db = new MovieLoversDBEntities();
 
+
+        public ActionResult Search(string SearchBox)
+        {
+            var dirs = from t in db.Directors select t;
+            if (!String.IsNullOrEmpty(SearchBox))
+            {
+
+                dirs = from t in db.Directors
+                         where t.DirectorName.Contains(SearchBox)
+                         //|| t.FirstName.Contains(SearchBox)
+                         select t;
+
+            }
+            return View("Index", dirs.ToList());
+        }
+
         // GET: /Director/
         public ActionResult Index()
         {
