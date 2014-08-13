@@ -33,7 +33,7 @@ namespace MovieMasterProject.Controllers
             {
                 return HttpNotFound();
             }
-            return View(movieActor);
+            return View("Index","Movie", movieActor);
         }
 
         // GET: MovieActors/Create
@@ -96,7 +96,7 @@ namespace MovieMasterProject.Controllers
             {
                 db.Entry(movieActor).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Movie");
             }
             ViewBag.ActorId = new SelectList(db.Actors, "ActorId", "FirstName", movieActor.ActorId);
             ViewBag.MovieId = new SelectList(db.Movies, "MovieId", "Title", movieActor.MovieId);
@@ -126,7 +126,7 @@ namespace MovieMasterProject.Controllers
             MovieActor movieActor = db.MovieActors.Find(id);
             db.MovieActors.Remove(movieActor);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Movie");
         }
 
         protected override void Dispose(bool disposing)

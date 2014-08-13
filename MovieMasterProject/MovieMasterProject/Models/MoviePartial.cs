@@ -15,7 +15,8 @@ namespace MovieMasterProject
     {
         public class MovieMetaData
         {
-
+            [Required]
+            public string Title { get; set; }
             [DisplayName("Total Rating")]
             public Nullable<decimal> Rating { get; set; }
             [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
