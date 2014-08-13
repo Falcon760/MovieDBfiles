@@ -13,8 +13,12 @@ namespace MovieMasterProject
 
         public class ActorMetaData
         {
+            [Required]
+            [RegularExpression("^([a-zA-Z .&'-]+)$", ErrorMessage = "Invalid First Name")]
             [DisplayName("First Name")]
             public string FirstName { get; set; }
+            [Required]
+            [RegularExpression("^([a-zA-Z .&'-]+)$", ErrorMessage = "Invalid Last Name")]
             [DisplayName("Last Name")]
             public string LastName { get; set; }
             [DisplayName("Date of Birth")]

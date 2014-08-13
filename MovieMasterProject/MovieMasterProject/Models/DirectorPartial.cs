@@ -13,6 +13,8 @@ namespace MovieMasterProject
 
         public class DirectorMetaData
         {
+            [Required]
+            [RegularExpression("^([a-zA-Z .&'-]+)$", ErrorMessage = "Invalid Name")]
             [DisplayName("Director Name")]
             public string DirectorName { get; set; }
             [DisplayName("Birth Date")]
