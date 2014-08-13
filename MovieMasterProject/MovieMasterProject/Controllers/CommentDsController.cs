@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MovieMasterProject;
+using Microsoft.AspNet.Identity;
 
 namespace MovieMasterProject.Controllers
 {
@@ -39,6 +40,11 @@ namespace MovieMasterProject.Controllers
         // GET: CommentDs/Create
         public ActionResult Create()
         {
+            CommentD commentD = new CommentD();
+            commentD.UserName = User.Identity.GetUserName();
+
+
+
             ViewBag.MessageBoardId = new SelectList(db.MessageBoardDs, "MessageBoardId", "MessageBoardName");
             return View();
         }
