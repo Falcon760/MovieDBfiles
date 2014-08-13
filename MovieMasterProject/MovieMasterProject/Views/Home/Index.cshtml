@@ -9,7 +9,10 @@
         <center>
             <h1><img src="~/Content/images/movienerdslg.png" /></h1>
             <p>Your #1 source for premium movie and video reviews. Sign up for free to add your movie reviews today.</p>
-            <a class="btn btn-info">Join Now!</a>
+            
+            @if (User.Identity.IsAuthenticated != true) {
+            <a class="btn btn-info" onclick="window.location.href='@Url.Action("Register","Account")' ">Join Now!</a>
+            }
         </center>
     </div>
     <div class="row2" style="text-align:center;">
