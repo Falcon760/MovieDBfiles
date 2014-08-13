@@ -52,8 +52,14 @@
             <div style="float:left">
                 @*<img src="~/Content/img/@Model.ImagePath" />*@
                 @*<img src="data:image;base64,@System.Convert.ToBase64String(Model.Picture)" />*@
-                <img src="@Url.Action("GetImage","Movie", new {id = item.MovieId})" height="100" width="75" style="padding:5px" />
-                @*<img src="~/Content/img/image1.JPG" height="100" width="75" style="padding:5px" />*@
+                @if (item.Picture != null)
+                {
+                       <img src="@Url.Action("GetImage","Movie", new {id = item.MovieId})" height="100" width="75" style="padding:5px" />
+                }
+                    else
+                {  
+                       <img src="~/Content/img/image1.JPG" height="100" width="75" style="padding:5px" />
+                }
             </div>
             <div class="row2">
                 
