@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using MovieMasterProject.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MovieMasterProject
 
@@ -19,6 +20,12 @@ namespace MovieMasterProject
             public Nullable<decimal> Rating { get; set; }
             [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
             public Nullable<System.DateTime> ReleaseDate { get; set; }
+            [Column(TypeName = "image")]
+            public byte[] Picture { get; set; } //needed for database
+            public string ImagePath { get; set; } //needed for server
+
+
+
         }
 
     }

@@ -265,6 +265,7 @@
     <Content Include="Content\images\movie-popcorn2.jpg" />
     <Content Include="Content\images\movie-reel.jpg" />
     <Content Include="Content\images\movie3.jpg" />
+    <Content Include="Content\images\movienerdslg.png" />
     <Content Include="Content\images\moviescreen.jpg" />
     <Content Include="Content\images\movie_theatre.jpg" />
     <Content Include="Content\images\popcorn-machine.jpg" />

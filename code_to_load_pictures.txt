@@ -15,7 +15,7 @@ public string ImagePath {get;set;}
             </div>
         </div>
 
-//to receive the picture, specify the controller in view
+//to receive the picture, specify the controller in view BeginForm()
 @using (Html.BeginForm("Create", "Movie", FormMethod.Post, new {enctype = "multipart/form=data"})
 
 
@@ -46,7 +46,7 @@ byte[] imageData = db.Movies.Find(id).Picture;
 return File(imageData, "image/jpeg");
 }
 
-
+<img src="@Url.Action("GetImage","Movie", new {id = item.MovieId})" height="100" width="75" style="padding:5px" />
 
 //to display picture
 <dd>

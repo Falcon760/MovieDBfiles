@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MovieMasterProject;
 using PagedList;
+using System.IO;
 
 namespace MovieMasterProject.Controllers
 {
@@ -105,18 +106,47 @@ namespace MovieMasterProject.Controllers
             return View();
         }
 
-       [Authorize]
+        //to get picture 
+        // has to be a jpeg
+        public ActionResult GetImage(int id)
+        {
+            byte[] imageData = db.Movies.Find(id).Picture;
+            return File(imageData, "image/jpeg");
+        }
+
+
+
+
+
+
+
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="MovieId,Title,DirectorId,GenreId,Rating,ReleaseDate,Summary")] Movie movie)
+        public ActionResult Create([Bind(Include="MovieId,Title,DirectorId,GenreId,Rating,ReleaseDate,Summary")] Movie movie,HttpPostedFileBase ImageFile)
         {
 
 
 
             if (ModelState.IsValid)
             {
+                if (ImageFile != null)
+                {
+                    string pic = System.IO.Path.GetFileName(ImageFile.FileName);
+                    string path = System.IO.Path.Combine(Server.MapPath("~/Content/img"),pic);
+                    ImageFile.SaveAs(path); //file saved to server here dude
+                    movie.ImagePath = pic; //picture name will be associated with each movie
 
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        ImageFile.InputStream.CopyTo(ms);
+                        movie.Picture = ms.GetBuffer();
 
+                    }
+
+                }
+
+                //saved in two places
 
 
                 db.Movies.Add(movie);
