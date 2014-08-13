@@ -94,7 +94,7 @@
             </div>
             <div class="buttonrow">
 
-                <input type="button" value="Edit" class="btn btn-group-xs" onclick="window.location.href='@Url.Action("Edit", "Movie", new { id=Model.DirectorId })' " />
+                <input type="button" value="Edit" class="btn btn-group-xs" onclick="window.location.href='@Url.Action("Edit", "Director", new { id=Model.DirectorId })' " />
 
             </div>
         </div>
@@ -141,7 +141,5 @@
 
     </dl>
 </div>*@
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.DirectorId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
