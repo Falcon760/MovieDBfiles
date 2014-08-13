@@ -41,7 +41,7 @@ namespace MovieMasterProject.Controllers
         public ActionResult Create()
         {
             CommentD commentD = new CommentD();
-            commentD.UserName = User.Identity.GetUserName();
+            
 
 
 
@@ -59,6 +59,7 @@ namespace MovieMasterProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                commentD.UserName = User.Identity.GetUserName();
                 db.CommentDs.Add(commentD);
                 db.SaveChanges();
                 return RedirectToAction("Index");
