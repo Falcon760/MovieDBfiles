@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MovieMasterProject;
+using Microsoft.AspNet.Identity;
 
 namespace MovieMasterProject.Controllers
 {
@@ -40,6 +41,9 @@ namespace MovieMasterProject.Controllers
         // GET: /CommentA/Create
         public ActionResult Create()
         {
+            CommentA commenta = new CommentA();
+
+
             ViewBag.MessageBoardId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName");
             return View();
         }
@@ -53,6 +57,7 @@ namespace MovieMasterProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                commenta.UserName = User.Identity.GetUserName();
                 db.CommentAs.Add(commenta);
                 db.SaveChanges();
                 return RedirectToAction("Index");
