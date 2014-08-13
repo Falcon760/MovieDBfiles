@@ -122,7 +122,7 @@ namespace MovieMasterProject.Controllers
             Review review = db.Reviews.Find(id);
             db.Reviews.Remove(review);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Movie");
         }
 
         protected override void Dispose(bool disposing)
