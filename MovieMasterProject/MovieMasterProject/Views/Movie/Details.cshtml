@@ -31,24 +31,25 @@
                 </table>
                 <table class="X">
                     <tr>
-
-
-
                         @foreach (var item in Model.MovieActors)
                         {
 
 
+
                         <tr>
-                            <ul>
+                            <td>
                                 @Html.DisplayFor(model => item.Actor.FirstName)
                                 @Html.DisplayFor(model => item.Actor.LastName)
-                            </ul>
+                                </td>
+                            <td>  @Html.ActionLink("Delete", "Delete", "MovieActors", new { id = item.Id })
+                            </td>
+
                         </tr>
 
 
 
                         }
-                        </tr>
+                        </tr>  
                     </table>
 
 
