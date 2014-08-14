@@ -15,6 +15,8 @@ namespace MovieMasterProject
     {
         public class MovieMetaData
         {
+            [DisplayName("Movie Name")]
+            public int MovieId { get; set; }
             [Required]
             public string Title { get; set; }
             [DisplayName("Total Rating")]
