@@ -10,25 +10,25 @@ namespace MovieMasterProject.Controllers
     public class HomeController : Controller
     {
         [HttpPost]
-        public ActionResult Upload(IEnumerable<HttpPostedFileBase> files)
+        public ActionResult Upload(HttpPostedFileBase file)
         { 
-        //    try { if (file.ContentLength > 0) 
-        //{ var fileName = Path.GetFileName(file.FileName); 
-        //    var path = Path.Combine(Server.MapPath("~/Content/Images"), fileName); file.SaveAs(path); } 
-        //    ViewBag.Message = "Upload successful"; return RedirectToAction("Index"); } 
-        //catch { ViewBag.Message = "Upload failed"; return RedirectToAction("Uploads"); } }
-            foreach (var file in files)
-            {
-                if (file.ContentLength > 0)
-                {
-                    var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/ImagesSlider"), fileName);
-                    file.SaveAs(path);
-                }
-            }
+            try { if (file.ContentLength > 0) 
+        { var fileName = Path.GetFileName(file.FileName); 
+            var path = Path.Combine(Server.MapPath("~/Content/Images" + "/" + "asd.jpg")); file.SaveAs(path); } 
+            ViewBag.Message = "Upload successful"; return RedirectToAction("Index"); } 
+        catch { ViewBag.Message = "Upload failed"; return RedirectToAction("Uploads"); } }
+            //foreach (var file in files)
+        //    {
+        //        if (file.ContentLength > 0)
+        //        {
+        //            var fileName = Path.GetFileName(file.FileName);
+        //            var path = Path.Combine(Server.MapPath("~/Content/ImagesSlider"), fileName);
+        //            file.SaveAs(path);
+        //        }
+        //    }
 
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
 
 
 
