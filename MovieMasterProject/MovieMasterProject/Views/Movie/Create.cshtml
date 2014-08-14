@@ -5,109 +5,109 @@
 }
 <br />
 <div class="col-lg-12">
-<div class="roundedMovie" style="float:left">
+    <div class="roundedMovie" style="float:left">
 
-    <div style="float:left;padding-left:25px;">
-        <h2 style="font-family:'Global Serif'"> Create Movie</h2>
-        <img src="~/Content/images/movie3.jpg" alt="image description" height="200" width="200" style="border-radius:10px">
+        <div style="float:left;padding-left:25px;">
+            <h2 style="font-family:'Global Serif'"> Create Movie</h2>
+            <img src="~/Content/images/movie3.jpg" alt="image description" height="200" width="200" style="border-radius:10px">
+        </div>
+        <div style="float:left; text-align:left">
+
+            @using (Html.BeginForm("Create", "Movie", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+
+                <div class="form-horizontal" style="float:left;overflow:hidden;padding-right:45px;">
+
+
+                    @Html.ValidationSummary(true)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-5" })
+                        <div class="col-md-7">
+
+                            @Html.EditorFor(model => model.Title)
+                            @Html.ValidationMessageFor(model => model.Title)
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DirectorId, "Director Name", new { @class = "control-label col-md-5" })
+                        <div class="col-md-7">
+
+                            @Html.DropDownList("DirectorId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.DirectorId)
+                            <input type="button" value="Add New" class="btn btn-xs" onclick="window.location.href='@Url.Action("Create", "Director")' " />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GenreId, "Genre Type", new { @class = "control-label col-md-5" })
+                        <div class="col-md-7">
+                            @Html.DropDownList("GenreId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.GenreId)
+                            <input type="button" value="Add New" class="btn btn-xs" onclick="window.location.href='@Url.Action("Create", "Genre")' " />
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                            @Html.LabelFor(model => model.Rating, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Rating)
+                                @Html.ValidationMessageFor(model => model.Rating)
+                            </div>
+                        </div>*@
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ReleaseDate, "Release Date", new { @class = "control-label col-md-5" })
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.ReleaseDate)
+                            @Html.ValidationMessageFor(model => model.ReleaseDate)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Summary, new { @class = "control-label col-md-5" })
+                        <div class="col-md-7">
+                            @Html.TextAreaFor(model => model.Summary, new { cols = 60, rows = 6 })
+                            @Html.ValidationMessageFor(model => model.Summary)
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Picture, "Thumbnail", new { @class = "control-label col-md-5" })
+                        <div class="col-md-7">
+                            <input name="ImageFile" type="file">
+                            @Html.ValidationMessageFor(model => model.Picture)
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-5 col-md-7">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                            <input type="button" value="Back" class="btn btn-default" onclick="window.location.href='@Url.Action("Index", "Movie")' " />
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+
+        </div>
     </div>
-<div style="float:left; text-align:left">
-
-@using (Html.BeginForm("Create", "Movie", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-   
-    
-    <div class="form-horizontal" style="float:left;overflow:hidden;padding-right:45px;" >
-        
-  
-        @Html.ValidationSummary(true)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-5" })
-            <div class="col-md-7">
-
-                @Html.EditorFor(model => model.Title)
-                @Html.ValidationMessageFor(model => model.Title)
-
-            </div>
-            </div>           
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DirectorId, "Director Name", new { @class = "control-label col-md-5" })
-            <div class="col-md-7">
-
-                @Html.DropDownList("DirectorId", String.Empty)
-                @Html.ValidationMessageFor(model => model.DirectorId)
-                <input type="button" value="Add New" class="btn btn-xs" onclick="window.location.href='@Url.Action("Create", "Director")' " />
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.GenreId, "Genre Type", new { @class = "control-label col-md-5" })
-            <div class="col-md-7">
-                @Html.DropDownList("GenreId", String.Empty)
-                @Html.ValidationMessageFor(model => model.GenreId)
-                <input type="button" value="Add New" class="btn btn-xs" onclick="window.location.href='@Url.Action("Create", "Genre")' " />
-            </div>
-        </div>
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.Rating, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Rating)
-                @Html.ValidationMessageFor(model => model.Rating)
-            </div>
-        </div>*@
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ReleaseDate, "Release Date", new { @class = "control-label col-md-5" })
-            <div class="col-md-7">
-                @Html.EditorFor(model => model.ReleaseDate)
-                @Html.ValidationMessageFor(model => model.ReleaseDate)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Summary, new { @class = "control-label col-md-5" })
-            <div class="col-md-7">
-                @Html.TextAreaFor(model => model.Summary, new { cols = 60, rows = 6 })
-                @Html.ValidationMessageFor(model => model.Summary)
-
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Picture, "Thumbnail", new { @class = "control-label col-md-5" })
-            <div class="col-md-7">
-                <input name="ImageFile" type="file">
-                @Html.ValidationMessageFor(model => model.Picture)
-
-            </div>
-        </div>
-
-
-
-
-
-
-
-
-        <div class="form-group">
-            <div class="col-md-offset-5 col-md-7">
-                <input type="submit" value="Create" class="btn btn-default" />
-                <input type="button" value="Back" class="btn btn-default" onclick="window.location.href='@Url.Action("Index", "Movie")' " />
-            </div>
-        </div>
-    </div>
-
-}
-   
-    
-    </div>
-   </div>
-    </div>
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
