@@ -41,9 +41,9 @@
                                 @Html.DisplayFor(model => item.Actor.FirstName)
                                 @Html.DisplayFor(model => item.Actor.LastName)
                             </td>
-                            <td>
+                            @*<td>
                                 @Html.ActionLink("Delete", "Delete", "MovieActors", new { id = item.Id })
-                            </td>
+                            </td>*@
 
                         </tr>
 
@@ -68,13 +68,13 @@
                     <div class="carousel-inner">
                         <div class="item active">
                          
-                            <img id="item" alt="First slide" src="~/Content/images/asd1.jpg" style="margin:0 auto" />
+                            <img id="item" alt="First slide" src="~/Content/images/asd1.jpg" style="margin:0 auto; height:200px" />
                         </div>
                         <div class="item">
-                            <img alt="Second slide" src="~/Content/images/asd2.jpg" style="margin:0 auto" />
+                            <img alt="Second slide" src="~/Content/images/asd2.jpg" style="margin:0 auto;height:200px" />
                         </div>
                         <div class="item">
-                            <img alt="Third slide" src="~/Content/images/asd3.jpg" style="margin:0 auto" />
+                            <img alt="Third slide" src="~/Content/images/asd3.jpg" style="margin:0 auto;height:200px" />
                         </div>
                     </div>
                     <a class="left carousel-control" href="#mySlider" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
@@ -182,6 +182,7 @@
             <div class="buttonrow">
 
                 <input type="button" value="Edit" class="btn btn-group-xs" onclick="window.location.href='@Url.Action("Edit", "Movie", new { id=Model.MovieId })' " />
+                <input type="button" value="Back" class="btn btn-group-xs" onclick="window.location.href='@Url.Action("Index", "Movie")' " />
 
             </div>
         </div>

@@ -6,7 +6,7 @@
 <br />
 
 <div class="roundedSquare" style="float:left">
-    <h2>Create Actor</h2>
+    <h2>Create Cast Member</h2>
     
     @using (Html.BeginForm())
     {
@@ -28,6 +28,7 @@
                 <div class="col-md-10">
                     @Html.DropDownList("ActorId", String.Empty)
                     @Html.ValidationMessageFor(model => model.ActorId)
+                    <input type="button" value="Create" class="btn btn-xs" onclick="window.location.href='@Url.Action("Create", "Actors")'" />
                 </div>
             </div>
 
