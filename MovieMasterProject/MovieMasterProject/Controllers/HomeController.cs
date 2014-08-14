@@ -14,6 +14,7 @@ namespace MovieMasterProject.Controllers
         {
             try { if (file.ContentLength > 0) 
         { var fileName = Path.GetFileName(file.FileName);
+        int count = 0;
         if (count + 1 == 4) { count = 1; } 
             var path = Path.Combine(Server.MapPath("~/Content/Images" + "/" + "asd" + count + ".jpg")); file.SaveAs(path); } 
             ViewBag.Message = "Upload successful"; return RedirectToAction("Index"); } 
