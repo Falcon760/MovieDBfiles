@@ -137,8 +137,8 @@ namespace MovieMasterProject.Controllers
         [Authorize]
         public ActionResult Create()
         {
-     
 
+            int count = 0;
             ViewBag.DirectorId = new SelectList(db.Directors, "DirectorId", "DirectorName");
             ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "GenreType");
             ViewBag.MovieId = new SelectList(db.MessageBoards, "MessageBoardId", "MessageBoardName");

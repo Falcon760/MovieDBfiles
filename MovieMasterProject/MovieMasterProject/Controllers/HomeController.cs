@@ -11,10 +11,11 @@ namespace MovieMasterProject.Controllers
     {
         [HttpPost]
         public ActionResult Upload(HttpPostedFileBase file)
-        { 
+        {
             try { if (file.ContentLength > 0) 
-        { var fileName = Path.GetFileName(file.FileName); 
-            var path = Path.Combine(Server.MapPath("~/Content/Images" + "/" + "asd.jpg")); file.SaveAs(path); } 
+        { var fileName = Path.GetFileName(file.FileName);
+        if (count + 1 == 4) { count = 1; } 
+            var path = Path.Combine(Server.MapPath("~/Content/Images" + "/" + "asd" + count + ".jpg")); file.SaveAs(path); } 
             ViewBag.Message = "Upload successful"; return RedirectToAction("Index"); } 
         catch { ViewBag.Message = "Upload failed"; return RedirectToAction("Uploads"); } }
             //foreach (var file in files)
