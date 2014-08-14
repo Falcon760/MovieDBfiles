@@ -22,6 +22,27 @@ namespace MovieMasterProject.Controllers
         {
             
             var movies = from t in db.Movies select t;
+
+            int rCount = 0;
+            var ratings = db.Ratings;
+            foreach (var mov in movies)
+            {
+                mov.Rating = 0;
+                foreach (var rating in ratings)
+                {
+                    if (rating.MovieId == mov.MovieId)
+                    {
+                        mov.Rating += rating.Value;
+                        rCount += 1;
+                    }
+
+                }
+                if (rCount != 0)
+                {
+                    mov.Rating = mov.Rating / rCount;
+                }
+                rCount = 0;
+            }
             DateTime searchDate;
             if(!String.IsNullOrEmpty(SearchBox))
             {
