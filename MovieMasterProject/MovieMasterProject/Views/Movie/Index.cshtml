@@ -129,9 +129,8 @@
 
 }
 
-<br />
 
-<div class="footer">
+<div class="footer" style="margin-top:600px">
   
 @Html.PagedListPager(Model, page => Url.Action("Index",
         new { page,currentFilter=ViewBag.CurrentFilter, sortOrder = ViewBag.sortOrder}))
