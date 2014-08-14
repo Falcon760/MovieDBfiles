@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using MovieMasterProject;
 using PagedList;
+using PagedList.Mvc;
 using System.IO;
 
 namespace MovieMasterProject.Controllers
@@ -17,7 +18,9 @@ namespace MovieMasterProject.Controllers
         private MovieLoversDBEntities db = new MovieLoversDBEntities();
 
         public ActionResult Search(string SearchBox)
+        
         {
+            
             var movies = from t in db.Movies select t;
             DateTime searchDate;
             if(!String.IsNullOrEmpty(SearchBox))
@@ -36,13 +39,16 @@ namespace MovieMasterProject.Controllers
                               select t;
                 }
             }
-            return View("Index", movies.ToList());
+
+            return View("Index", movies.ToList().ToPagedList(1,9));
         }
 
 
         // GET: /Movie/
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder,int? page)
         {
+
+            ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             var movies = db.Movies.Include(m => m.Director).Include(m => m.Genre).Include(m => m.MessageBoard);
@@ -82,7 +88,7 @@ namespace MovieMasterProject.Controllers
                 rCount = 0;
             }
             
-            return View(movies.ToList());
+            return View(movies.ToList().ToPagedList(page ?? 1,6));
 
 
 }

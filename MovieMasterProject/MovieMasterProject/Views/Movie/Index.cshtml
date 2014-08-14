@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MovieMasterProject.Movie>
+﻿@model IPagedList<MovieMasterProject.Movie>
 
 
 @{
@@ -7,12 +7,17 @@
 
 @Scripts.Render("~/bundles/jquery")
 @using MovieMasterProject.Models;
+@using PagedList;
+@using PagedList.Mvc;
+
+
 
 <br />
 
 <div class="row2">
     <div class="col-md-2">
-        <input type="button" value="Add Movie" class="btn btn-default" onclick="window.location.href='@Url.Action("Create","Movie")' " />
+        <input type="button" value="Add Movie" class="btn btn-default" 
+               onclick="window.location.href='@Url.Action("Create","Movie")' " />
 
 
 
@@ -44,8 +49,7 @@
     <div class="buttonrow">
         <div class="MovieBox">
             <div style="float:left">
-                @*<img src="~/Content/img/@Model.ImagePath" />*@
-                @*<img src="data:image;base64,@System.Convert.ToBase64String(Model.Picture)" />*@
+            
                 @if (item.Picture != null)
                 {
                        <img src="@Url.Action("GetImage","Movie", new {id = item.MovieId})" height="100" width="75" style="padding:5px" />
@@ -82,9 +86,6 @@
                     </tr>
                 </table>
 
-
-
-
                 <div class="roundedBox toggler">
 
                     <center>Overall Rating: @Html.DisplayFor(ModelItem => item.Rating)</center>
@@ -110,42 +111,6 @@
                 </div>
 
 
-                @*@Html.DisplayFor(modelItem => item2._value)*@
-
-                @*@Html.DropDownListFor(modelItem => item.MovieId, new SelectList(ViewBag.Ratings, "Value", "Text"))*@
-
-
-
-                @*<script type="text/javascript">
-                    <!--
-                    function analyze(myButton) {
-                        if (myButton == 1) {
-                            alert("You rated it an A");
-                            //localStorage.setItem("Rating", "A");
-                            //lobcation.replace(movie.Rating)
-                            //document.getElementById("#edit").innerHTML = "You rated it an A!";
-                            //document.cookie = "A";
-                            }
-
-                        if (myButton == 2) {
-                            alert("You rated it a B");
-                        }
-                        if (myButton == 3)
-                        {
-                            alert("You rated it a C");
-                        }
-
-                    }
-                    //-->
-                                            </script>
-
-                                            <input type="radio" name="fav_movie1" value=1 onclick="analyze(this.value);" />A
-                                            <input type="radio" name="fav_movie1" value=2 onclick="analyze(this.value);" />B
-                                            <input type="radio" name="fav_movie1" value=3 onclick="analyze(this.value);" />C*@
-
-
-
-
                 <div class="buttonrow2">
 
                     <div class="btn-group">
@@ -156,10 +121,7 @@
                         </div>
 
                 </div>
-                <div class="buttonrow2">
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="large" data-count="none">Tweet</a>
-                    <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
-                    </div>
+                
             </div>
         </div>
     </div>
@@ -167,3 +129,8 @@
 }
 
 <br />
+
+<div style="position: absolute; bottom: 0px; ">
+@Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page,currentFilter=ViewBag.CurrentFilter, sortOrder = ViewBag.sortOrder}))
+</div>
