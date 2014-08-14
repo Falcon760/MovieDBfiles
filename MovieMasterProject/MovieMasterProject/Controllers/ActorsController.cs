@@ -72,20 +72,14 @@ namespace MovieMasterProject.Controllers
                 var msgboard = new MessageBoardA { MessageBoardId = actor.ActorId, MessageBoardName = (actor.FirstName + " " + actor.LastName + " Comments") };
                 db.MessageBoardAs.Add(msgboard);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create","Movie");
 
-
-
-                //db.Actors.Add(actor);
-                //db.SaveChanges();
-                //return RedirectToAction("Index");
             }
 
             ViewBag.ActorId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName", actor.ActorId);
             return View(actor);
         }
 
-        // GET: Actors/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
