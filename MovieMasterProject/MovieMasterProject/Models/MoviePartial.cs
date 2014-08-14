@@ -20,6 +20,7 @@ namespace MovieMasterProject
             [DisplayName("Total Rating")]
             public Nullable<decimal> Rating { get; set; }
             [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+            [DisplayName("Release Date")]
             public Nullable<System.DateTime> ReleaseDate { get; set; }
             [Column(TypeName = "image")]
             public byte[] Picture { get; set; } //needed for database
