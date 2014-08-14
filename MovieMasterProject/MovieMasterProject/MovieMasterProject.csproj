@@ -417,6 +417,7 @@
     <Content Include="Views\MovieRating\Details.cshtml" />
     <Content Include="Views\MovieRating\Edit.cshtml" />
     <Content Include="Views\MovieRating\Index.cshtml" />
+    <Content Include="Views\Actors\CastCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

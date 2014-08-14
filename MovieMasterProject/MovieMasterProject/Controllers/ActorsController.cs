@@ -72,13 +72,41 @@ namespace MovieMasterProject.Controllers
                 var msgboard = new MessageBoardA { MessageBoardId = actor.ActorId, MessageBoardName = (actor.FirstName + " " + actor.LastName + " Comments") };
                 db.MessageBoardAs.Add(msgboard);
                 db.SaveChanges();
-                return RedirectToAction("Create","Movie");
+                return RedirectToAction("Index","Movie");
 
             }
 
             ViewBag.ActorId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName", actor.ActorId);
             return View(actor);
         }
+
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CastCreate([Bind(Include = "ActorId,FirstName,LastName,DateOfBirth,Bio")] Actor actor)
+        {
+            if (ModelState.IsValid)
+            {
+
+                db.Actors.Add(actor);
+                db.SaveChanges();
+                var msgboard = new MessageBoardA { MessageBoardId = actor.ActorId, MessageBoardName = (actor.FirstName + " " + actor.LastName + " Comments") };
+                db.MessageBoardAs.Add(msgboard);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Movie");
+
+            }
+
+            ViewBag.ActorId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName", actor.ActorId);
+            return View(actor);
+        }
+
+
+
+
+
+
 
         public ActionResult Edit(int? id)
         {
