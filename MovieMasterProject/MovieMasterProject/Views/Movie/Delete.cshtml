@@ -4,13 +4,12 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
-
+<div class="roundedCreate">
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Movie</h4>
+
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" >
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
@@ -35,13 +34,13 @@
             @Html.DisplayFor(model => model.ReleaseDate)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Summary)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Summary)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.Director.DirectorName)
@@ -59,22 +58,24 @@
             @Html.DisplayFor(model => model.Genre.GenreType)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.MessageBoard.MessageBoardName)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.MessageBoard.MessageBoardName)
-        </dd>
+        </dd>*@
 
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="form-actions no-color" style="text-align:center;">
+            <input type="submit" value="Delete" class="btn btn-default" />
+            <input type="button" value="Back" class="btn btn-default" onclick="window.location.href='@Url.Action("Index", "Movie")" />
+         
         </div>
     }
+</div>
 </div>
