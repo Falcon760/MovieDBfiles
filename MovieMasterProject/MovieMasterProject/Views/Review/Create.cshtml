@@ -4,75 +4,78 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create Review</h2>
+
+<div class="roundedCreate">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h2>Create Review</h2>
+            <hr />
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })*@
+                <div class="col-md-10">
+
+                    @Html.HiddenFor(model => model.UserName)
+                    @Html.ValidationMessageFor(model => model.UserName)
+
+                </div>
+            </div>
 
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-       
-        <hr />
-        @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            @*@Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })*@
-            <div class="col-md-10">
 
-                @Html.HiddenFor(model => model.UserName)
-                @Html.ValidationMessageFor(model => model.UserName)
+            <div class="form-group">
+                @Html.LabelFor(model => model.ReviewTitle, "Review Title", new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ReviewTitle)
+                    @Html.ValidationMessageFor(model => model.ReviewTitle)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Rating, new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Rating)
+                    @Html.ValidationMessageFor(model => model.Rating)
+                </div>
+            </div>
 
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MessageBoardId, "Messageboard Name", new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.DropDownList("MessageBoardId", String.Empty)
+                    @Html.ValidationMessageFor(model => model.MessageBoardId)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ReviewContents, "Contents", new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.TextAreaFor(model => model.ReviewContents, new { cols = 100, rows = 10 })
+                    @Html.ValidationMessageFor(model => model.ReviewContents)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-8">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
             </div>
         </div>
+    }
+
+    @*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
 
 
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ReviewTitle, "Title", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ReviewTitle)
-                @Html.ValidationMessageFor(model => model.ReviewTitle)
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Rating, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Rating)
-                @Html.ValidationMessageFor(model => model.Rating)
-            </div>
-        </div>
- 
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MessageBoardId, "MessageBoard Name", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("MessageBoardId", String.Empty)
-                @Html.ValidationMessageFor(model => model.MessageBoardId)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ReviewContents, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.ReviewContents, new { cols = 100, rows = 10 })
-                @Html.ValidationMessageFor(model => model.ReviewContents)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

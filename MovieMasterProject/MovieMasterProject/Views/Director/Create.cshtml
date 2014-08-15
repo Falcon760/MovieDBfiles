@@ -17,7 +17,7 @@
             <h2>Create Director</h2>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.DirectorName, new { @class = "control-label col-md-4" })
+            @Html.LabelFor(model => model.DirectorName, "Name", new { @class = "control-label col-md-4" })
             <div class="col-md-8">
                 @Html.EditorFor(model => model.DirectorName)
                 @Html.ValidationMessageFor(model => model.DirectorName)

@@ -13,7 +13,7 @@ namespace MovieMasterProject
 
         public class ReviewMetaData
         {
-            [DisplayName("Title")]
+            [DisplayName("Review Title")]
             public string ReviewTitle { get; set; }
             [Range(0, 5, ErrorMessage = "Value must be between 0 and 5.")]
             public Nullable<decimal> Rating { get; set; }

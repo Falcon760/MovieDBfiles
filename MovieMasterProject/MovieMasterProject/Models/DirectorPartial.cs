@@ -15,7 +15,7 @@ namespace MovieMasterProject
         {
             [Required]
             [RegularExpression("^([a-zA-Z .&'-]+)$", ErrorMessage = "Invalid Name")]
-            [DisplayName("Director Name")]
+            [DisplayName("Name")]
             public string DirectorName { get; set; }
             [DisplayName("Birth Date")]
             [DisplayFormat(DataFormatString = "{0:MMM dd, yyyy}", ApplyFormatInEditMode = true)]
