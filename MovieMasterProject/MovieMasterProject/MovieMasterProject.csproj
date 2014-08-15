@@ -260,7 +260,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\1575614.jpg" />
     <Content Include="Content\images\curtains.jpg" />
+    <Content Include="Content\images\edgeOftomorrow.jpg" />
     <Content Include="Content\images\GaurdiansOtheGlxy.jpg" />
+    <Content Include="Content\images\JamesBrown.jpg" />
     <Content Include="Content\images\LetsBeCops.jpg" />
     <Content Include="Content\images\logo_887738_web.jpg" />
     <Content Include="Content\images\movie-popcorn2.jpg" />
