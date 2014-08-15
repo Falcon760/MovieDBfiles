@@ -16,7 +16,7 @@ namespace MovieMasterProject.Controllers
         { var fileName = Path.GetFileName(file.FileName);
         int count = 0;
         if (count + 1 == 4) { count = 1; } 
-            var path = Path.Combine(Server.MapPath("~/Content/Images" + "/" + "asd" + count + ".jpg")); file.SaveAs(path); } 
+            var path = Path.Combine(Server.MapPath("~/Content/images" + "/" + "asd" + count + ".jpg")); file.SaveAs(path); } 
             ViewBag.Message = "Upload successful"; return RedirectToAction("Index"); } 
         catch { ViewBag.Message = "Upload failed"; return RedirectToAction("Uploads"); } }
             //foreach (var file in files)
