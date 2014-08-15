@@ -287,7 +287,6 @@
     <Content Include="Content\img\image8.JPG" />
     <Content Include="Content\ImagesSlider\image9.JPG" />
     <Content Include="Content\img\image9.JPG" />
-    <Content Include="Content\sliderstyle.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
