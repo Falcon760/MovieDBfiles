@@ -95,7 +95,7 @@
             <div class="buttonrow">
 
                 <input type="button" value="Edit" class="btn btn-group-xs" onclick="window.location.href='@Url.Action("Edit", "Director", new { id=Model.DirectorId })' " />
-
+                <input type="button" value="Back" class="btn btn-group-xs" onclick="window.location.href='@Url.Action("Index", "Movie")'" />
             </div>
         </div>
 
@@ -141,5 +141,5 @@
 
     </dl>
 </div>*@
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    @*@Html.ActionLink("Back to List", "Index")
+</p>*@
