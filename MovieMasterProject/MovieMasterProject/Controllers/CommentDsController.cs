@@ -62,7 +62,7 @@ namespace MovieMasterProject.Controllers
                 commentD.UserName = User.Identity.GetUserName();
                 db.CommentDs.Add(commentD);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Movie");
             }
 
             ViewBag.MessageBoardId = new SelectList(db.MessageBoardDs, "MessageBoardId", "MessageBoardName", commentD.MessageBoardId);
@@ -96,7 +96,7 @@ namespace MovieMasterProject.Controllers
             {
                 db.Entry(commentD).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Movie");
             }
             ViewBag.MessageBoardId = new SelectList(db.MessageBoardDs, "MessageBoardId", "MessageBoardName", commentD.MessageBoardId);
             return View(commentD);
@@ -125,7 +125,7 @@ namespace MovieMasterProject.Controllers
             CommentD commentD = db.CommentDs.Find(id);
             db.CommentDs.Remove(commentD);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Movie");
         }
 
         protected override void Dispose(bool disposing)
