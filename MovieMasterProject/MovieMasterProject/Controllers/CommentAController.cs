@@ -60,7 +60,7 @@ namespace MovieMasterProject.Controllers
                 commenta.UserName = User.Identity.GetUserName();
                 db.CommentAs.Add(commenta);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Movie");
             }
 
             ViewBag.MessageBoardId = new SelectList(db.MessageBoardAs, "MessageBoardId", "MessageBoardName", commenta.MessageBoardId);
@@ -121,7 +121,7 @@ namespace MovieMasterProject.Controllers
             CommentA commenta = db.CommentAs.Find(id);
             db.CommentAs.Remove(commenta);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Movie");
         }
 
         protected override void Dispose(bool disposing)
