@@ -3,22 +3,22 @@
 @{
     ViewBag.Title = "Delete";
 }
-
-<div class="roundedCreate">
-<h3 style="text-align:center">Are you sure you want to delete this movie?</h3>
+<br />
+<div class="roundedSquare">
+<h2 style="text-align:center">Are you sure you want to delete this movie?</h2>
 <div>
 
     <hr />
     <dl class="dl-horizontal" >
         
-        <dt style="font-size:20px;">
+        @*<dt style="font-size:20px;">
             
             @Html.DisplayNameFor(model => model.Title)
-        </dt>
+        </dt>*@
 
-        <dd style="font-size:20px;">
+        <div style="font-size:24px; text-align:center">
             @Html.DisplayFor(model => model.Title)
-        </dd>
+        </div>
             
         @*<dt>
             @Html.DisplayNameFor(model => model.Rating)
